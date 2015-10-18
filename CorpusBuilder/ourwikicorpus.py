@@ -167,7 +167,7 @@ def tokenize(content):
     """
     # TODO maybe ignore tokens with non-latin characters? (no chinese, arabic, russian etc.)
     return [token.encode('utf8') for token in utils.tokenize(content, lower=True, errors='ignore')
-            if 2 <= len(token) <= 15 and not token.startswith('_')]
+            if 1 <= len(token) <= 15 and not token.startswith('_')]
 
 
 def get_namespace(tag):

@@ -29,11 +29,13 @@ def convert_wiki(infile, processes=multiprocessing.cpu_count()):
         pool = multiprocessing.Pool(processes)
         texts = ourwikicorpus._extract_pages(bz2.BZ2File(infile)) # generato
         ignore_namespaces = 'Wikipedia Category File Portal Template MediaWiki User Help Book Draft Notes References'.split()
+        #ignore_namespaces.append('External links')
+        #ignore_namespaces.append('Further reading')
         # process the corpus in smaller chunks of docs, because multiprocessing.Pool
         # is dumb and would try to load the entire dump into RAM...
         for group in ourutils.chunkize(texts, chunksize=10 * processes):
             for title, tokens in pool.imap(process_article, group):
-                if len(tokens) >= 50:
+                if len(tokens) >= 50 and not any(title.startswith(ignore + ':') for ignore in ignore_namespaces):
                     yield title.replace('\t', ' '), tokens
         pool.terminate()
 
@@ -51,6 +53,8 @@ except OSError, e:
 import sys
 
 
+
+
 for title, tokens in convert_wiki(sys.argv[1]):
     listdir = os.listdir("pioNER_Wiki_Articles/")
     dirName = 'different'
@@ -64,6 +68,6 @@ for title, tokens in convert_wiki(sys.argv[1]):
     file.write(' '.join(tokens))
     file.close()
     i = i + 1
-    if (i > 3):
-        exit()
+    if (i > 1000):
+        exit(0)
 print "ok"

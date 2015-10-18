@@ -163,7 +163,7 @@ def tokenize(text, lowercase=False, deacc=False, errors="strict", to_lower=False
         yield match.group()
 
 
-def simple_preprocess(doc, deacc=False, min_len=2, max_len=15):
+def simple_preprocess(doc, deacc=False, min_len=1, max_len=15):
     """
     Convert a document into a list of tokens.
 
