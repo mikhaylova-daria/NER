@@ -19,6 +19,7 @@ def process_article((title, text, number)):
     text = ourwikicorpus.filter_wiki(text)
   #  print gensim.corpora.wikicorpus.remove_markup(text)
     #print gensim.utils.simple_preprocess(doc=text)
+    print text
     return title.encode('utf8'), ourutils.simple_preprocess(text)
 
 

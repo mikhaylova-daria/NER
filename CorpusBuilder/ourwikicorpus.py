@@ -54,7 +54,8 @@ RE_P14 = re.compile('\[\[Category:[^][]*\]\]', re.UNICODE) # categories
 # Remove File and Image template
 RE_P15 = re.compile('\[\[([fF]ile:|[iI]mage)[^]]*(\]\])', re.UNICODE)
 
-re_text = re.compile('[^\[\]]+', re.UNICODE)
+RE_H = re.compile('[=]+(.*?)[=]+')
+
 re_definition = re.compile('\[\[([fF]ile:|[iI]mage:)([^|]+)(\|[^\[\]]+)(\|[^\[\]]+)\|(([^\[\]]+)|(\[\[([^\[\]]+)\]\]))+(\]\])', re.UNICODE)
 re_definition2 = re.compile('\[\[([fF]ile:|[iI]mage:)([^|]+)(\|[^\[\]]+)\|(([^\[\]]+)|(\[\[([^\[\]]+)\]\]))+(\]\])', re.UNICODE)
 
@@ -94,6 +95,7 @@ def remove_markup(text):
         text = re.sub(RE_P12, '\n', text) # remove formatting lines
         text = re.sub(RE_P13, '\n\\3', text) # leave only cell content
         # remove empty mark-up
+        text = re.sub(RE_H, '\\1', text)
         text = text.replace('[]', '')
         text = text.replace('\'\'\'', '')
         text = text.replace('\'\'', '')
@@ -157,7 +159,6 @@ def remove_file(s):
     # The regex RE_P15 match a File: or Image: markup
     for match in re.finditer(re_definition, s):
         m = match.group(0)
-        print m
         # если мы не хотим удалять описание:
         caption = m.split('|')[3]
         for t in m.split('|')[4:]:
@@ -170,7 +171,6 @@ def remove_file(s):
 
     for match in re.finditer(re_definition2, s):
         m = match.group(0)
-        print m
         # если мы не хотим удалять описание:
         caption = m.split('|')[2]
         for t in m.split('|')[3:]:
@@ -221,7 +221,6 @@ def extract_pages(f, filter_namespaces=False):
     # those from the first element we find, which will be part of the metadata,
     # and construct element paths.
     elem = next(elems)
-    print '\n\n\n\n\n'
     namespace = get_namespace(elem.tag)
     ns_mapping = {"ns": namespace}
     page_tag = "{%(ns)s}page" % ns_mapping
@@ -234,8 +233,6 @@ def extract_pages(f, filter_namespaces=False):
         if elem.tag == page_tag:
             title = elem.find(title_path).text
             text = elem.find(text_path).text
-            if title == 'Anarchism':
-                print text
             ns = elem.find(ns_path).text
             if filter_namespaces and ns not in filter_namespaces:
                 text = None
