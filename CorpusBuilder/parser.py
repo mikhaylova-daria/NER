@@ -33,7 +33,7 @@ def convert_wiki(infile, processes=multiprocessing.cpu_count()):
         # is dumb and would try to load the entire dump into RAM...
         for group in ourutils.chunkize(texts, chunksize=10 * processes):
             for title, tokens in pool.imap(process_article, group):
-                if len(tokens) >= 50 and not any(title.startswith(ignore + ':') for ignore in ignore_namespaces):
+                if len(tokens) >= 50:
                     yield title.replace('\t', ' '), tokens
         pool.terminate()
 
@@ -49,7 +49,8 @@ except OSError, e:
 
     pass
 import sys
-#Параметр скрипта - путь к архиву с dump Wikipedia, например 'enwiki-20150304-pages-articles.xml.bz2'
+
+
 for title, tokens in convert_wiki(sys.argv[1]):
     listdir = os.listdir("pioNER_Wiki_Articles/")
     dirName = 'different'
@@ -63,4 +64,6 @@ for title, tokens in convert_wiki(sys.argv[1]):
     file.write(' '.join(tokens))
     file.close()
     i = i + 1
+    if (i > 3):
+        exit()
 print "ok"
