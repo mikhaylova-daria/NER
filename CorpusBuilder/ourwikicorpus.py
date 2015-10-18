@@ -43,8 +43,8 @@ RE_P3 = re.compile("{{([^}{]*)}}", re.DOTALL | re.UNICODE) # template
 RE_P4 = re.compile("{{([^}]*)}}", re.DOTALL | re.UNICODE) # template
 RE_P5 = re.compile('\[(\w+):\/\/(.*?)(( (.*?))|())\]', re.UNICODE) # remove URL, keep description
 RE_P6 = re.compile("\[([^][]*)\|([^][]*)\]", re.DOTALL | re.UNICODE) # simplify links, keep description
-RE_P7 = re.compile('\n\[\[[iI]mage(.*?)(\|.*?)*\|(.*?)\]\]', re.UNICODE) # keep description of images
-RE_P8 = re.compile('\n\[\[[fF]ile(.*?)(\|.*?)*\|(.*?)\]\]', re.UNICODE) # keep description of files
+RE_P7 = re.compile('\n\[\[[iI]mage:(.*?)(\|.*?)*\|(.*?)\]\]', re.UNICODE) # keep description of images
+RE_P8 = re.compile('\n\[\[[fF]ile:(.*?)(\|.*?)*\|\]\]', re.UNICODE) # keep description of files
 RE_P9 = re.compile('<nowiki([> ].*?)(</nowiki>|/>)', re.DOTALL | re.UNICODE) # outside links
 RE_P10 = re.compile('<math([> ].*?)(</math>|/>)', re.DOTALL | re.UNICODE) # math content
 RE_P11 = re.compile('<(.*?)>', re.DOTALL | re.UNICODE) # all other tags
@@ -54,6 +54,9 @@ RE_P14 = re.compile('\[\[Category:[^][]*\]\]', re.UNICODE) # categories
 # Remove File and Image template
 RE_P15 = re.compile('\[\[([fF]ile:|[iI]mage)[^]]*(\]\])', re.UNICODE)
 
+re_text = re.compile('[^\[\]]+', re.UNICODE)
+re_definition = re.compile('\[\[([fF]ile:|[iI]mage:)([^|]+)(\|[^\[\]]+)(\|[^\[\]]+)\|(([^\[\]]+)|(\[\[([^\[\]]+)\]\]))+(\]\])', re.UNICODE)
+re_definition2 = re.compile('\[\[([fF]ile:|[iI]mage:)([^|]+)(\|[^\[\]]+)\|(([^\[\]]+)|(\[\[([^\[\]]+)\]\]))+(\]\])', re.UNICODE)
 
 def filter_wiki(raw):
     """
@@ -92,6 +95,8 @@ def remove_markup(text):
         text = re.sub(RE_P13, '\n\\3', text) # leave only cell content
         # remove empty mark-up
         text = text.replace('[]', '')
+        text = text.replace('\'\'\'', '')
+        text = text.replace('\'\'', '')
         if old == text or iters > 2: # stop if nothing changed between two iterations or after a fixed number of iterations
             break
 
@@ -150,10 +155,32 @@ def remove_file(s):
     for the markup details.
     """
     # The regex RE_P15 match a File: or Image: markup
-    for match in re.finditer(RE_P15, s):
+    for match in re.finditer(re_definition, s):
         m = match.group(0)
-        caption = m[:-2].split('|')[-1]
+        print m
+        # если мы не хотим удалять описание:
+        caption = m.split('|')[3]
+        for t in m.split('|')[4:]:
+            caption = caption + '|' + t
+        caption = caption + '\n\n'
+        #caption = (m[:-2].split('|')[-1]) + '\n'
         s = s.replace(m, caption, 1)
+        #удаляем картинку вместе с описанием
+        #s = s.replace(m, '', 1)
+
+    for match in re.finditer(re_definition2, s):
+        m = match.group(0)
+        print m
+        # если мы не хотим удалять описание:
+        caption = m.split('|')[2]
+        for t in m.split('|')[3:]:
+            caption = caption + '|'+ t
+        caption = caption + '\n\n'
+        #caption = (m[:-2].split('|')[-1]) + '\n'
+        s = s.replace(m, caption, 1)
+        #удаляем картинку вместе с описанием
+        #s = s.replace(m, '', 1)
+
     return s
 
 

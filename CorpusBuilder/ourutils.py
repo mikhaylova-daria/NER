@@ -53,7 +53,7 @@ except ImportError:
 
 #PAT_ALPHABETIC = re.compile('[^\s]*', re.UNICODE)
 #PAT_ALPHABETIC = re.compile('(((?![\d])\w)+)', re.UNICODE)
-PAT_ALPHABETIC = re.compile('([-"–\w]+[),.?:;!"–]*)|([\n]+)', re.UNICODE)
+PAT_ALPHABETIC = re.compile('([-"\'(\–\w]+[\'-),.?:;!"\–]*)|([\n]+)', re.UNICODE)
 #PAT_ALPHABETIC = re.compile('((^[:;])+)', re.UNICODE)
 RE_HTML_ENTITY = re.compile(r'&(#?)([xX]?)(\w{1,8});', re.UNICODE)
 
@@ -161,7 +161,11 @@ def tokenize(text, lowercase=False, deacc=False, errors="strict", to_lower=False
         text = deaccent(text)
 
     for match in PAT_ALPHABETIC.finditer(text):
-        yield match.group()
+        re_n = re.compile('[\n]+')
+        if re.match(re_n, match.group()) == None:
+            yield match.group()
+        else:
+            yield '\n\n'
 
 
 def simple_preprocess(doc, deacc=False, min_len=1, max_len=150):
