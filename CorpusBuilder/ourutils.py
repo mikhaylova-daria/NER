@@ -53,7 +53,7 @@ except ImportError:
 
 #PAT_ALPHABETIC = re.compile('[^\s]*', re.UNICODE)
 #PAT_ALPHABETIC = re.compile('(((?![\d])\w)+)', re.UNICODE)
-PAT_ALPHABETIC = re.compile('([\-"\–(\w]+[),.?:;!"–]*)|([\n]+)', re.UNICODE)
+PAT_ALPHABETIC = re.compile('([-"–\w]+[),.?:;!"–]*)|([\n]+)', re.UNICODE)
 #PAT_ALPHABETIC = re.compile('((^[:;])+)', re.UNICODE)
 RE_HTML_ENTITY = re.compile(r'&(#?)([xX]?)(\w{1,8});', re.UNICODE)
 
@@ -159,11 +159,12 @@ def tokenize(text, lowercase=False, deacc=False, errors="strict", to_lower=False
         text = text.lower()
     if deacc:
         text = deaccent(text)
+
     for match in PAT_ALPHABETIC.finditer(text):
         yield match.group()
 
 
-def simple_preprocess(doc, deacc=False, min_len=1, max_len=15):
+def simple_preprocess(doc, deacc=False, min_len=1, max_len=150):
     """
     Convert a document into a list of tokens.
 
@@ -867,7 +868,7 @@ if HAS_PATTERN:
         result = []
         for sentence in parsed:
             for token, tag, _, _, lemma in sentence:
-                if 2 <= len(lemma) <= 15 and not lemma.startswith('_') and lemma not in stopwords:
+                if 1 <= len(lemma) <= 150 and not lemma.startswith('_') and lemma not in stopwords:
                     if allowed_tags.match(tag):
                         lemma += "/" + tag[:2]
                         result.append(lemma.encode('utf8'))

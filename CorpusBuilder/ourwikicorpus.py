@@ -167,7 +167,7 @@ def tokenize(content):
     """
     # TODO maybe ignore tokens with non-latin characters? (no chinese, arabic, russian etc.)
     return [token.encode('utf8') for token in utils.tokenize(content, lower=True, errors='ignore')
-            if 1 <= len(token) <= 15 and not token.startswith('_')]
+            if 2 <= len(token) <= 15 and not token.startswith('_')]
 
 
 def get_namespace(tag):
@@ -194,6 +194,7 @@ def extract_pages(f, filter_namespaces=False):
     # those from the first element we find, which will be part of the metadata,
     # and construct element paths.
     elem = next(elems)
+    print '\n\n\n\n\n'
     namespace = get_namespace(elem.tag)
     ns_mapping = {"ns": namespace}
     page_tag = "{%(ns)s}page" % ns_mapping
@@ -206,7 +207,8 @@ def extract_pages(f, filter_namespaces=False):
         if elem.tag == page_tag:
             title = elem.find(title_path).text
             text = elem.find(text_path).text
-
+            if title == 'Anarchism':
+                print text
             ns = elem.find(ns_path).text
             if filter_namespaces and ns not in filter_namespaces:
                 text = None

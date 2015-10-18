@@ -28,9 +28,7 @@ def convert_wiki(infile, processes=multiprocessing.cpu_count()):
     if __name__ == '__main__':
         pool = multiprocessing.Pool(processes)
         texts = ourwikicorpus._extract_pages(bz2.BZ2File(infile)) # generato
-        ignore_namespaces = 'Wikipedia Category File Portal Template MediaWiki User Help Book Draft Notes References'.split()
-        #ignore_namespaces.append('External links')
-        #ignore_namespaces.append('Further reading')
+        ignore_namespaces = 'Wikipedia Category File Portal Template MediaWiki User Help Book Draft Notes'.split()
         # process the corpus in smaller chunks of docs, because multiprocessing.Pool
         # is dumb and would try to load the entire dump into RAM...
         for group in ourutils.chunkize(texts, chunksize=10 * processes):
@@ -68,6 +66,6 @@ for title, tokens in convert_wiki(sys.argv[1]):
     file.write(' '.join(tokens))
     file.close()
     i = i + 1
-    if (i > 1000):
+    if (i > 1):
         exit(0)
 print "ok"
