@@ -62,7 +62,6 @@ RE_HTML_ENTITY = re.compile(r'&(#?)([xX]?)(\w{1,8});', re.UNICODE)
 def synchronous(tlockname):
     """
     A decorator to place an instance-based lock around a method.
-
     Adapted from http://code.activestate.com/recipes/577105-synchronization-decorator-for-class-methods/
     """
     def _synched(func):
@@ -97,7 +96,6 @@ def file_or_filename(input):
     """
     Return a file-like object ready to be read from the beginning. `input` is either
     a filename (gz/bz2 also supported) or a file-like object supporting seek.
-
     """
     if isinstance(input, string_types):
         # input was a filename: open as file
@@ -111,12 +109,9 @@ def file_or_filename(input):
 def deaccent(text):
     """
     Remove accentuation from the given string. Input text is either a unicode string or utf8 encoded bytestring.
-
     Return input string with accents removed, as unicode.
-
     >>> deaccent("Šéf chomutovských komunistů dostal poštou bílý prášek")
     u'Sef chomutovskych komunistu dostal postou bily prasek'
-
     """
     if not isinstance(text, unicode):
         # assume utf8 for byte strings, use default (strict) error handling
@@ -143,15 +138,11 @@ def tokenize(text, lowercase=False, deacc=False, errors="strict", to_lower=False
     """
     Iteratively yield tokens as unicode strings, optionally also lowercasing them
     and removing accent marks.
-
     Input text may be either unicode or utf8-encoded byte string.
-
     The tokens on output are maximal contiguous sequences of alphabetic
     characters (no digits!).
-
     >>> list(tokenize('Nic nemůže letět rychlostí vyšší, než 300 tisíc kilometrů za sekundu!', deacc = True))
     [u'Nic', u'nemuze', u'letet', u'rychlosti', u'vyssi', u'nez', u'tisic', u'kilometru', u'za', u'sekundu']
-
     """
     lowercase = lowercase or to_lower or lower
     text = to_unicode(text, errors=errors)
@@ -173,10 +164,8 @@ def tokenize(text, lowercase=False, deacc=False, errors="strict", to_lower=False
 def simple_preprocess(doc, deacc=False, min_len=1, max_len=150):
     """
     Convert a document into a list of tokens.
-
     This lowercases, tokenizes, stems, normalizes etc. -- the output are final
     tokens = unicode strings, that won't be processed any further.
-
     """
 # МОё исправление!!! lower=False (было True)
     tokens = [token for token in tokenize(doc, lower=False, deacc=deacc, errors='ignore')
@@ -205,20 +194,16 @@ class SaveLoad(object):
     """
     Objects which inherit from this class have save/load functions, which un/pickle
     them to disk.
-
     This uses pickle for de/serializing, so objects must not contain
     unpicklable attributes, such as lambda functions etc.
-
     """
     @classmethod
     def load(cls, fname, mmap=None):
         """
         Load a previously saved object from file (also see `save`).
-
         If the object was saved with large arrays stored separately, you can load
         these arrays via mmap (shared memory) using `mmap='r'`. Default: don't use
         mmap, load large arrays as normal objects.
-
         """
         logger.info("loading %s object from %s" % (cls.__name__, fname))
         subname = lambda suffix: fname + '.' + suffix + '.npy'
@@ -241,17 +226,13 @@ class SaveLoad(object):
     def save(self, fname, separately=None, sep_limit=10 * 1024**2, ignore=frozenset()):
         """
         Save the object to file (also see `load`).
-
         If `separately` is None, automatically detect large numpy/scipy.sparse arrays
         in the object being stored, and store them into separate files. This avoids
         pickle memory errors and allows mmap'ing large arrays back on load efficiently.
-
         You can also set `separately` manually, in which case it must be a list of attribute
         names to be stored in separate files. The automatic check is not performed in this case.
-
         `ignore` is a set of attribute names to *not* serialize (file handles, caches etc). On
         subsequent load() these attributes will be set to None.
-
         """
         logger.info("saving %s object under %s, separately %s" % (self.__class__.__name__, fname, separately))
         subname = lambda suffix: fname + '.' + suffix + '.npy'
@@ -311,9 +292,7 @@ def identity(p):
 def get_max_id(corpus):
     """
     Return the highest feature id that appears in the corpus.
-
     For empty corpora (no features at all), return -1.
-
     """
     maxid = -1
     for document in corpus:
@@ -325,10 +304,8 @@ class FakeDict(object):
     """
     Objects of this class act as dictionaries that map integer->str(integer), for
     a specified range of integers <0, num_terms).
-
     This is meant to avoid allocating real dictionaries when `num_terms` is huge, which
     is a waste of memory.
-
     """
     def __init__(self, num_terms):
         self.num_terms = num_terms
@@ -352,10 +329,8 @@ class FakeDict(object):
         """
         Override the dict.keys() function, which is used to determine the maximum
         internal id of a corpus = the vocabulary dimensionality.
-
         HACK: To avoid materializing the whole `range(0, self.num_terms)`, this returns
         the highest id = `[self.num_terms - 1]` only.
-
         """
         return [self.num_terms - 1]
 
@@ -372,11 +347,9 @@ def dict_from_corpus(corpus):
     """
     Scan corpus for all word ids that appear in it, then construct and return a mapping
     which maps each ``wordId -> str(wordId)``.
-
     This function is used whenever *words* need to be displayed (as opposed to just
     their ids) but no wordId->word mapping was provided. The resulting mapping
     only covers words actually used in the corpus, up to the highest wordId found.
-
     """
     num_terms = 1 + get_max_id(corpus)
     id2word = FakeDict(num_terms)
@@ -388,13 +361,10 @@ def is_corpus(obj):
     Check whether `obj` is a corpus. Return (is_corpus, new) 2-tuple, where
     `new is obj` if `obj` was an iterable, or `new` yields the same sequence as
     `obj` if it was an iterator.
-
     `obj` is a corpus if it supports iteration over documents, where a document
     is in turn anything that acts as a sequence of 2-tuples (int, float).
-
     Note: An "empty" corpus (empty input sequence) is ambiguous, so in this case the
     result is forcefully defined as `is_corpus=False`.
-
     """
     try:
         if 'Corpus' in obj.__class__.__name__: # the most common case, quick hack
@@ -423,12 +393,9 @@ def is_corpus(obj):
 def get_my_ip():
     """
     Try to obtain our external ip (from the pyro nameserver's point of view)
-
     This tries to sidestep the issue of bogus `/etc/hosts` entries and other
     local misconfigurations, which often mess up hostname resolution.
-
     If all else fails, fall back to simple `socket.gethostbyname()` lookup.
-
     """
     import socket
     try:
@@ -454,7 +421,6 @@ def get_my_ip():
 class RepeatCorpus(SaveLoad):
     """
     Used in the tutorial on distributed computing and likely not useful anywhere else.
-
     """
     def __init__(self, corpus, reps):
         """
@@ -462,11 +428,9 @@ class RepeatCorpus(SaveLoad):
         repeating documents from `corpus` over and over again, until the requested
         length `len(result)==reps` is reached. Repetition is done
         on-the-fly=efficiently, via `itertools`.
-
         >>> corpus = [[(1, 0.5)], []] # 2 documents
         >>> list(RepeatCorpus(corpus, 5)) # repeat 2.5 times to get 5 documents
         [[(1, 0.5)], [], [(1, 0.5)], [], [(1, 0.5)]]
-
         """
         self.corpus = corpus
         self.reps = reps
@@ -479,7 +443,6 @@ class RepeatCorpusNTimes(SaveLoad):
     def __init__(self, corpus, n):
         """
         Repeat a `corpus` `n` times.
-
         >>> corpus = [[(1, 0.5)], []]
         >>> list(RepeatCorpusNTimes(corpus, 3)) # repeat 3 times
         [[(1, 0.5)], [], [(1, 0.5)], [], [(1, 0.5)], []]
@@ -496,11 +459,9 @@ class ClippedCorpus(SaveLoad):
     def __init__(self, corpus, max_docs=None):
         """
         Return a corpus that is the "head" of input iterable `corpus`.
-
         Any documents after `max_docs` are ignored. This effectively limits the
         length of the returned corpus to <= `max_docs`. Set `max_docs=None` for
         "no limit", effectively wrapping the entire input corpus.
-
         """
         self.corpus = corpus
         self.max_docs = max_docs
@@ -515,10 +476,8 @@ class SlicedCorpus(SaveLoad):
     def __init__(self, corpus, slice_):
         """
         Return a corpus that is the slice of input iterable `corpus`.
-
         Negative slicing can only be used if the corpus is indexable.
         Otherwise, the corpus will be iterated over.
-
         """
         self.corpus = corpus
         self.slice_ = slice_
@@ -551,9 +510,7 @@ def safe_unichr(intval):
 def decode_htmlentities(text):
     """
     Decode HTML entities in text, coded as hex, decimal or named.
-
     Adapted from http://github.com/sku/python-twitter-ircbot/blob/321d94e0e40d0acc92f5bf57d126b57369da70de/html_decode.py
-
     >>> u = u'E tu vivrai nel terrore - L&#x27;aldil&#xE0; (1981)'
     >>> print(decode_htmlentities(u).encode('UTF-8'))
     E tu vivrai nel terrore - L'aldilà (1981)
@@ -561,7 +518,6 @@ def decode_htmlentities(text):
     l'eau
     >>> print(decode_htmlentities("foo &lt; bar"))
     foo < bar
-
     """
     def substitute_entity(match):
         try:
@@ -592,10 +548,8 @@ def chunkize_serial(iterable, chunksize, as_numpy=False):
     """
     Return elements from the iterable in `chunksize`-ed lists. The last returned
     element may be smaller (if length of collection is not divisible by `chunksize`).
-
     >>> print(list(grouper(range(10), 3)))
     [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]
-
     """
     import numpy
     it = iter(iterable)
@@ -665,21 +619,17 @@ else:
         Each chunk is of length `chunksize`, except the last one which may be smaller.
         A once-only input stream (`corpus` from a generator) is ok, chunking is done
         efficiently via itertools.
-
         If `maxsize > 1`, don't wait idly in between successive chunk `yields`, but
         rather keep filling a short queue (of size at most `maxsize`) with forthcoming
         chunks in advance. This is realized by starting a separate process, and is
         meant to reduce I/O delays, which can be significant when `corpus` comes
         from a slow medium (like harddisk).
-
         If `maxsize==0`, don't fool around with parallelism and simply yield the chunksize
         via `chunkize_serial()` (no I/O optimizations).
-
         >>> for chunk in chunkize(range(10), 4): print(chunk)
         [0, 1, 2, 3]
         [4, 5, 6, 7]
         [8, 9]
-
         """
         assert chunksize > 0
 
@@ -702,10 +652,8 @@ def make_closing(base, **attrs):
     """
     Add support for `with Base(attrs) as fout:` to the base class if it's missing.
     The base class' `close()` method will be called on context exit, to always close the file properly.
-
     This is needed for gzip.GzipFile, bz2.BZ2File etc in older Pythons (<=2.6), which otherwise
     raise "AttributeError: GzipFile instance has no attribute '__exit__'".
-
     """
     if not hasattr(base, '__enter__'):
         attrs['__enter__'] = lambda self: self
@@ -740,10 +688,8 @@ def unpickle(fname):
 def revdict(d):
     """
     Reverse a dictionary mapping.
-
     When two keys map to the same value, only one of them will be kept in the
     result (which one is kept is arbitrary).
-
     """
     return dict((v, k) for (k, v) in iteritems(d))
 
@@ -752,12 +698,9 @@ def toptexts(query, texts, index, n=10):
     """
     Debug fnc to help inspect the top `n` most similar documents (according to a
     similarity index `index`), to see if they are actually related to the query.
-
     `texts` is any object that can return something insightful for each document
     via `texts[docid]`, such as its fulltext or snippet.
-
     Return a list of 3-tuples (docid, doc's similarity to the query, texts[docid]).
-
     """
     sims = index[query] # perform a similarity query against the corpus
     sims = sorted(enumerate(sims), key=lambda item: -item[1])
@@ -776,11 +719,9 @@ def randfname(prefix='gensim'):
 def upload_chunked(server, docs, chunksize=1000, preprocess=None):
     """
     Memory-friendly upload of documents to a SimServer (or Pyro SimServer proxy).
-
     Use this function to train or index large collections -- avoid sending the
     entire corpus over the wire as a single Pyro in-memory object. The documents
     will be sent in smaller chunks, of `chunksize` documents each.
-
     """
     start = 0
     for chunk in grouper(docs, chunksize):
@@ -801,7 +742,6 @@ def getNS():
     """
     Return a Pyro name server proxy. If there is no name server running,
     start one on 0.0.0.0 (all interfaces), as a background process.
-
     """
     import Pyro4
     try:
@@ -824,7 +764,6 @@ def pyro_daemon(name, obj, random_suffix=False, ip=None, port=None):
     Register object with name server (starting the name server if not running
     yet) and block until the daemon is terminated. The object is registered under
     `name`, or `name`+ some random suffix if `random_suffix` is set.
-
     """
     if random_suffix:
         name += '.' + hex(random.randint(0, 0xffffff))[2:]
@@ -843,22 +782,16 @@ if HAS_PATTERN:
     def lemmatize(content, allowed_tags=re.compile('(NN|VB|JJ|RB)'), light=False, stopwords=frozenset()):
         """
         This function is only available when the optional 'pattern' package is installed.
-
         Use the English lemmatizer from `pattern` to extract UTF8-encoded tokens in
         their base form=lemma, e.g. "are, is, being" -> "be" etc.
         This is a smarter version of stemming, taking word context into account.
-
         Only considers nouns, verbs, adjectives and adverbs by default (=all other lemmas are discarded).
-
         >>> lemmatize('Hello World! How is it going?! Nonexistentword, 21')
         ['world/NN', 'be/VB', 'go/VB', 'nonexistentword/NN']
-
         >>> lemmatize('The study ranks high.')
         ['study/NN', 'rank/VB', 'high/JJ']
-
         >>> lemmatize('The ranks study hard.')
         ['rank/NN', 'study/VB', 'hard/RB']
-
         """
         if light:
             import warnings

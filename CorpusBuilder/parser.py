@@ -1,25 +1,12 @@
 import multiprocessing
 import bz2
 import sys, os
-import py_compile
 from codecs import open
-
-# py_compile.compile(
-#     "/home/daria/anaconda/lib/python2.7/site-packages/gensim-0.10.3-py2.7-linux-x86_64.egg/gensim/corpora/wikicorpus.py")
-# py_compile.compile(
-#     "/home/daria/anaconda/lib/python2.7/site-packages/gensim-0.10.3-py2.7-linux-x86_64.egg/gensim/utils.py")
-#
-# import gensim
-
-'''sys.stdout = open("/home/daria/PycharmProjects/first/Anarchism", 'w', 'utf8')'''
 
 import ourwikicorpus
 import ourutils
 def process_article((title, text, number)):
     text = ourwikicorpus.filter_wiki(text)
-  #  print gensim.corpora.wikicorpus.remove_markup(text)
-    #print gensim.utils.simple_preprocess(doc=text)
-    print text
     return title.encode('utf8'), ourutils.simple_preprocess(text)
 
 
@@ -31,11 +18,14 @@ def convert_wiki(infile, processes=multiprocessing.cpu_count()):
         texts = ourwikicorpus._extract_pages(bz2.BZ2File(infile)) # generato
         ignore_namespaces = 'Wikipedia Category File Portal Template MediaWiki User Help Book Draft Notes'.split()
         # process the corpus in smaller chunks of docs, because multiprocessing.Pool
-        # is dumb and would try to load the entire dump into RAM...
+        # is dumb and would try to load the entire dump into RAM..
         for group in ourutils.chunkize(texts, chunksize=10 * processes):
+            print 1
             for title, tokens in pool.imap(process_article, group):
+                print 2
                 if len(tokens) >= 50 and not any(title.startswith(ignore + ':') for ignore in ignore_namespaces):
                     yield title.replace('\t', ' '), tokens
+                print 3
         pool.terminate()
 
 i = 0
@@ -55,18 +45,16 @@ import sys
 
 
 for title, tokens in convert_wiki(sys.argv[1]):
-    listdir = os.listdir("pioNER_Wiki_Articles/")
     dirName = 'different'
+    listdir = os.listdir("pioNER_Wiki_Articles/")
     if ( re.match(('\w+'), title) != None ):
         dirName = title[0]
     if (listdir.count(dirName) == 0):
         os.mkdir("pioNER_Wiki_Articles/" + dirName)
-    if (len(os.listdir("pioNER_Wiki_Articles/" + dirName)) == 2500):
-        continue
+    #if (len(os.listdir("pioNER_Wiki_Articles/" + dirName)) == 50):
+        #continue
     file = open("pioNER_Wiki_Articles/" + dirName + "/" +title.replace('/', '_'), "w+", "utf8")
     file.write(' '.join(tokens))
     file.close()
     i = i + 1
-    if (i > 1):
-        exit(0)
 print "ok"

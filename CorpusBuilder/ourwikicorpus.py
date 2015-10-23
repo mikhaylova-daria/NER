@@ -8,11 +8,9 @@
 
 """
 Construct a corpus from a Wikipedia (or other MediaWiki-based) database dump.
-
 If you have the `pattern` package installed, this module will use a fancy
 lemmatization to get a lemma of each token (instead of plain alphabetic
 tokenizer). The package is available at https://github.com/clips/pattern .
-
 See scripts/process_wiki.py for a canned (example) script based on this
 module.
 """
@@ -110,11 +108,9 @@ def remove_markup(text):
 
 def remove_template(s):
     """Remove template wikimedia markup.
-
     Return a copy of `s` with all the wikimedia markup template removed. See
     http://meta.wikimedia.org/wiki/Help:Template for wikimedia templates
     details.
-
     Note: Since template can be nested, it is difficult remove them using
     regular expresssions.
     """
@@ -151,7 +147,6 @@ def remove_template(s):
 
 def remove_file(s):
     """Remove the 'File:' and 'Image:' markup, keeping the file caption.
-
     Return a copy of `s` with all the 'File:' and 'Image:' markup replaced by
     their corresponding captions. See http://www.mediawiki.org/wiki/Help:Images
     for the markup details.
@@ -188,7 +183,6 @@ def tokenize(content):
     """
     Tokenize a piece of text from wikipedia. The input string `content` is assumed
     to be mark-up free (see `filter_wiki()`).
-
     Return list of tokens as utf8 bytestrings. Ignore words shorted than 2 or longer
     that 15 characters (not bytes!).
     """
@@ -210,9 +204,7 @@ _get_namespace = get_namespace
 def extract_pages(f, filter_namespaces=False):
     """
     Extract pages from MediaWiki database dump.
-
     Return an iterable over (str, str) which generates (title, content) pairs.
-
     """
     elems = (elem for _, elem in iterparse(f, events=("end",)))
 
@@ -267,23 +259,18 @@ def process_article(args):
 class WikiCorpus(TextCorpus):
     """
     Treat a wikipedia articles dump (\*articles.xml.bz2) as a (read-only) corpus.
-
     The documents are extracted on-the-fly, so that the whole (massive) dump
     can stay compressed on disk.
-
     >>> wiki = WikiCorpus('enwiki-20100622-pages-articles.xml.bz2') # create word->word_id mapping, takes almost 8h
     >>> MmCorpus.serialize('wiki_en_vocab200k', wiki) # another 8h, creates a file in MatrixMarket format plus file with id->word
-
     """
     def __init__(self, fname, processes=None, lemmatize=utils.HAS_PATTERN, dictionary=None, filter_namespaces=('0',)):
         """
         Initialize the corpus. Unless a dictionary is provided, this scans the
         corpus once, to determine its vocabulary.
-
         If `pattern` package is installed, use fancier shallow parsing to get
         token lemmas. Otherwise, use simple regexp tokenization. You can override
         this automatic logic by forcing the `lemmatize` parameter explicitly.
-
         """
         self.fname = fname
         self.filter_namespaces = filter_namespaces
@@ -301,13 +288,10 @@ class WikiCorpus(TextCorpus):
         """
         Iterate over the dump, returning text version of each article as a list
         of tokens.
-
         Only articles of sufficient length are returned (short articles & redirects
         etc are ignored).
-
         Note that this iterates over the **texts**; if you want vectors, just use
         the standard corpus interface instead of this function::
-
         >>> for vec in wiki_corpus:
         >>>     print(vec)
         """
@@ -339,4 +323,3 @@ class WikiCorpus(TextCorpus):
             (articles, positions, articles_all, positions_all, ARTICLE_MIN_WORDS))
         self.length = articles # cache corpus length
 # endclass WikiCorpus
-
