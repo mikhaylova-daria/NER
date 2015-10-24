@@ -25,6 +25,8 @@ from collections import OrderedDict
 def get_entities(json_of_article):
     entities = {}
     for j in json_of_article:
+        if len(j) == 0:
+            continue
         s = (j['Type'])
         for pair in j['Boundaries']:
             entities[ pair[0]] = list([pair[1], entity_color[s] ])

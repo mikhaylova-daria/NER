@@ -117,11 +117,15 @@ for q1 in allfiles:
                 j -= 1
                 k = len(links[i-1][1])
                 continue
-            if links[i][1][0] in [',','.','!','?',':',';',')']:
+            if links[i][1][0] in [',','.','!','?',':',';']:
+                k = 0
+                continue
+            if links[i][1][0] == ')':
+                if k == 1:
+                    j += 1
                 k = 0
                 continue
             if j >= len(links1):
-                fl = 1
                 break
             all[links[i][0]] = links1[j][0] + k
             j += 1
@@ -130,8 +134,6 @@ for q1 in allfiles:
         #links - lemmatizer 1
         #links1 - article 0
         #references
-        if fl == 1:
-            continue
         text = []
         for i in range(len(answer)):
             for word in answer[i]:
