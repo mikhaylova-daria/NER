@@ -69,7 +69,9 @@ for q in text1.split(' '):
     links1.append([l, q])
     l += len(q) + 1
 
-
+text1 = text1.replace(' - ', ' \u2013 ', text1.count(' - '))
+text1 = text1.replace(' -', ' \u2013', text1.count(' -'))
+text1 = text1.replace('- ', '\u2013 ', text1.count('- '))
 text1 = text1.replace('-', ' - ', text1.count('-'))
 text1 = text1.replace('(', '( ', text1.count('('))
 text1 = text1.replace(')', ' )', text1.count(')'))
@@ -152,6 +154,9 @@ for i in range(len(text)):
     if len(text[i]) == 0:
         continue
     text[i] = text[i].lower()
+    text[i] = text[i].replace(' - ', ' \u2013 ', text[i].count(' - '))
+    text[i] = text[i].replace(' -', ' \u2013', text1.count(' -'))
+    text[i] = text[i].replace('- ', '\u2013 ', text1.count('- '))
     text[i] = text[i].replace('-', ' - ', text[i].count('-'))
     text[i] = text[i].replace(')', ' )', text[i].count(')'))
     text[i] = text[i].replace('(', '( ', text[i].count('('))

@@ -65,7 +65,9 @@ for q1 in allfiles:
             links1.append([l, q])
             l += len(q) + 1
 
-
+        text1 = text1.replace(' - ', ' \u2013 ', text1.count(' - '))
+        text1 = text1.replace(' -', ' \u2013', text1.count(' -'))
+        text1 = text1.replace('- ', '\u2013 ', text1.count('- '))
         text1 = text1.replace('-', ' - ', text1.count('-'))
         text1 = text1.replace('(', '( ', text1.count('('))
         text1 = text1.replace(')', ' )', text1.count(')'))
@@ -146,6 +148,9 @@ for q1 in allfiles:
             if len(text[i]) == 0:
                 continue
             text[i] = text[i].lower()
+            text[i] = text[i].replace(' - ', ' \u2013 ', text[i].count(' - '))
+            text[i] = text[i].replace(' -', ' \u2013', text1.count(' -'))
+            text[i] = text[i].replace('- ', '\u2013 ', text1.count('- '))
             text[i] = text[i].replace('-', ' - ', text[i].count('-'))
             text[i] = text[i].replace(')', ' )', text[i].count(')'))
             text[i] = text[i].replace('(', '( ', text[i].count('('))
