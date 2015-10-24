@@ -7,31 +7,36 @@ from nltk import PorterStemmer
 
 '''
     "C:\\Users\\Toshik\\AML\\Entities.txt" - Типы сущностей, которые мы ищем
-    "C:\\Users\\Toshik\\AML\\NewWikiEntities" - Сущности википедии
+    "C:\\Users\\Toshik\\AML\\NewWikiEntities" - Сущности википедии -- Должны называться
+        WikiOrganisation, WikiPerson, WikiPopulatedPlace
     "C:\\Users\\Toshik\\AML\\test\\article" - Путь к файлу со статьей
     "C:\\Users\\Toshik\\AML\\test\\links" - Путь к файлу с ссылками в этой статье
     "C:\\Users\\Toshik\\AML\\test\\res.json" -Путь к файлу с ответом
 '''
 
-pathCommon = "C:\\Users\\Toshik\\AML\\NewWikiEntities"
-pathTypes = "C:\\Users\\Toshik\\AML\\Entities.txt"
+import os
+import sys
+import argparse
 
-dataTypes = open(pathTypes, 'r')
+parser = argparse.ArgumentParser()
+parser.add_argument('--pathEntities', default = os.getcwd() + '\\Entities.txt')
+parser.add_argument('--pathWikiEntities', default = os.getcwd() + '\\NewWikiEntities')
+parser.add_argument('--pathArticle', default=os.getcwd() + '\\article')
+parser.add_argument('--pathLinks', default=os.getcwd() + '\\links')
+parser.add_argument('--pathResult', default=os.getcwd() + '\\res.json')
+paths = parser.parse_args(sys.argv[1:])
+
+dataTypes = open(paths.pathEntities, 'r')
 
 dataTypesText = dataTypes.read().split('\n')
 
 types = []
 for typeStr in dataTypesText:
-    type1 = open(pathCommon + "\\Wiki" + typeStr + ".txt", 'r')
+    type1 = open(paths.pathWikiEntities + "\\Wiki" + typeStr + ".txt", 'r')
     types.append(set(type1.read().decode('utf-8').split('\n')))
 
 
-pth = "C:\\Users\\Toshik\\AML\\test"
-path = pth + "\\article"
-pathout = pth + "\\res.json"
-
-f = open(pth + "\\links", 'r')
-
+f = open(paths.pathLinks, 'r')
 
 wikiPair = f.read().decode('utf-8').split('\n')
 
@@ -55,7 +60,7 @@ for ent in wikiPair:
 #0 - Person, 1 - Organization, 2 - PopulatedPlace
 
 #lemmatizer
-data = open(path, "r")
+data = open(paths.pathArticle, "r")
 text1 = data.read().decode('utf-8')
 
 links1 = []
@@ -169,7 +174,7 @@ article = out
 
 typ = dataTypesText[0]
 j = 0
-outfile = open(pathout, "w")
+outfile = open(paths.pathResult, "w")
 outfile.write('[')
 for ite in range(len(text)):
     word = text[ite]
