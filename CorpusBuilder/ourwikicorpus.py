@@ -6,27 +6,11 @@
 # Licensed under the GNU LGPL v2.1 - http://www.gnu.org/licenses/lgpl.html
 
 
-"""
-Construct a corpus from a Wikipedia (or other MediaWiki-based) database dump.
-If you have the `pattern` package installed, this module will use a fancy
-lemmatization to get a lemma of each token (instead of plain alphabetic
-tokenizer). The package is available at https://github.com/clips/pattern .
-See scripts/process_wiki.py for a canned (example) script based on this
-module.
-"""
-
-
-import bz2
 import logging
 import re
 from xml.etree.cElementTree import iterparse # LXML isn't faster, so let's go with the built-in solution
-import multiprocessing
 
 from gensim import utils
-
-# cannot import whole gensim.corpora, because that imports wikicorpus...
-from gensim.corpora.dictionary import Dictionary
-from gensim.corpora.textcorpus import TextCorpus
 
 logger = logging.getLogger('gensim.corpora.wikicorpus')
 
@@ -72,17 +56,15 @@ def filter_wiki(raw):
 
 
 def remove_markup(text):
-    print "TEXT ENTER"
     text = re.sub(RE_P2, "", text) # remove the last list (=languages)
     # the wiki markup is recursive (markup inside markup etc)
     # instead of writing a recursive grammar, here we deal with that by removing
     # markup in a loop, starting with inner-most expressions and working outwards,
     # for as long as something changes.
     text = remove_template(text)
-    text = remove_file(text)
+    text = remove_file_and_standard_blocks(text)
     iters = 0
     while True:
-        print "^^"
         old, iters = text, iters + 1
         text = re.sub(RE_P0, "", text) # remove comments
         text = re.sub(RE_P1, '', text) # remove footnotes
@@ -108,7 +90,6 @@ def remove_markup(text):
     # the following is needed to make the tokenizer see '[[socialist]]s' as a single word 'socialists'
     # TODO is this really desirable?
     text = text.replace('[', '').replace(']', '') # promote all remaining markup to plain text
-    print "TEXT"
     return text
 
 
@@ -151,16 +132,28 @@ def remove_template(s):
     return s
 
 
-def remove_file(s):
+def remove_file_and_standard_blocks(s):
     #удаляем коллекции изображений внутри тега <gallery>
     s = re.sub(RE_GALLERY, ' ', s)
     #кажется, что в сыром дампе разметка файлов вынесена в отдельный абзац
-    # RE_P15 не работает на цельном тексте, т.е. там не учтено, что в описании файла могут присутствовать [[ и ]]
+    # RE_P15  не работает на цельном тексте, т.е. там не учтено, что в описании файла могут присутствовать [[ и ]]
     # как элементы wiki-разметки, удовлетворяющие такому условию регулярки re_definition и re_definition2 вешают
     # программу, поэтому пока решила разбивать на абзацы и выкидывать те, которые описывают файлы\картинки
+    # руки оторвать, но здесь же удаляю разметку
     text = ''
     for subparagraph in s.split('\n'):
-        if re.match(RE_P15, subparagraph) is None:
+        if subparagraph.startswith(':'):
+            text += (subparagraph[-1] + '\n')
+        elif subparagraph.startswith(';'):
+            subparagraph = subparagraph.replace(':', '', 1)
+            text += (subparagraph[-1] + '\n')
+        elif subparagraph.startswith('== References ==') or subparagraph.startswith('==References=='):
+            return text
+        elif subparagraph.startswith('==See also') or subparagraph.startswith('== See also'):
+            return text
+        elif subparagraph.startswith('==Notes') or subparagraph.startswith('== Notes'):
+            return text
+        elif re.match(RE_P15, subparagraph) is None:
             text += (subparagraph + '\n')
     return text
 
