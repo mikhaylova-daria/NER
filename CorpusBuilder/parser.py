@@ -11,8 +11,8 @@ def process_article((title, text, number)):
 
 
 import re
-
-def convert_wiki(infile, processes=multiprocessing.cpu_count()):
+#multiprocessing.cpu_count()
+def convert_wiki(infile, processes=1):
     if __name__ == '__main__':
         pool = multiprocessing.Pool(processes)
         texts = ourwikicorpus._extract_pages(bz2.BZ2File(infile)) # generato

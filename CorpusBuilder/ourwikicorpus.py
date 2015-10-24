@@ -41,8 +41,8 @@ RE_P3 = re.compile("{{([^}{]*)}}", re.DOTALL | re.UNICODE) # template
 RE_P4 = re.compile("{{([^}]*)}}", re.DOTALL | re.UNICODE) # template
 RE_P5 = re.compile('\[(\w+):\/\/(.*?)(( (.*?))|())\]', re.UNICODE) # remove URL, keep description
 RE_P6 = re.compile("\[([^][]*)\|([^][]*)\]", re.DOTALL | re.UNICODE) # simplify links, keep description
-RE_P7 = re.compile('\n\[\[[iI]mage(.*?)(\|.*?)*\|(.*?)\]\]', re.UNICODE) # keep description of images
-RE_P8 = re.compile('\n\[\[[fF]ile(.*?)(\|.*?)*\|(.*?)\]\]', re.UNICODE) # keep description of files
+RE_P7 = re.compile('\n\[\[[iI]mage:(.*?)(\|.*?)*\|(.*?)\]\]', re.UNICODE) # keep description of images
+RE_P8 = re.compile('\n\[\[[fF]ile:(.*?)(\|.*?)*\|\]\]', re.UNICODE) # keep description of files
 RE_P9 = re.compile('<nowiki([> ].*?)(</nowiki>|/>)', re.DOTALL | re.UNICODE) # outside links
 RE_P10 = re.compile('<math([> ].*?)(</math>|/>)', re.DOTALL | re.UNICODE) # math content
 RE_P11 = re.compile('<(.*?)>', re.DOTALL | re.UNICODE) # all other tags
@@ -52,6 +52,12 @@ RE_P14 = re.compile('\[\[Category:[^][]*\]\]', re.UNICODE) # categories
 # Remove File and Image template
 RE_P15 = re.compile('\[\[([fF]ile:|[iI]mage)[^]]*(\]\])', re.UNICODE)
 
+RE_H = re.compile('[=]+(.*?)[=]+')
+
+re_definition = re.compile('\[\[([fF]ile:|[iI]mage:)([^|]+)(\|[^\[\]]+)(\|[^\[\]]+)\|(([^\[\]]+)|(\[\[([^\[\]]+)\]\]))*(\]\])', re.UNICODE)
+re_definition2 = re.compile('\[\[([fF]ile:|[iI]mage:)([^|]+)(\|[^\[\]]+)\|(([^\[\]]+)|(\[\[([^\[\]]+)\]\]))*(\]\])', re.UNICODE)
+
+RE_GALLERY = re.compile('<gallery([> ].*?)(</gallery>|/>)', re.DOTALL | re.UNICODE) # math content
 
 def filter_wiki(raw):
     """
@@ -66,6 +72,7 @@ def filter_wiki(raw):
 
 
 def remove_markup(text):
+    print "TEXT ENTER"
     text = re.sub(RE_P2, "", text) # remove the last list (=languages)
     # the wiki markup is recursive (markup inside markup etc)
     # instead of writing a recursive grammar, here we deal with that by removing
@@ -75,6 +82,7 @@ def remove_markup(text):
     text = remove_file(text)
     iters = 0
     while True:
+        print "^^"
         old, iters = text, iters + 1
         text = re.sub(RE_P0, "", text) # remove comments
         text = re.sub(RE_P1, '', text) # remove footnotes
@@ -89,13 +97,18 @@ def remove_markup(text):
         text = re.sub(RE_P12, '\n', text) # remove formatting lines
         text = re.sub(RE_P13, '\n\\3', text) # leave only cell content
         # remove empty mark-up
+        text = re.sub(RE_H, '\\1', text)
         text = text.replace('[]', '')
+        text = text.replace('\'\'\'', '')
+        text = text.replace('\'\'', '')
         if old == text or iters > 2: # stop if nothing changed between two iterations or after a fixed number of iterations
             break
+
 
     # the following is needed to make the tokenizer see '[[socialist]]s' as a single word 'socialists'
     # TODO is this really desirable?
     text = text.replace('[', '').replace(']', '') # promote all remaining markup to plain text
+    print "TEXT"
     return text
 
 
@@ -139,17 +152,17 @@ def remove_template(s):
 
 
 def remove_file(s):
-    """Remove the 'File:' and 'Image:' markup, keeping the file caption.
-    Return a copy of `s` with all the 'File:' and 'Image:' markup replaced by
-    their corresponding captions. See http://www.mediawiki.org/wiki/Help:Images
-    for the markup details.
-    """
-    # The regex RE_P15 match a File: or Image: markup
-    for match in re.finditer(RE_P15, s):
-        m = match.group(0)
-        caption = m[:-2].split('|')[-1]
-        s = s.replace(m, caption, 1)
-    return s
+    #удаляем коллекции изображений внутри тега <gallery>
+    s = re.sub(RE_GALLERY, ' ', s)
+    #кажется, что в сыром дампе разметка файлов вынесена в отдельный абзац
+    # RE_P15 не работает на цельном тексте, т.е. там не учтено, что в описании файла могут присутствовать [[ и ]]
+    # как элементы wiki-разметки, удовлетворяющие такому условию регулярки re_definition и re_definition2 вешают
+    # программу, поэтому пока решила разбивать на абзацы и выкидывать те, которые описывают файлы\картинки
+    text = ''
+    for subparagraph in s.split('\n'):
+        if re.match(RE_P15, subparagraph) is None:
+            text += (subparagraph + '\n')
+    return text
 
 
 def tokenize(content):
@@ -161,7 +174,7 @@ def tokenize(content):
     """
     # TODO maybe ignore tokens with non-latin characters? (no chinese, arabic, russian etc.)
     return [token.encode('utf8') for token in utils.tokenize(content, lower=True, errors='ignore')
-            if 2 <= len(token) <= 15 and not token.startswith('_')]
+            if 1 <= len(token) <= 150 and not token.startswith('_')]
 
 
 def get_namespace(tag):
@@ -215,85 +228,4 @@ def extract_pages(f, filter_namespaces=False):
             # file, so in practice we prune away enough.
             elem.clear()
 _extract_pages = extract_pages  # for backward compatibility
-
-def process_article(args):
-    """
-    Parse a wikipedia article, returning its content as a list of tokens
-    (utf8-encoded strings).
-    """
-    text, lemmatize, title, pageid = args
-    text = filter_wiki(text)
-    if lemmatize:
-        result = utils.lemmatize(text)
-    else:
-        result = tokenize(text)
-    return result, title, pageid
-
-
-class WikiCorpus(TextCorpus):
-    """
-    Treat a wikipedia articles dump (\*articles.xml.bz2) as a (read-only) corpus.
-    The documents are extracted on-the-fly, so that the whole (massive) dump
-    can stay compressed on disk.
-    >>> wiki = WikiCorpus('enwiki-20100622-pages-articles.xml.bz2') # create word->word_id mapping, takes almost 8h
-    >>> MmCorpus.serialize('wiki_en_vocab200k', wiki) # another 8h, creates a file in MatrixMarket format plus file with id->word
-    """
-    def __init__(self, fname, processes=None, lemmatize=utils.HAS_PATTERN, dictionary=None, filter_namespaces=('0',)):
-        """
-        Initialize the corpus. Unless a dictionary is provided, this scans the
-        corpus once, to determine its vocabulary.
-        If `pattern` package is installed, use fancier shallow parsing to get
-        token lemmas. Otherwise, use simple regexp tokenization. You can override
-        this automatic logic by forcing the `lemmatize` parameter explicitly.
-        """
-        self.fname = fname
-        self.filter_namespaces = filter_namespaces
-        self.metadata = False
-        if processes is None:
-            processes = max(1, multiprocessing.cpu_count() - 1)
-        self.processes = processes
-        self.lemmatize = lemmatize
-        if dictionary is None:
-            self.dictionary = Dictionary(self.get_texts())
-        else:
-            self.dictionary = dictionary
-
-    def get_texts(self):
-        """
-        Iterate over the dump, returning text version of each article as a list
-        of tokens.
-        Only articles of sufficient length are returned (short articles & redirects
-        etc are ignored).
-        Note that this iterates over the **texts**; if you want vectors, just use
-        the standard corpus interface instead of this function::
-        >>> for vec in wiki_corpus:
-        >>>     print(vec)
-        """
-        articles, articles_all = 0, 0
-        positions, positions_all = 0, 0
-        texts = ((text, self.lemmatize, title, pageid) for title, text, pageid in extract_pages(bz2.BZ2File(self.fname), self.filter_namespaces))
-        pool = multiprocessing.Pool(self.processes)
-        # process the corpus in smaller chunks of docs, because multiprocessing.Pool
-        # is dumb and would load the entire input into RAM at once...
-        ignore_namespaces = 'Wikipedia Category File Portal Template MediaWiki User Help Book Draft'.split()
-        for group in utils.chunkize(texts, chunksize=10 * self.processes, maxsize=1):
-            for tokens, title, pageid in pool.imap(process_article, group): # chunksize=10):
-	    #for tokens, title, pageid in pool.imap(filter_wiki, group): # chunksize=10):
-                articles_all += 1
-                positions_all += len(tokens)
-                # article redirects and short stubs are pruned here
-                if len(tokens) < ARTICLE_MIN_WORDS or any(title.startswith(ignore + ':') for ignore in ignore_namespaces):
-                    continue
-                articles += 1
-                positions += len(tokens)
-                if self.metadata:
-                    yield (tokens, (pageid, title))
-                else:
-                    yield tokens
-        pool.terminate()
-
-        logger.info("finished iterating over Wikipedia corpus of %i documents with %i positions"
-            " (total %i articles, %i positions before pruning articles shorter than %i words)" %
-            (articles, positions, articles_all, positions_all, ARTICLE_MIN_WORDS))
-        self.length = articles # cache corpus length
 # endclass WikiCorpus
