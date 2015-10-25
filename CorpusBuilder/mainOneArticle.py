@@ -179,8 +179,7 @@ article = out
 
 typ = dataTypesText[0]
 j = 0
-outfile = open(paths.pathResult, "w")
-outfile.write('[')
+allEntities = []
 for ite in range(len(text)):
     word = text[ite]
     if len(word) == 0:
@@ -200,9 +199,31 @@ for ite in range(len(text)):
             bou.append([ref[k + 1],ref[k + 1] + len(tx[ite])])
         k = article.find(' ' + word + ' ', i, len(article))
     if len(bou) > 0:
-        json.dump({"Boundaries": bou, "Type": typ, "Entity": word}, outfile)
-        if ite < len(text)-1:
-            outfile.write(',')
+        allEntities.append([bou, typ, word])
 
-outfile.write(']')
+for j in allEntities:
+    for k in allEntities:
+        if j[2] == k[2]:
+            continue
+        if j[2].find(k[2]) < 0:
+            continue
+        x = 0
+        y = 0
+        while (x < len(j[0]) and y < len(k[0])):
+            if k[0][y][0] >= j[0][x][0] and k[0][y][1] <= j[0][x][1]:
+                k[0].remove([k[0][y][0],k[0][y][1]])
+            if y == len(k[0]) or len(k[0]) == 0:
+                break
+            if k[0][y][0] > j[0][x][0]:
+                x += 1
+            else:
+                y +=1
+
+outfile = open(paths.pathResult, "w")
+outfile.write('[')
+for x in allEntities:
+    if len(x[0]) > 0:
+        json.dump({"Boundaries": x[0], "Type": x[1], "Entity": x[2]}, outfile)
+        outfile.write(',')
+outfile.write('{}]')
 outfile.close()
