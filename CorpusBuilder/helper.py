@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*-
+from __future__ import unicode_literals
 import os
 import sys
 import argparse
@@ -10,7 +12,7 @@ paths = parser.parse_args(sys.argv[1:])
 if os.path.exists(paths.pathCorpus) == False:
     os.mkdir(paths.pathCorpus)
 
-if os.path.exists(paths.pathLinks) == False or os.path.exists(paths.pathFrticles) == False:
+if os.path.exists(paths.pathLinks) == False or os.path.exists(paths.pathArticles) == False:
     print "Bad directories!!!"
 else:
 
@@ -18,7 +20,7 @@ else:
     import shutil
     from os import listdir
     x = listdir(paths.pathLinks)
-    for q in x[2:]:
+    for q in x:
         w = listdir(paths.pathLinks + "\\" + q)
         os.mkdir(q)
         for ww in w:
