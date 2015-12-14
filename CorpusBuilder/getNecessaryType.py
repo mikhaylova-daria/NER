@@ -6,7 +6,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--pathTypes', default = os.getcwd() + '\\Entities.txt')
 parser.add_argument('--pathEntities', default = os.getcwd() + 'Entities')
 parser.add_argument('--pathInstanceTypes', default = os.getcwd() + '\\instance_types_en.nt')
-
 paths = parser.parse_args(sys.argv[1:])
 
 datafile = open(paths.pathInstanceTypes, 'r')

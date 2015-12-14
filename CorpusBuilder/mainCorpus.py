@@ -65,7 +65,9 @@ for q1 in allfiles:
             links1.append([l, q])
             l += len(q) + 1
 
-
+        text1 = text1.replace(' - ', ' \u2013 ', text1.count(' - '))
+        text1 = text1.replace(' -', ' \u2013', text1.count(' -'))
+        text1 = text1.replace('- ', '\u2013 ', text1.count('- '))
         text1 = text1.replace('-', ' - ', text1.count('-'))
         text1 = text1.replace('(', '( ', text1.count('('))
         text1 = text1.replace(')', ' )', text1.count(')'))
@@ -117,11 +119,15 @@ for q1 in allfiles:
                 j -= 1
                 k = len(links[i-1][1])
                 continue
-            if links[i][1][0] in [',','.','!','?',':',';',')']:
+            if links[i][1][0] in [',','.','!','?',':',';']:
+                k = 0
+                continue
+            if links[i][1][0] == ')':
+                if k == 1:
+                    j += 1
                 k = 0
                 continue
             if j >= len(links1):
-                fl = 1
                 break
             all[links[i][0]] = links1[j][0] + k
             j += 1
@@ -130,8 +136,6 @@ for q1 in allfiles:
         #links - lemmatizer 1
         #links1 - article 0
         #references
-        if fl == 1:
-            continue
         text = []
         for i in range(len(answer)):
             for word in answer[i]:
@@ -144,6 +148,9 @@ for q1 in allfiles:
             if len(text[i]) == 0:
                 continue
             text[i] = text[i].lower()
+            text[i] = text[i].replace(' - ', ' \u2013 ', text[i].count(' - '))
+            text[i] = text[i].replace(' -', ' \u2013', text1.count(' -'))
+            text[i] = text[i].replace('- ', '\u2013 ', text1.count('- '))
             text[i] = text[i].replace('-', ' - ', text[i].count('-'))
             text[i] = text[i].replace(')', ' )', text[i].count(')'))
             text[i] = text[i].replace('(', '( ', text[i].count('('))
@@ -166,8 +173,7 @@ for q1 in allfiles:
 
         typ = dataTypesText[0]
         j = 0
-        outfile = open(pathout, "w")
-        outfile.write('[')
+        allEntities = []
         for ite in range(len(text)):
             word = text[ite]
             if len(word) == 0:
@@ -187,8 +193,31 @@ for q1 in allfiles:
                     bou.append([ref[k + 1],ref[k + 1] + len(tx[ite])])
                 k = article.find(' ' + word + ' ', i, len(article))
             if len(bou) > 0:
-                json.dump({"Boundaries": bou, "Type": typ, "Entity": word}, outfile)
-                outfile.write(',')
+                allEntities.append([bou, typ, word])
 
+        for j in allEntities:
+            for k in allEntities:
+                if j[2] == k[2]:
+                    continue
+                if j[2].find(k[2]) < 0:
+                    continue
+                x = 0
+                y = 0
+                while (x < len(j[0]) and y < len(k[0])):
+                    if k[0][y][0] >= j[0][x][0] and k[0][y][1] <= j[0][x][1]:
+                        k[0].remove([k[0][y][0],k[0][y][1]])
+                    if y == len(k[0]) or len(k[0]) == 0:
+                        break
+                    if k[0][y][0] > j[0][x][0]:
+                        x += 1
+                    else:
+                        y +=1
+
+        outfile = open(pathout, "w")
+        outfile.write('[')
+        for x in allEntities:
+            if len(x[0]) > 0:
+                json.dump({"Boundaries": x[0], "Type": x[1], "Entity": x[2]}, outfile)
+                outfile.write(',')
         outfile.write('{}]')
         outfile.close()

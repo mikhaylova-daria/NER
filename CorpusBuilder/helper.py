@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*-
+from __future__ import unicode_literals
 import os
 import sys
 import argparse
@@ -10,16 +12,16 @@ paths = parser.parse_args(sys.argv[1:])
 if os.path.exists(paths.pathCorpus) == False:
     os.mkdir(paths.pathCorpus)
 
-if os.path.exists(paths.pathLinks) == False or os.path.exists(paths.pathFrticles) == False:
+if os.path.exists(paths.pathLinks) == False or os.path.exists(paths.pathArticles) == False:
     print "Bad directories!!!"
 else:
 
     os.chdir(paths.pathCorpus)
     import shutil
     from os import listdir
-    x = listdir(paths.pathLinks)
-    for q in x[2:]:
-        w = listdir(paths.pathLinks + "\\" + q)
+    x = listdir(paths.pathArticles)
+    for q in x:
+        w = listdir(paths.pathArticles + "\\" + q)
         os.mkdir(q)
         for ww in w:
             if ww == 'PaxHeader':
