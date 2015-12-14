@@ -6,27 +6,11 @@
 # Licensed under the GNU LGPL v2.1 - http://www.gnu.org/licenses/lgpl.html
 
 
-"""
-Construct a corpus from a Wikipedia (or other MediaWiki-based) database dump.
-If you have the `pattern` package installed, this module will use a fancy
-lemmatization to get a lemma of each token (instead of plain alphabetic
-tokenizer). The package is available at https://github.com/clips/pattern .
-See scripts/process_wiki.py for a canned (example) script based on this
-module.
-"""
-
-
-import bz2
 import logging
 import re
 from xml.etree.cElementTree import iterparse # LXML isn't faster, so let's go with the built-in solution
-import multiprocessing
 
 from gensim import utils
-
-# cannot import whole gensim.corpora, because that imports wikicorpus...
-from gensim.corpora.dictionary import Dictionary
-from gensim.corpora.textcorpus import TextCorpus
 
 logger = logging.getLogger('gensim.corpora.wikicorpus')
 
@@ -39,7 +23,7 @@ RE_P1 = re.compile('<ref([> ].*?)(</ref>|/>)', re.DOTALL | re.UNICODE) # footnot
 RE_P2 = re.compile("(\n\[\[[a-z][a-z][\w-]*:[^:\]]+\]\])+$", re.UNICODE) # links to languages
 RE_P3 = re.compile("{{([^}{]*)}}", re.DOTALL | re.UNICODE) # template
 RE_P4 = re.compile("{{([^}]*)}}", re.DOTALL | re.UNICODE) # template
-RE_P5 = re.compile('\[(\w+):\/\/(.*?)(( (.*?))|())\]', re.UNICODE) # remove URL, keep description
+RE_P5 = re.compile('\[(\w+):\/\/(.*?)(()|(.*?))\]', re.UNICODE) # remove URL, keep description
 RE_P6 = re.compile("\[([^][]*)\|([^][]*)\]", re.DOTALL | re.UNICODE) # simplify links, keep description
 RE_P7 = re.compile('\n\[\[[iI]mage:(.*?)(\|.*?)*\|(.*?)\]\]', re.UNICODE) # keep description of images
 RE_P8 = re.compile('\n\[\[[fF]ile:(.*?)(\|.*?)*\|\]\]', re.UNICODE) # keep description of files
@@ -57,6 +41,10 @@ RE_H = re.compile('[=]+(.*?)[=]+')
 re_definition = re.compile('\[\[([fF]ile:|[iI]mage:)([^|]+)(\|[^\[\]]+)(\|[^\[\]]+)\|(([^\[\]]+)|(\[\[([^\[\]]+)\]\]))*(\]\])', re.UNICODE)
 re_definition2 = re.compile('\[\[([fF]ile:|[iI]mage:)([^|]+)(\|[^\[\]]+)\|(([^\[\]]+)|(\[\[([^\[\]]+)\]\]))*(\]\])', re.UNICODE)
 
+RE_EMPTY_BRACKETS = re.compile('\([\s]*\)', re.UNICODE)
+
+RE_BRACKETS_WITH_TEMPLATE = re.compile('\([^\)\(]*[\{]+[^\)\(]*\)', re.UNICODE)
+
 RE_GALLERY = re.compile('<gallery([> ].*?)(</gallery>|/>)', re.DOTALL | re.UNICODE) # math content
 
 def filter_wiki(raw):
@@ -72,17 +60,18 @@ def filter_wiki(raw):
 
 
 def remove_markup(text):
-    print "TEXT ENTER"
+    # remove \n in beginig of article
     text = re.sub(RE_P2, "", text) # remove the last list (=languages)
     # the wiki markup is recursive (markup inside markup etc)
     # instead of writing a recursive grammar, here we deal with that by removing
     # markup in a loop, starting with inner-most expressions and working outwards,
     # for as long as something changes.
     text = remove_template(text)
-    text = remove_file(text)
+    text = remove_in_subparagraph(text) #удаляем разметку для картинок и файлов, удаляем разметку
+                                        #  сдвигов и разноуровневых списков без поинтов,
+                                        # "обрубаем" статью на стаднадртных для википедии блоках References, See also и Notes
     iters = 0
     while True:
-        print "^^"
         old, iters = text, iters + 1
         text = re.sub(RE_P0, "", text) # remove comments
         text = re.sub(RE_P1, '', text) # remove footnotes
@@ -94,8 +83,9 @@ def remove_markup(text):
         text = re.sub(RE_P6, '\\2', text) # simplify links, keep description only
         # remove table markup
         text = text.replace('||', '\n|') # each table cell on a separate line
-        text = re.sub(RE_P12, '\n', text) # remove formatting lines
-        text = re.sub(RE_P13, '\n\\3', text) # leave only cell content
+        text = re.sub(RE_P12, '', text) # remove formatting lines
+        text = re.sub(RE_P13, '', text) # remove cell content
+        #text = re.sub(RE_P13, '\n\\3', text) # leave only cell content
         # remove empty mark-up
         text = re.sub(RE_H, '\\1', text)
         text = text.replace('[]', '')
@@ -108,25 +98,22 @@ def remove_markup(text):
     # the following is needed to make the tokenizer see '[[socialist]]s' as a single word 'socialists'
     # TODO is this really desirable?
     text = text.replace('[', '').replace(']', '') # promote all remaining markup to plain text
-    print "TEXT"
+    text = re.sub(RE_EMPTY_BRACKETS, "", text) # remove empty brackets
+    result = re.match(r'[\n]+', text) # удаляем переносы строк
+    if result is not None:
+        text = text[result.end(0):]
     return text
 
 
-def remove_template(s):
-    """Remove template wikimedia markup.
-    Return a copy of `s` with all the wikimedia markup template removed. See
-    http://meta.wikimedia.org/wiki/Help:Template for wikimedia templates
-    details.
-    Note: Since template can be nested, it is difficult remove them using
-    regular expresssions.
-    """
 
-    # Find the start and end position of each template by finding the opening
-    # '{{' and closing '}}'
+def remove_template(s):
+    s = re.sub(RE_BRACKETS_WITH_TEMPLATE, "", s)
     n_open, n_close = 0, 0
     starts, ends = [], []
     in_template = False
     prev_c = None
+    in_as_of_template = False
+    as_of_templates_index, as_of_templates_content = [], []
     for i, c in enumerate(iter(s)):
         if not in_template:
             if c == '{' and c == prev_c:
@@ -134,6 +121,13 @@ def remove_template(s):
                 in_template = True
                 n_open = 1
         if in_template:
+            if c == 'as' or c== 'As':
+                in_as_of_template = True
+                as_of_templates_index.append(len(starts))
+                as_of_templates_content.append([])
+            elif in_as_of_template and c != '|' and c != 'of':
+                as_of_templates_content[-1].append(c)
+
             if c == '{':
                 n_open += 1
             elif c == '}':
@@ -145,22 +139,43 @@ def remove_template(s):
         prev_c = c
 
     # Remove all the templates
-    s = ''.join([s[end + 1:start] for start, end in
-                 zip(starts + [None], [-1] + ends)])
+    if len(as_of_templates_index) == 0:
+        s_buf = ''.join([s[end + 1:start] for start, end in
+                    zip(starts + [None], [-1] + ends)])
+    else:
+        current_index = 0
+        s_buf = ''
+        coordinate = zip(starts + [None], [-1] + ends)
+        for i, index in enumerate(as_of_templates_index):
+            s_buf = s_buf.join([s[end + 1:start] for start, end in
+                                coordinate[current_index:index]])
+            current_index = index
+            s_buf.join('as of '+ as_of_templates_content[i][0])
+    return s_buf
 
-    return s
 
-
-def remove_file(s):
+def remove_in_subparagraph(s):
     #удаляем коллекции изображений внутри тега <gallery>
     s = re.sub(RE_GALLERY, ' ', s)
     #кажется, что в сыром дампе разметка файлов вынесена в отдельный абзац
-    # RE_P15 не работает на цельном тексте, т.е. там не учтено, что в описании файла могут присутствовать [[ и ]]
+    # RE_P15  не работает на цельном тексте, т.е. там не учтено, что в описании файла могут присутствовать [[ и ]]
     # как элементы wiki-разметки, удовлетворяющие такому условию регулярки re_definition и re_definition2 вешают
     # программу, поэтому пока решила разбивать на абзацы и выкидывать те, которые описывают файлы\картинки
+    # руки оторвать, но здесь же удаляю разметку
     text = ''
     for subparagraph in s.split('\n'):
-        if re.match(RE_P15, subparagraph) is None:
+        if subparagraph.startswith(':'):
+            text += (subparagraph[-1] + '\n')
+        elif subparagraph.startswith(';'):
+            subparagraph = subparagraph.replace(':', '', 1)
+            text += (subparagraph[-1] + '\n')
+        elif subparagraph.startswith('== References ==') or subparagraph.startswith('==References=='):
+            return text
+        elif subparagraph.startswith('==See also') or subparagraph.startswith('== See also'):
+            return text
+        elif subparagraph.startswith('==Notes') or subparagraph.startswith('== Notes'):
+            return text
+        elif re.match(RE_P15, subparagraph) is None:
             text += (subparagraph + '\n')
     return text
 
@@ -228,4 +243,3 @@ def extract_pages(f, filter_namespaces=False):
             # file, so in practice we prune away enough.
             elem.clear()
 _extract_pages = extract_pages  # for backward compatibility
-# endclass WikiCorpus

@@ -25,9 +25,9 @@ except ImportError:
 import re
 import unicodedata
 import os
-import random
+
 import itertools
-import tempfile
+
 from functools import wraps # for `synchronous` function lock
 import multiprocessing
 import shutil
@@ -35,8 +35,6 @@ import sys
 
 from contextlib import contextmanager
 
-import numpy
-import scipy.sparse
 
 if sys.version_info[0] >= 3:
     unicode = str
