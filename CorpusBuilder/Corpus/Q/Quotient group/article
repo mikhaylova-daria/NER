@@ -1,0 +1,99 @@
+In mathematics, specifically group theory, a quotient group (or factor group) is a group obtained by aggregating similar elements of a larger group using an equivalence relation that preserves the group structure. For example, the cyclic group of addition modulo n can be obtained from the integers by identifying elements that differ by a multiple of n and defining a group structure that operates on each such class (known as a congruence class) as a single entity.
+
+In a quotient of a group, the equivalence class of the identity element is always a normal subgroup of the original group, and the other equivalence classes are precisely the cosets of that normal subgroup. The resulting quotient is written , where G is the original group and N is the normal subgroup. (This is pronounced "G mod N," where "mod" is short for modulo.)
+
+Much of the importance of quotient groups is derived from their relation to homomorphisms. The first isomorphism theorem states that the image of any group G under a homomorphism is always isomorphic to a quotient of G. Specifically, the image of G under a homomorphism is isomorphic to where ker(φ) denotes the kernel of φ.
+
+The dual notion of a quotient group is a subgroup, these being the two primary ways of forming a smaller group from a larger one. Any normal subgroup has a corresponding quotient group, formed from the larger group by eliminating the distinction between elements of the subgroup. In category theory, quotient groups are examples of quotient objects, which are dual to subobjects. For other examples of quotient objects, see quotient ring, quotient space (linear algebra), quotient space (topology), and quotient set.
+
+Product of subsets of a group
+
+In the following discussion, we will use a binary operation on the subsets of G: if two subsets S and T of G are given, we define their product as . This operation is associative and has as identity element the singleton {e}, where e is the identity element of G. Thus, the set of all subsets of G forms a monoid under this operation.
+
+In terms of this operation we can first explain what a quotient group is, and then explain what a normal subgroup is:
+
+.
+
+It is fully determined by the subset containing e. A normal subgroup of G is the set containing e in any such partition. The subsets in the partition are the cosets of this normal subgroup.
+
+A subgroup N of a group G is normal if and only if the coset equality aN = Na holds for all a in G. In terms of the binary operation on subsets defined above, a normal subgroup of G is a subgroup that commutes with every subset of G and is denoted . A subgroup that permutes with every subgroup of G is called a permutable subgroup.
+
+Definition
+Let N be a normal subgroup of a group G. We define the set G/N to be the set of all left cosets of N in G, i.e., . The group operation on G/N is the product of subsets defined above. In other words, for each aN and bN in G/N, the product of aN and bN is (aN)(bN). This operation is closed, because (aN)(bN) really is a left coset:
+
+.
+
+The normality of N is used in this equation. Because of the normality of N, the left cosets and right cosets of N in G are equal, and so G/N could be defined as the set of right cosets of N in G. Because the operation is derived from the product of subsets of G, the operation is well-defined (does not depend on the particular choice of representatives), associative, and has identity element N. The inverse of an element aN of G/N is a−1N.
+
+For example, consider the group with addition modulo 6:
+
+.
+
+Let
+
+.
+
+The quotient group is:
+
+=
+=
+,
+,
+=
+=
+=
+.
+
+The basic argument above is still valid if G/N is defined to be the set of all right cosets.
+
+Motivation for the name "quotient"
+The reason G/N is called a quotient group comes from division of integers. When dividing 12 by 3 one obtains the answer 4 because one can regroup 12 objects into 4 subcollections of 3 objects. The quotient group is the same idea, however we end up with a group for a final answer instead of a number because groups have more structure than an arbitrary collection of objects.
+
+To elaborate, when looking at G/N with N a normal subgroup of G, the group structure is used to form a natural "regrouping". These are the cosets of N in G. Because we started with a group and normal subgroup, the final quotient contains more information than just the number of cosets (which is what regular division yields), but instead has a group structure itself.
+
+Examples
+
+Consider the group of integers Z (under addition) and the subgroup 2Z consisting of all even integers. This is a normal subgroup, because Z is abelian. There are only two cosets: the set of even integers and the set of odd integers; therefore, the quotient group Z/2Z is the cyclic group with two elements. This quotient group is isomorphic with the set with addition modulo 2; informally, it is sometimes said that Z/2Z equals the set with addition modulo 2.
+
+A slight generalization of the last example. Once again consider the group of integers Z under addition. Let n be any positive integer. We will consider the subgroup nZ of Z consisting of all multiples of n. Once again nZ is normal in Z because Z is abelian. The cosets are the collection {nZ, 1+nZ, ..., (n−2)+nZ, (n−1)+nZ}. An integer k belongs to the coset r+nZ, where r is the remainder when dividing k by n. The quotient Z/nZ can be thought of as the group of "remainders" modulo n. This is a cyclic group of order n.
+
+The twelfth roots of unity, which are points on the unit circle, form a multiplicative abelian group G, shown on the picture on the right as colored balls with the number at each point giving its complex argument. Consider its subgroup N made of the fourth roots of unity, shown as red balls. This normal subgroup splits the group into three cosets, shown in red, green and blue. One can check that the cosets form a group of three elements (the product of a red element with a blue element is blue, the inverse of a blue element is green, etc.). Thus, the quotient group G/N is the group of three colors, which turns out to be the cyclic group with three elements.
+
+Consider the group of real numbers R under addition, and the subgroup Z of integers. The cosets of Z in R are all sets of the form a+Z, with a real number. Adding such cosets is done by adding the corresponding real numbers, and subtracting 1 if the result is greater than or equal to 1. The quotient group R/Z is isomorphic to the circle group S1, the group of complex numbers of absolute value 1 under multiplication, or correspondingly, the group of rotations in 2D about the origin, i.e., the special orthogonal group SO(2). An isomorphism is given by (see Euler's identity).
+
+If G is the group of invertible 3 × 3 real matrices, and N is the subgroup of 3 × 3 real matrices with determinant 1, then N is normal in G (since it is the kernel of the determinant homomorphism). The cosets of N are the sets of matrices with a given determinant, and hence G/N is isomorphic to the multiplicative group of non-zero real numbers.
+
+Consider the abelian group , and its subgroup . The quotient group is . This is a group with identity element , and group operations such as . Both the subgroup and the quotient group are isomorphic with Z2.
+
+Consider the multiplicative group . The set N of nth residues is a multiplicative subgroup isomorphic to . Then N is normal in G and the factor group G/N has the cosets N, (1+n)N, (1+n)2N, ..., (1+n)n−1N. The Pallier cryptosystem is based on the conjecture that it is difficult to determine the coset of a random element of G without knowing the factorization of n.
+
+Properties
+The quotient group is isomorphic to the trivial group (the group with one element), and is isomorphic to G.
+
+The order of , by definition the number of elements, is equal to , the index of N in G. If G is finite, the index is also equal to the order of G divided by the order of N. Note that may be finite, although both G and N are infinite .
+
+There is a "natural" surjective group homomorphism , sending each element g of G to the coset of N to which g belongs, that is: . The mapping π is sometimes called the canonical projection of G onto . Its kernel is N.
+
+There is a bijective correspondence between the subgroups of G that contain N and the subgroups of ; if H is a subgroup of G containing N, then the corresponding subgroup of is π(H). This correspondence holds for normal subgroups of G and as well, and is formalized in the lattice theorem.
+
+Several important properties of quotient groups are recorded in the fundamental theorem on homomorphisms and the isomorphism theorems.
+
+If G is abelian, nilpotent or solvable, then so is .
+
+If G is cyclic or finitely generated, then so is .
+
+If N is contained in the center of G, then G is called the central extension of the quotient group.
+
+If H is a subgroup in a finite group G, and the order of H is one half of the order of G, then H is guaranteed to be a normal subgroup, so exists and is isomorphic to C2. This result can also be stated as "any subgroup of index 2 is normal", and in this form it applies also to infinite groups.
+
+To extend the above, if p is the smallest prime number dividing the order of a finite group, G, then if has order p, H must be a normal subgroup of G. 
+
+Every finitely generated group is isomorphic to a quotient of a free group.
+
+Sometimes, but not necessarily, a group G can be reconstructed from and N, as a direct product or semidirect product. The problem of determining when this is the case is known as the extension problem. An example where it is not possible is as follows. is isomorphic to Z2, and also, but the only semidirect product is the direct product, because Z2 has only the trivial automorphism. Therefore Z4, which is different from , cannot be reconstructed.
+
+Quotients of Lie groups
+If G is a Lie group and N is a normal Lie subgroup of G, the quotient is also a Lie group. In this case, the original group G has the structure of a fiber bundle (specifically, a principal N-bundle), with base space and fiber N.
+
+For a non-normal Lie subgroup N, the space of left cosets is not a group, but simply a differentiable manifold on which G acts. The result is known as a homogeneous space.
+

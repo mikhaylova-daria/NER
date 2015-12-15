@@ -1,0 +1,19 @@
+UseModWiki is a wiki engine written in the Perl programming language. It is licensed under the GNU General Public License. Pages in UseModWiki are stored in ordinary files, not in a relational database. Something similar to the interface can be seen in MediaWiki with the classic skin.
+
+ History 
+
+Clifford Adams based UseModWiki on the code of AtisWiki by Marcus Denker. AtisWiki was based on CvWiki by Peter Merel. CvWiki was the first GNU-licensed wiki based on WikiBase, the wiki engine of the original WikiWikiWeb by Ward Cunningham.
+
+The first installation of UseModWiki was Adams's usemod.com wiki, the basis of the Usenet Moderation Project (Usemod) which had been running on AtisWiki since October 11, 1999. The second wiki to use UseModWiki, the MeatballWiki created by Adams and Sunir Shah dedicated to online communities, was installed on the usemod.com Web site on April 24, 2000.
+
+From January 15, 2001 until early 2002, UseModWiki was also used to run Wikipedia. All language instances of Wikipedia have since been moved over to MediaWiki.
+
+WikiWikiWeb's sister wiki the Adjunct, started in July 2005, also runs on UseModWiki.
+
+UseMod was also used by Peter Harrison, webmaster of the Festiniog Railway Heritage Group, to run its wiki, which had no name and was originally referred to as "the Heritage Group Wiki". In 2006, Harrison heavily modified UseMod 1.0 to run the site, now known as Festipedia. The modified version was called FestWiki, and was very similar in both appearance and functionality to the MediaWiki of the time combined with most of the extensions in use on the English Wikipedia. The site used FestWiki until 2010, when it was migrated to MediaWiki 1.16.0.
+
+Adams is credited with the idea and software coding to use double brackets "" in Wikipedia to replace the use of CamelCase on the early versions of wikis.
+
+ UseModWiki versions 
+DateVersionJanuary 22, 20000.70June 18, 20000.80July 15, 20000.82August 26, 20000.86October 12, 20000.88December 24, 20000.90February 16, 20010.91April 21, 20010.92September 12, 20031.00June 9, 20071.01August 26, 20071.02September 12, 20071.03December 1, 20071.04August 28, 20091.05
+

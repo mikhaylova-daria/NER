@@ -1,0 +1,48 @@
+XyWrite is a word processor for DOS and Windows modeled on the mainframe-based ATEX typesetting system. Popular with writers and editors for its speed and degree of customization, XyWrite was in its heyday the house word processor in many editorial offices, including the New York Times from 1989 to 1993. XyWrite was developed by David Erickson and marketed by XyQuest from 1982 through 1992, after which it was acquired by The Technology Group. The final version for DOS was 4.18 (1993); for Windows, 4.13.
+
+Features
+
+* Its file format consists of plain text (IBM437, or so-called "extended ASCII") with markup (within guillemets: « »). This capability is useful for typesetters who need to convert to various formats, e.g., LaTeX. A plug-in for ANSI characters is available.
+
+* XyWrite is written in assembly language, allowing it to run faster than word processors written in a higher level language.
+
+* It has a flexible macro-programming language (XPL) that offers many advantages for quick search and replace, copy-editing and reformatting of raw text. Users continue to write and share macros extending XyWrite features (printing to USB devices, for example).
+
+* Plain-text, editable configuration files allow easy customization of the keyboard—for remapping keystrokes and for execution of complex commands with individual keystrokes—as well as customization of what is loaded on launching the program.
+
+* Commands can be typed in directly on a command line, without the use of a mouse. Commands are usually in simple English, such as "Save," "Print," and "Search," or their shorter versions, such as "Sa" for "Save" (commands are case-insensitive).
+
+* Up to nine files can be opened for editing at one time in separate "windows" that allow quick copy-and-paste among several files. Two files may be opened on the same screen for easy comparison of changes; a XyWrite command will do the comparison automatically, putting the cursor on the location at which the two files first differ (from which the user can move to the next difference).
+
+* Version 4 has full WYSIWYG graphical editing capabilities including on-screen display of bitmaps.
+
+History and current usage
+
+XyQuest was founded in June 1982 by former ATEX employees Dave Erickson and John Hild. Its most successful product was XyWrite III Plus, which attracted a devoted following among professional writers.
+
+The turning point for XyWrite came in the form of a disastrous near-partnership with IBM, which was seeking a modern replacement for its venerable DisplayWrite word processor. Working under an agreement signed in June 1990, XyQuest devoted nearly all of its development resources to revising Erickson's XyWrite IV to IBM's specifications, including IBM Common User Access-style menus, mouse support and a graphical user interface. Envisioned as a marriage between XyQuest technology and IBM marketing, the product was to be called Signature.
+
+But on the eve of Signature's release, IBM announced a strategic decision to withdraw completely from the desktop software market, shocking XyQuest and leaving Signature in limbo. When a prospective new alliance with Lotus did not materialize, XyQuest had no alternative but to resticker the ready-to-ship Signature packages as XyWrite 4.0 and attempt to carry on.
+
+However, the changes IBM had insisted on were a liability where the III Plus user base was concerned. Some key reviews (such as in The Wall Street Journal) were harsh, and there were complaints that 4.0 was buggy and slow. Moreover, in the years since the last major XyWrite release, WordPerfect had cemented its hold on the DOS word processor market. Already financially strained by the long development cycle for Signature, by the end of 1992 XyQuest was bleeding money. The sale to The Technology Group ensued.
+
+While there were a few maintenance releases of 4.0 after the acquisition, The Technology Group's major commitment was to developing XyWrite for Windows. But XyWrite remained a niche product, unable to compete for the business user against Word for Windows, WordPerfect for Windows, and Ami Pro, despite added versatility and customization potential. The Technology Group was dissolved in 2003.
+
+Several versions of XyWrite for DOS and Windows were also localized for use in European countries. For example, the programs were offered in Germany under the name "euroscript" by North American Software GmbH.
+
+A descendant of XyWrite called Nota Bene (word processor) is still being actively developed. Nota Bene, which runs on the XyWrite engine, is popular among academics. Nota Bene for Windows is now in version 10.
+
+Thanks in large part to the work of users of XyWrite, the program is still very usable with Windows . Even on Pentium and similar hardware, it remains noticeably faster than MS Word or OpenOffice.org. Despite these advantages in speed, XyWrite does not have as many features as Word or OpenOffice.org. For example, XyWrite is unaware of Windows ANSI or Unicode character sets and Nota Bene does not support languages (such as Chinese) that require double-byte characters.
+
+Reception
+BYTE in 1984 stated "the XyQuest people have done an admirable job porting the editing part of the Atex system" to the IBM PC. While criticizing the documentation, it called XyWrite "extremely fast, powerful, compact, and flexible".
+
+Version history
+* XyWrite I (DOS)
+* XyWrite II (DOS)
+* XyWrite II Plus (DOS)
+* XyWrite III (DOS), May 1990 - distributed on 5.25" HD floppy diskettes, and shipped with a 3-ring looseleaf manual in fabric-covered slipcase
+* XyWrite III Plus (DOS)
+* XyWrite 4.0 (DOS), Jan 1993 - distributed on seven 3.5" HD floppy diskettes, and shipped with five bound manuals: Installation & Learning Guide, Making the Transition, Customization Guide, Command Reference Guide, and LAN Administrator's Guide (together weighing nearly 4.5 pounds)
+* XyWrite for Windows
+

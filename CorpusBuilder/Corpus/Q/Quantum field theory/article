@@ -1,0 +1,259 @@
+In theoretical physics, quantum field theory (QFT) is a theoretical framework for constructing quantum mechanical models of subatomic particles in particle physics and quasiparticles in condensed matter physics. A QFT treats particles as excited states of an underlying physical field, so these are called field quanta.
+
+For example, quantum electrodynamics (QED) has one electron field and one photon field; quantum chromodynamics (QCD) has one field for each type of quark; and, in condensed matter, there is an atomic displacement field that gives rise to phonon particles. Edward Witten describes QFT as "by far" the most difficult theory in modern physics.
+
+In QFT, quantum mechanical interactions between particles are described by interaction terms between the corresponding underlying fields. QFT interaction terms are similar in spirit to those between charges with electric and magnetic fields in Maxwell's equations. However, unlike the classical fields of Maxwell's theory, fields in QFT generally exist in quantum superpositions of states and are subject to the laws of quantum mechanics.
+
+Quantum mechanical systems have a fixed number of particles, with each particle having a finite number of degrees of freedom. In contrast, the excited states of a QFT can represent any number of particles. This makes quantum field theories especially useful for describing systems where the particle count/number may change over time, a crucial feature of relativistic dynamics.
+
+Because the fields are continuous quantities over space, there exist excited states with arbitrarily large numbers of particles in them, providing QFT systems with an effectively infinite number of degrees of freedom. Infinite degrees of freedom can easily lead to divergences of calculated quantities (i.e., the quantities become infinite). Techniques such as renormalization of QFT parameters or discretization of spacetime, as in lattice QCD, are often used to avoid such infinities so as to yield physically meaningful results.
+
+Most theories in standard particle physics are formulated as relativistic quantum field theories, such as QED, QCD, and the Standard Model. QED, the quantum field-theoretic description of the electromagnetic field, approximately reproduces Maxwell's theory of electrodynamics in the low-energy limit, with small non-linear corrections to the Maxwell equations required due to virtual electron–positron pairs.
+
+In the perturbative approach to quantum field theory, the full field interaction terms are approximated as a perturbative expansion in the number of particles involved. Each term in the expansion can be thought of as forces between particles being mediated by other particles. In QED, the electromagnetic force between two electrons is caused by an exchange of photons. Similarly, intermediate vector bosons mediate the weak force and gluons mediate the strong force in QCD. The notion of a force-mediating particle comes from perturbation theory, and does not make sense in the context of non-perturbative approaches to QFT, such as with bound states.
+
+The gravitational field and the electromagnetic field are the only two fundamental fields in nature that have infinite range and a corresponding classical low-energy limit, which greatly diminishes and hides their "particle-like" excitations. Albert Einstein in 1905, attributed "particle-like" and discrete exchanges of momenta and energy, characteristic of "field quanta", to the electromagnetic field. Originally, his principal motivation was to explain the thermodynamics of radiation. Although the photoelectric effect and Compton scattering strongly suggest the existence of the photon, it is now understood that they can be explained without invoking a quantum electromagnetic field; therefore, a more definitive proof of the quantum nature of radiation is now taken up into modern quantum optics as in the antibunching effect.
+
+There is currently no complete quantum theory of the remaining fundamental force, gravity. Many of the proposed theories to describe gravity as a QFT postulate the existence of a graviton particle that mediates the gravitational force. Presumably, the as yet unknown correct quantum field-theoretic treatment of the gravitational field will behave like Einstein's general theory of relativity in the low-energy limit. Quantum field theory of the fundamental forces itself has been postulated to be the low-energy effective field theory limit of a more fundamental theory such as superstring theory.
+
+History
+
+
+ Foundations 
+The early development of the field involved Dirac, Fock, Pauli, Heisenberg and Bogolyubov. This phase of development culminated with the construction of the theory of quantum electrodynamics in the 1950s.
+
+ Gauge theory 
+Gauge theory was formulated and quantized, leading to the unification of forces embodied in the standard model of particle physics. This effort started in the 1950s with the work of Yang and Mills, was carried on by Martinus Veltman and a host of others during the 1960s and completed by the 1970s through the work of Gerard 't Hooft, Frank Wilczek, David Gross and David Politzer.
+
+ Grand synthesis 
+Parallel developments in the understanding of phase transitions in condensed matter physics led to the study of the renormalization group. This in turn led to the grand synthesis of theoretical physics, which unified theories of particle and condensed matter physics through quantum field theory. This involved the work of Michael Fisher and Leo Kadanoff in the 1970s, which led to the seminal reformulation of quantum field theory by Kenneth G. Wilson in 1975.
+
+ Principles 
+
+ Classical and quantum fields 
+
+
+A classical field is a function defined over some region of space and time. Two physical phenomena which are described by classical fields are Newtonian gravitation, described by Newtonian gravitational field g(x, t), and classical electromagnetism, described by the electric and magnetic fields E(x, t) and B(x, t). Because such fields can in principle take on distinct values at each point in space, they are said to have infinite degrees of freedom.
+
+Classical field theory does not, however, account for the quantum-mechanical aspects of such physical phenomena. For instance, it is known from quantum mechanics that certain aspects of electromagnetism involve discrete particles—photons—rather than continuous fields. The business of quantum field theory is to write down a field that is, like a classical field, a function defined over space and time, but which also accommodates the observations of quantum mechanics. This is a quantum field.
+
+It is not immediately clear how to write down such a quantum field, since quantum mechanics has a structure very unlike a field theory. In its most general formulation, quantum mechanics is a theory of abstract operators (observables) acting on an abstract state space (Hilbert space), where the observables represent physically observable quantities and the state space represents the possible states of the system under study. For instance, the fundamental observables associated with the motion of a single quantum mechanical particle are the position and momentum operators and . Field theory, in contrast, treats x as a way to index the field rather than as an operator.
+
+There are two common ways of developing a quantum field: the path integral formalism and canonical quantization. The latter of these is pursued in this article.
+
+ Lagrangian formalism 
+Quantum field theory frequently makes use of the Lagrangian formalism from classical field theory. This formalism is analogous to the Lagrangian formalism used in classical mechanics to solve for the motion of a particle under the influence of a field. In classical field theory, one writes down a Lagrangian density, , involving a field, φ(x,t), and possibly its first derivatives (∂φ/∂t and ∇φ), and then applies a field-theoretic form of the Euler–Lagrange equation. Writing coordinates (t, x)  (x0, x1, x2, x3) xμ, this form of the Euler–Lagrange equation is
+>
+where a sum over μ is performed according to the rules of Einstein notation.
+
+By solving this equation, one arrives at the "equations of motion" of the field. For example, if one begins with the Lagrangian density
+>
+and then applies the Euler–Lagrange equation, one obtains the equation of motion
+>
+This equation is Newton's law of universal gravitation, expressed in differential form in terms of the gravitational potential φ(t, x) and the mass density ρ(t, x). Despite the nomenclature, the "field" under study is the gravitational potential, φ, rather than the gravitational field, g. Similarly, when classical field theory is used to study electromagnetism, the "field" of interest is the electromagnetic four-potential (V/c, A), rather than the electric and magnetic fields E and B.
+
+Quantum field theory uses this same Lagrangian procedure to determine the equations of motion for quantum fields. These equations of motion are then supplemented by commutation relations derived from the canonical quantization procedure described below, thereby incorporating quantum mechanical effects into the behavior of the field.
+
+ Single- and many-particle quantum mechanics 
+
+In quantum mechanics, a particle (such as an electron or proton) is described by a complex wavefunction, , whose time-evolution is governed by the Schrödinger equation:
+>
+Here is the particle's mass and is the applied potential. Physical information about the behavior of the particle is extracted from the wavefunction by constructing expected values for various quantities; for example, the expected value of the particle's position is given by integrating over all space, and the expected value of the particle's momentum is found by integrating . The quantity is itself in the Copenhagen interpretation of quantum mechanics interpreted as a probability density function. This treatment of quantum mechanics, where a particle's wavefunction evolves against a classical background potential , is sometimes called first quantization.
+
+This description of quantum mechanics can be extended to describe the behavior of multiple particles, so long as the number and the type of particles remain fixed. The particles are described by a wavefunction , which is governed by an extended version of the Schrödinger equation.
+
+Often one is interested in the case where particles are all of the same type (for example, the 18 electrons orbiting a neutral argon nucleus). As described in the article on identical particles, this implies that the state of the entire system must be either symmetric (bosons) or antisymmetric (fermions) when the coordinates of its constituent particles are exchanged. This is achieved by using a Slater determinant as the wavefunction of a fermionic system (and a Slater permanent for a bosonic system), which is equivalent to an element of the symmetric or antisymmetric subspace of a tensor product.
+
+For example, the general quantum state of a system of bosons is written as
+
+>
+
+where are the single-particle states, is the number of particles occupying state , and the sum is taken over all possible permutations acting on elements. In general, this is a sum of distinct terms. is a normalizing factor.
+
+There are several shortcomings to the above description of quantum mechanics, which are addressed by quantum field theory. First, it is unclear how to extend quantum mechanics to include the effects of special relativity. Attempted replacements for the Schrödinger equation, such as the Klein–Gordon equation or the Dirac equation, have many unsatisfactory qualities; for instance, they possess energy eigenvalues that extend to –∞, so that there seems to be no easy definition of a ground state. It turns out that such inconsistencies arise from relativistic wavefunctions not having a well-defined probabilistic interpretation in position space, as probability conservation is not a relativistically covariant concept. The second shortcoming, related to the first, is that in quantum mechanics there is no mechanism to describe particle creation and annihilation; this is crucial for describing phenomena such as pair production, which result from the conversion between mass and energy according to the relativistic relation E = mc2.
+
+ Second quantization 
+
+
+In this section, we will describe a method for constructing a quantum field theory called second quantization. This basically involves choosing a way to index the quantum mechanical degrees of freedom in the space of multiple identical-particle states. It is based on the Hamiltonian formulation of quantum mechanics.
+
+Several other approaches exist, such as the Feynman path integral, which uses a Lagrangian formulation. For an overview of some of these approaches, see the article on quantization.
+
+ Bosons 
+For simplicity, we will first discuss second quantization for bosons, which form perfectly symmetric quantum states. Let us denote the mutually orthogonal single-particle states which are possible in the system by and so on. For example, the 3-particle state with one particle in state and two in state is
+
+g\phi_2\rang\phi_1\rang \right. 
+
+The first step in second quantization is to express such quantum states in terms of occupation numbers, by listing the number of particles occupying each of the single-particle states etc. This is simply another way of labelling the states. For instance, the above 3-particle state is denoted as
+
+>
+
+An N-particle state belongs to a space of states describing systems of N particles. The next step is to combine the individual N-particle state spaces into an extended state space, known as Fock space, which can describe systems of any number of particles. This is composed of the state space of a system with no particles (the so-called vacuum state, written as ), plus the state space of a 1-particle system, plus the state space of a 2-particle system, and so forth. States describing a definite number of particles are known as Fock states: a general element of Fock space will be a linear combination of Fock states. There is a one-to-one correspondence between the occupation number representation and valid boson states in the Fock space.
+
+At this point, the quantum mechanical system has become a quantum field in the sense we described above. The field's elementary degrees of freedom are the occupation numbers, and each occupation number is indexed by a number indicating which of the single-particle states it refers to:
+>
+
+The properties of this quantum field can be explored by defining creation and annihilation operators, which add and subtract particles. They are analogous to ladder operators in the quantum harmonic oscillator problem, which added and subtracted energy quanta. However, these operators literally create and annihilate particles of a given quantum state. The bosonic annihilation operator and creation operator are easily defined in the occupation number representation as having the following effects:
+
+>
+>
+
+It can be shown that these are operators in the usual quantum mechanical sense, i.e. linear operators acting on the Fock space. Furthermore, they are indeed Hermitian conjugates, which justifies the way we have written them. They can be shown to obey the commutation relation
+
+>
+\lefta_i , a_j \right = 0 \quad,\quad
+\lefta_i^\dagger , a_j^\dagger \right = 0 \quad,\quad
+\lefta_i , a_j^\dagger \right = \delta_{ij},
+
+
+where stands for the Kronecker delta. These are precisely the relations obeyed by the ladder operators for an infinite set of independent quantum harmonic oscillators, one for each single-particle state. Adding or removing bosons from each state is therefore analogous to exciting or de-exciting a quantum of energy in a harmonic oscillator.
+
+Applying an annihilation operator followed by its corresponding creation operator returns the number of particles in the kth single-particle eigenstate:
+>
+The combination of operators is known as the number operator for the kth eigenstate.
+
+The Hamiltonian operator of the quantum field (which, through the Schrödinger equation, determines its dynamics) can be written in terms of creation and annihilation operators. For instance, for a field of free (non-interacting) bosons, the total energy of the field is found by summing the energies of the bosons in each energy eigenstate. If the kth single-particle energy eigenstate has energy and there are bosons in this state, then the total energy of these bosons is . The energy in the entire field is then a sum over :
+>
+This can be turned into the Hamiltonian operator of the field by replacing with the corresponding number operator, . This yields
+>
+
+ Fermions 
+It turns out that a different definition of creation and annihilation must be used for describing fermions. According to the Pauli exclusion principle, fermions cannot share quantum states, so their occupation numbers Ni can only take on the value 0 or 1. The fermionic annihilation operators c and creation operators are defined by their actions on a Fock state thus
+
+>
+>
+>
+>
+
+These obey an anticommutation relation:
+
+>
+\left\{c_i , c_j \right\} = 0 \quad,\quad
+\left\{c_i^\dagger , c_j^\dagger \right\} = 0 \quad,\quad
+\left\{c_i , c_j^\dagger \right\} = \delta_{ij}.
+
+
+One may notice from this that applying a fermionic creation operator twice gives zero, so it is impossible for the particles to share single-particle states, in accordance with the exclusion principle.
+
+ Field operators 
+We have previously mentioned that there can be more than one way of indexing the degrees of freedom in a quantum field. Second quantization indexes the field by enumerating the single-particle quantum states. However, as we have discussed, it is more natural to think about a "field", such as the electromagnetic field, as a set of degrees of freedom indexed by position.
+
+To this end, we can define field operators that create or destroy a particle at a particular point in space. In particle physics, these operators turn out to be more convenient to work with, because they make it easier to formulate theories that satisfy the demands of relativity.
+
+Single-particle states are usually enumerated in terms of their momenta (as in the particle in a box problem.) We can construct field operators by applying the Fourier transform to the creation and annihilation operators for these states. For example, the bosonic field annihilation operator is
+
+>
+
+The bosonic field operators obey the commutation relation
+
+>
+\left\phi , \phi \right = 0 \quad,\quad
+\left\phi^\dagger , \phi^\dagger \right = 0 \quad,\quad
+\left\phi , \phi^\dagger \right = \delta^3
+
+
+where stands for the Dirac delta function. As before, the fermionic relations are the same, with the commutators replaced by anticommutators.
+
+The field operator is not the same thing as a single-particle wavefunction. The former is an operator acting on the Fock space, and the latter is a quantum-mechanical amplitude for finding a particle in some position. However, they are closely related, and are indeed commonly denoted with the same symbol. If we have a Hamiltonian with a space representation, say
+
+>
+
+where the indices i and j run over all particles, then the field theory Hamiltonian (in the non-relativistic limit and for negligible self-interactions) is
+
+>
+
+This looks remarkably like an expression for the expectation value of the energy, with playing the role of the wavefunction. This relationship between the field operators and wavefunctions makes it very easy to formulate field theories starting from space-projected Hamiltonians.
+
+ Dynamics 
+Once the Hamiltonian operator is obtained as part of the canonical quantization process, the time dependence of the state is described with the Schrödinger equation, just as with other quantum theories. Alternatively, the Heisenberg picture can be used where the time dependence is in the operators rather than in the states.
+
+ Implications 
+
+ Unification of fields and particles 
+
+
+The "second quantization" procedure that we have outlined in the previous section takes a set of single-particle quantum states as a starting point. Sometimes, it is impossible to define such single-particle states, and one must proceed directly to quantum field theory. For example, a quantum theory of the electromagnetic field must be a quantum field theory, because it is impossible (for various reasons) to define a wavefunction for a single photon. In such situations, the quantum field theory can be constructed by examining the mechanical properties of the classical field and guessing the corresponding quantum theory. For free (non-interacting) quantum fields, the quantum field theories obtained in this way have the same properties as those obtained using second quantization, such as well-defined creation and annihilation operators obeying commutation or anticommutation relations.
+
+Quantum field theory thus provides a unified framework for describing "field-like" objects (such as the electromagnetic field, whose excitations are photons) and "particle-like" objects (such as electrons, which are treated as excitations of an underlying electron field), so long as one can treat interactions as "perturbations" of free fields. There are still unsolved problems relating to the more general case of interacting fields that may or may not be adequately described by perturbation theory. For more on this topic, see Haag's theorem.
+
+ Physical meaning of particle indistinguishability 
+The second quantization procedure relies crucially on the particles being identical. We would not have been able to construct a quantum field theory from a distinguishable many-particle system, because there would have been no way of separating and indexing the degrees of freedom.
+
+Many physicists prefer to take the converse interpretation, which is that quantum field theory explains what identical particles are. In ordinary quantum mechanics, there is not much theoretical motivation for using symmetric (bosonic) or antisymmetric (fermionic) states, and the need for such states is simply regarded as an empirical fact. From the point of view of quantum field theory, particles are identical if and only if they are excitations of the same underlying quantum field. Thus, the question "why are all electrons identical?" arises from mistakenly regarding individual electrons as fundamental objects, when in fact it is only the electron field that is fundamental.
+
+ Particle conservation and non-conservation 
+During second quantization, we started with a Hamiltonian and state space describing a fixed number of particles (N), and ended with a Hamiltonian and state space for an arbitrary number of particles. Of course, in many common situations N is an important and perfectly well-defined quantity, e.g. if we are describing a gas of atoms sealed in a box. From the point of view of quantum field theory, such situations are described by quantum states that are eigenstates of the number operator , which measures the total number of particles present. As with any quantum mechanical observable, is conserved if it commutes with the Hamiltonian. In that case, the quantum state is trapped in the N-particle subspace of the total Fock space, and the situation could equally well be described by ordinary N-particle quantum mechanics. (Strictly speaking, this is only true in the noninteracting case or in the low energy density limit of renormalized quantum field theories)
+
+For example, we can see that the free-boson Hamiltonian described above conserves particle number. Whenever the Hamiltonian operates on a state, each particle destroyed by an annihilation operator ak is immediately put back by the creation operator .
+
+On the other hand, it is possible, and indeed common, to encounter quantum states that are not eigenstates of , which do not have well-defined particle numbers. Such states are difficult or impossible to handle using ordinary quantum mechanics, but they can be easily described in quantum field theory as quantum superpositions of states having different values of N. For example, suppose we have a bosonic field whose particles can be created or destroyed by interactions with a fermionic field. The Hamiltonian of the combined system would be given by the Hamiltonians of the free boson and free fermion fields, plus a "potential energy" term such as
+
+>
+
+where and ak denotes the bosonic creation and annihilation operators, and ck denotes the fermionic creation and annihilation operators, and Vq is a parameter that describes the strength of the interaction. This "interaction term" describes processes in which a fermion in state k either absorbs or emits a boson, thereby being kicked into a different eigenstate k+q. (In fact, this type of Hamiltonian is used to describe interaction between conduction electrons and phonons in metals. The interaction between electrons and photons is treated in a similar way, but is a little more complicated because the role of spin must be taken into account.) One thing to notice here is that even if we start out with a fixed number of bosons, we will typically end up with a superposition of states with different numbers of bosons at later times. The number of fermions, however, is conserved in this case.
+
+In condensed matter physics, states with ill-defined particle numbers are particularly important for describing the various superfluids. Many of the defining characteristics of a superfluid arise from the notion that its quantum state is a superposition of states with different particle numbers. In addition, the concept of a coherent state (used to model the laser and the BCS ground state) refers to a state with an ill-defined particle number but a well-defined phase.
+
+ Axiomatic approaches 
+The preceding description of quantum field theory follows the spirit in which most physicists approach the subject. However, it is not mathematically rigorous. Over the past several decades, there have been many attempts to put quantum field theory on a firm mathematical footing by formulating a set of axioms for it. These attempts fall into two broad classes.
+
+The first class of axioms, first proposed during the 1950s, include the Wightman, Osterwalder–Schrader, and Haag–Kastler systems. They attempted to formalize the physicists' notion of an "operator-valued field" within the context of functional analysis, and enjoyed limited success. It was possible to prove that any quantum field theory satisfying these axioms satisfied certain general theorems, such as the spin-statistics theorem and the CPT theorem. Unfortunately, it proved extraordinarily difficult to show that any realistic field theory, including the Standard Model, satisfied these axioms. Most of the theories that could be treated with these analytic axioms were physically trivial, being restricted to low-dimensions and lacking interesting dynamics. The construction of theories satisfying one of these sets of axioms falls in the field of constructive quantum field theory. Important work was done in this area in the 1970s by Segal, Glimm, Jaffe and others.
+
+During the 1980s, a second set of axioms based on geometric ideas was proposed. This line of investigation, which restricts its attention to a particular class of quantum field theories known as topological quantum field theories, is associated most closely with Michael Atiyah and Graeme Segal, and was notably expanded upon by Edward Witten, Richard Borcherds, and Maxim Kontsevich. However, most of the physically relevant quantum field theories, such as the Standard Model, are not topological quantum field theories; the quantum field theory of the fractional quantum Hall effect is a notable exception. The main impact of axiomatic topological quantum field theory has been on mathematics, with important applications in representation theory, algebraic topology, and differential geometry.
+
+Finding the proper axioms for quantum field theory is still an open and difficult problem in mathematics. One of the Millennium Prize Problems—proving the existence of a mass gap in Yang–Mills theory—is linked to this issue.
+
+ Associated phenomena 
+In the previous part of the article, we described the most general properties of quantum field theories. Some of the quantum field theories studied in various fields of theoretical physics possess additional special properties, such as renormalizability, gauge symmetry, and supersymmetry. These are described in the following sections.
+
+ Renormalization 
+
+
+Early in the history of quantum field theory, it was found that many seemingly innocuous calculations, such as the perturbative shift in the energy of an electron due to the presence of the electromagnetic field, give infinite results. The reason is that the perturbation theory for the shift in an energy involves a sum over all other energy levels, and there are infinitely many levels at short distances that each give a finite contribution which results in a divergent series.
+
+Many of these problems are related to failures in classical electrodynamics that were identified but unsolved in the 19th century, and they basically stem from the fact that many of the supposedly "intrinsic" properties of an electron are tied to the electromagnetic field that it carries around with it. The energy carried by a single electron—its self energy—is not simply the bare value, but also includes the energy contained in its electromagnetic field, its attendant cloud of photons. The energy in a field of a spherical source diverges in both classical and quantum mechanics, but as discovered by Weisskopf with help from Furry, in quantum mechanics the divergence is much milder, going only as the logarithm of the radius of the sphere.
+
+The solution to the problem, presciently suggested by Stueckelberg, independently by Bethe after the crucial experiment by Lamb, implemented at one loop by Schwinger, and systematically extended to all loops by Feynman and Dyson, with converging work by Tomonaga in isolated postwar Japan, comes from recognizing that all the infinities in the interactions of photons and electrons can be isolated into redefining a finite number of quantities in the equations by replacing them with the observed values: specifically the electron's mass and charge: this is called renormalization. The technique of renormalization recognizes that the problem is essentially purely mathematical, that extremely short distances are at fault. In order to define a theory on a continuum, first place a cutoff on the fields, by postulating that quanta cannot have energies above some extremely high value. This has the effect of replacing continuous space by a structure where very short wavelengths do not exist, as on a lattice. Lattices break rotational symmetry, and one of the crucial contributions made by Feynman, Pauli and Villars, and modernized by 't Hooft and Veltman, is a symmetry-preserving cutoff for perturbation theory (this process is called regularization). There is no known symmetrical cutoff outside of perturbation theory, so for rigorous or numerical work people often use an actual lattice.
+
+On a lattice, every quantity is finite but depends on the spacing. When taking the limit of zero spacing, we make sure that the physically observable quantities like the observed electron mass stay fixed, which means that the constants in the Lagrangian defining the theory depend on the spacing. Hopefully, by allowing the constants to vary with the lattice spacing, all the results at long distances become insensitive to the lattice, defining a continuum limit.
+
+The renormalization procedure only works for a certain class of quantum field theories, called renormalizable quantum field theories. A theory is perturbatively renormalizable when the constants in the Lagrangian only diverge at worst as logarithms of the lattice spacing for very short spacings. The continuum limit is then well defined in perturbation theory, and even if it is not fully well defined non-perturbatively, the problems only show up at distance scales that are exponentially small in the inverse coupling for weak couplings. The Standard Model of particle physics is perturbatively renormalizable, and so are its component theories (quantum electrodynamics/electroweak theory and quantum chromodynamics). Of the three components, quantum electrodynamics is believed to not have a continuum limit, while the asymptotically free SU(2) and SU(3) weak hypercharge and strong color interactions are nonperturbatively well defined.
+
+The renormalization group describes how renormalizable theories emerge as the long distance low-energy effective field theory for any given high-energy theory. Because of this, renormalizable theories are insensitive to the precise nature of the underlying high-energy short-distance phenomena. This is a blessing because it allows physicists to formulate low energy theories without knowing the details of high energy phenomenon. It is also a curse, because once a renormalizable theory like the standard model is found to work, it gives very few clues to higher energy processes. The only way high energy processes can be seen in the standard model is when they allow otherwise forbidden events, or if they predict quantitative relations between the coupling constants.
+
+ Haag's theorem 
+
+From a mathematically rigorous perspective, there exists no interaction picture in a Lorentz-covariant quantum field theory. This implies that the perturbative approach of Feynman diagrams in QFT is not strictly justified, despite producing vastly precise predictions validated by experiment. This is called Haag's theorem, but most particle physicists relying on QFT largely shrug it off.
+
+ Gauge freedom 
+A gauge theory is a theory that admits a symmetry with a local parameter. For example, in every quantum theory the global phase of the wave function is arbitrary and does not represent something physical. Consequently, the theory is invariant under a global change of phases (adding a constant to the phase of all wave functions, everywhere); this is a global symmetry. In quantum electrodynamics, the theory is also invariant under a local change of phase, that is – one may shift the phase of all wave functions so that the shift may be different at every point in space-time. This is a local symmetry. However, in order for a well-defined derivative operator to exist, one must introduce a new field, the gauge field, which also transforms in order for the local change of variables (the phase in our example) not to affect the derivative. In quantum electrodynamics this gauge field is the electromagnetic field. The change of local gauge of variables is termed gauge transformation.
+
+In quantum field theory the excitations of fields represent particles. The particle associated with excitations of the gauge field is the gauge boson, which is the photon in the case of quantum electrodynamics.
+
+The degrees of freedom in quantum field theory are local fluctuations of the fields. The existence of a gauge symmetry reduces the number of degrees of freedom, simply because some fluctuations of the fields can be transformed to zero by gauge transformations, so they are equivalent to having no fluctuations at all, and they therefore have no physical meaning. Such fluctuations are usually called "non-physical degrees of freedom" or gauge artifacts; usually some of them have a negative norm, making them inadequate for a consistent theory. Therefore, if a classical field theory has a gauge symmetry, then its quantized version (i.e. the corresponding quantum field theory) will have this symmetry as well. In other words, a gauge symmetry cannot have a quantum anomaly. If a gauge symmetry is anomalous (i.e. not kept in the quantum theory) then the theory is non-consistent: for example, in quantum electrodynamics, had there been a gauge anomaly, this would require the appearance of photons with longitudinal polarization and polarization in the time direction, the latter having a negative norm, rendering the theory inconsistent; another possibility would be for these photons to appear only in intermediate processes but not in the final products of any interaction, making the theory non-unitary and again inconsistent (see optical theorem).
+
+In general, the gauge transformations of a theory consist of several different transformations, which may not be commutative. These transformations are together described by a mathematical object known as a gauge group. Infinitesimal gauge transformations are the gauge group generators. Therefore the number of gauge bosons is the group dimension (i.e. number of generators forming a basis).
+
+All the fundamental interactions in nature are described by gauge theories. These are:
+* Quantum chromodynamics, whose gauge group is SU(3). The gauge bosons are eight gluons.
+* The electroweak theory, whose gauge group is U(1) × SU(2), (a direct product of U(1) and SU(2)).
+* Gravity, whose classical theory is general relativity, admits the equivalence principle, which is a form of gauge symmetry. However, it is explicitly non-renormalizable.
+
+ Multivalued gauge transformations 
+The gauge transformations which leave the theory invariant involve, by definition, only single-valued gauge functions which satisfy the Schwarz integrability criterion
+
+>
+
+An interesting extension of gauge transformations arises if the gauge functions are allowed to be multivalued functions which violate the integrability criterion. These are capable of changing the physical field strengths
+and are therefore no proper symmetry transformations. Nevertheless, the transformed field equations describe correctly the physical laws in the presence of the newly generated field strengths. See the textbook by H. Kleinert cited below
+for the applications to phenomena in physics.
+
+ Supersymmetry 
+
+
+Supersymmetry assumes that every fundamental fermion has a superpartner that is a boson and vice versa. It was introduced in order to solve the so-called Hierarchy Problem, that is, to explain why particles not protected by any symmetry (like the Higgs boson) do not receive radiative corrections to its mass driving it to the larger scales (GUT, Planck...). It was soon realized that supersymmetry has other interesting properties: its gauged version is an extension of general relativity (Supergravity), and it is a key ingredient for the consistency of string theory.
+
+The way supersymmetry protects the hierarchies is the following: since for every particle there is a superpartner with the same mass, any loop in a radiative correction is cancelled by the loop corresponding to its superpartner, rendering the theory UV finite.
+
+Since no superpartners have yet been observed, if supersymmetry exists it must be broken (through a so-called soft term, which breaks supersymmetry without ruining its helpful features). The simplest models of this breaking require that the energy of the superpartners not be too high; in these cases, supersymmetry is expected to be observed by experiments at the Large Hadron Collider. The Higgs particle has been detected at the LHC, and no such superparticles have been discovered.
+

@@ -1,0 +1,115 @@
+Qt is a cross-platform application framework that is widely used for developing application software that can be run on various software and hardware platforms with little or no change in the underlying codebase, while having the power and speed of native applications. Qt is currently being developed both by the Qt Company, a subsidiary of Digia, and the Qt Project under open-source governance, involving individual developers and firms working to advance Qt. Digia owns the Qt trademark and copyright. Qt is available with both commercial and open source GPL v3, LGPL v3 and LGPL v2 licenses.
+
+ Purposes and abilities 
+Qt is used mainly for developing application software with graphical user interfaces (GUIs); however, programs without a GUI can be developed, such as command-line tools and consoles for servers. An example of a non-GUI program using Qt is the Cutelyst web framework. GUI programs created with Qt can have a native-looking interface, in which cases Qt is classified as a widget toolkit.
+
+Qt uses standard C++ with extensions including signals and slots that simplifies handling of events, and this helps in development of both GUI and server applications which receive their own set of event information and should process them accordingly. Qt supports many compilers, including the GCC C++ compiler and the Visual Studio suite. Qt also provides Qt Quick, that includes a declarative scripting language called QML that allows using JavaScript to provide the logic. With Qt Quick, rapid application development for mobile devices became possible, although logic can be written with native code as well to achieve the best possible performance. Qt can be used in several other programming languages via language bindings. It runs on the major desktop platforms and some of the mobile platforms. It has extensive internationalization support. Non-GUI features include SQL database access, XML parsing, JSON parsing, thread management and network support.
+
+ Software architecture 
+Qt, when it was first released, relied on a few key concepts:
+* Complete abstraction of the GUI – When first released, Qt used its own paint engine and controls, emulating the look of the different platforms it runs on when it drew its widgets. This made the porting work easier because very few classes in Qt depended really on the target platform; however, this occasionally led to slight discrepancies where that emulation was imperfect. Recent versions of Qt use the native style APIs of the different platforms, on platforms that have a native widget set, to query metrics and draw most controls, and do not suffer from such issues as much. On some platforms (such as MeeGo and KDE) Qt is the native API. Some other portable graphical toolkits have made different design decisions; for example, wxWidgets uses the toolkits of the target platform for its implementations.
+* Signals and slots – a language construct introduced in Qt for communication between objects which makes it easy to implement the Observer pattern while avoiding boilerplate code. The concept is that GUI widgets can send signals containing event information which can be received by other controls using special functions known as slots.
+* Metaobject compiler – The metaobject compiler, termed moc, is a tool that is run on the sources of a Qt program. It interprets certain macros from the C++ code as annotations, and uses them to generate added C++ code with Meta Information about the classes used in the program. This meta information is used by Qt to provide programming features not available natively in C++: signals and slots, introspection and asynchronous function calls.
+
+ Supported platforms 
+
+
+Qt works on several different platforms, which makes it attractive for those who want a single code base to work virtually everywhere in Write once, compile anywhere fashion. qt.io website, the new home for Qt developers, introduces Qt as: "1 framework, 15 platforms, 95% satisfaction, 800,000+ users". The following platforms are officially supported by Digia:
+ Platform New featuresAndroidQt for Android, formerly known as Necessitas.Embedded LinuxQt for embedded platforms: personal digital assistant, smartphone, etc.IntegrityQt for IntegrityiOSQt for iOS platforms (iPhone, iPad)OS XQt for Apple OS X; supports applications on CocoaQNX / BlackBerry 10Qt for QNX and the QNX-based BlackBerry 10 platform.VxWorksQt for VxWorks.WaylandQt for Wayland. Qt applications can switch between graphical backends like X and Wayland at load time with the -platform command line option. This allows a seamless transition of Qt applications from X11 to Wayland.WindowsQt for Microsoft Windows XP, Vista, 7, 8Windows CEQt for Windows CE 6 and Windows Embedded Compact 7.Windows RTSupport for WinRT-based Windows 8 apps and Windows Phone 8 With 5.4 minimum supported version: Windows Phone 8.1X11Qt for X Window System (GNU/Linux, FreeBSD, HP-UX, Solaris, AIX, etc.)
+
+After Nokia opened the Qt source code to the community on Gitorious various ports appeared. There are also some ports of Qt that may be available, but are not supported anymore. These platforms are listed in List of platforms supported by Qt.
+
+ Editions 
+There are four editions of Qt available, Community, Indie Mobile, Professional and Enterprise. The Community version is under the open source licenses. While the Indie mobile, Professional and Enterprise versions, which contain additional functionality and libraries, e.g. Charts and Data Visualization, Enterprise Controls, Virtual Keyboard etc. are commercially sold by The Qt Company.
+
+Qt is available under the following copyright licenses: Qt Commercial License, GNU GPL-3.0, GNU LGPL-3.0 and GNU LGPL-2.1 (with Qt special exception)
+
+ Releases 
+
+
+ Qt 5 
+Qt 5 was officially released on 19 December 2012. This new version marked a major change in the platform, with hardware-accelerated graphics, QML and JavaScript playing a major role. The traditional C++-only QWidgets continued to be supported, but did not benefit from the performance improvements available through the new architecture. Qt5 brings significant improvements to the speed and ease of developing user interfaces.
+
+Framework development of Qt 5 moved to open governance, taking place at qt-project.org. It is now possible for developers outside Digia to submit patches and have them reviewed.
+ Version Release date New features 5.0 19 December 2012 Major overhaul of the Qt 4.x series.Complete Wayland support, including the client-side decorations. 5.1 3 July 2013 New modules and experimental Android and iOS support as technology preview. 5.2 12 December 2013 First release with official support of Android and iOS. 5.3 20 May 2014 Focus on stability and usability 5.4 10 December 2014 
+* Full WinRT and Windows Phone support
+* Introduction of Qt WebEngine based on Chromium internal components that will eventually replace QtWebKit in future versions.
+* Dynamic GL switching between graphic backends on Windows (ANGLE or OpenGL)
+*Native "look and feel" for Qt Quick Controls backends on Android platforms
+* Introduction of Qt WebChannels providing a QObject bridge over WebSockets. Initially only integrated with Qt WebKit, but with Qt WebEngine integration under way for 5.5
+
+ Software modules 
+Starting with Qt 4.0 the framework was split into individual modules. With Qt 5.0 the architecture was modularized even further. Qt is now split into essential and add-on modules.
+
+ Qt Essentials ModuleDescription Qt CoreThe only required Qt module, containing classes used by other modules, including the meta-object system, concurrency and threading, containers, event system, plugins and I/O facilities.Qt GUIThe central GUI module. In Qt 5 this module now depends on OpenGL, but no longer contains any widget classes.Qt WidgetsContains classes for classic widget based GUI applications and the QSceneGraph classes. Was split off from QtGui in Qt 5. Qt QMLModule for QML and JavaScript languages.Qt QuickThe module for GUI application written using QML2.Qt Quick ControlsWidget like controls for Qt Quick intended mainly for desktop applications.Qt Quick LayoutsLayouts for arranging items in Qt Quick.Qt NetworkNetwork abstraction layer. Complete with TCP, UDP, HTTP, SSL and since Qt 5.3 SPDY support.Qt MultimediaClasses for audio, video, radio and camera functionality.Qt Multimedia WidgetsThe widgets from Qt Multimedia.Qt SQLContains classes for database integration using SQL.Qt WebKitQt's WebKit implementation and API.Qt WebKit WidgetsThe widget API for Qt WebKitQt TestClasses for unit testing Qt applications and libraries.
+
+ Qt add-ons ModuleDescriptionActive QtClasses for applications which use ActiveX.Qt BluetoothClasses accessing Bluetooth hardware.Qt D-BusClasses for IPC using the D-Bus protocol.Qt NFCClasses accessing NFC hardware. Only officially supported on BlackBerry hardware so far (or N9 in the MeeGo port).Qt OpenGLLegacy module containing the OpenGL classes from Qt4. In Qt5 the similar functionality in Qt GUI is recommended.Qt PositioningClasses for accessing GPS and other location services. Split off from the Qt4 Mobile module of Qt Location. Supported on Android, BlackBerry, iOS and Linux (using GeoClue).Qt ScriptLegacy module for scripting Qt application using ECMAScript/JavaScript. In Qt5, using similar classes in Qt QML is recommended.Qt SensorsClasses for accessing various mobile hardware sensors. Used to be part of Qt Mobile in Qt4. Supported on Android, BlackBerry, iOS, WinRT, Mer and Linux.Qt Serial PortClasses for access to hardware and virtual serial ports. Supported on Windows, Linux and Mac OS X.Qt WebChannelProvides access to Qt objects to HTML/Js over WebSockets.Qt WebEngineA new set of Qt Widget and QML webview APIs based on Chromium.Qt WebSocketsProvides a WebSocket implementation.Qt XMLLegacy module containing classes for SAX and DOM style XML APIs. Replaced with QXmlStreamReader and QXmlStreamWriter classes in Qt Core.Qt XML PatternsSupport for XPath, XQuery, XSLT and XML Schema validation.
+
+ Tools 
+Qt comes with its own set of tools to ease cross-platform development, that is otherwise cumbersome due to different set of development tools. Qt Creator is a cross-platform IDE for C++ and QML. Qt Designer's GUI layout/design functionality is integrated into this relatively new IDE, although Qt Designer can still be called as a standalone tool.
+
+In addition to Qt Creator, Qt provides a handy makefile generation tool, qmake, a tool that automates the generation of Makefiles for development project across different platforms. Without qmake, one should write different makefiles for each platform, so it is a useful tool for transparent handling of differences in various platforms.
+
+There are other tools available in Qt, including Qt designer, Qt assistant (both are embedded in Qt creator now), Qt assistant (for translating GUI), uic (user interface compiler), moc (Meta-object System compiler for handling Signals and slots). Various other converters, compiling and linking also released with Qt.
+
+ Programming language bindings 
+
+
+Qt has a range of bindings for various languages, which implement some or all of its feature set.
+
+ Uses 
+
+ Organizations using Qt 
+Because of simplicity, robustness, native performance, cross-platform compatibility and both commercial and open source licenses, many organizations in many parts of the world use Qt. These include but are not limited to European Space Agency, DreamWorks, Lucasfilm, Panasonic, Philips, Samsung, Siemens, Volvo, Walt Disney Animation Studios, Blizzard Entertainment
+
+ Software using Qt 
+
+Example applications using Qt are Altera Quartus, a design and simulation tool for programmable logic; Autodesk Maya; bitcoin.org/en/download Bitcoin Core; 
+Cameleon (programming language); 
+Mathematica; 
+Google Earth; 
+KDE, a desktop environment for UNIX-like operating systems; 
+Skype;
+Spotify for Linux;
+Ubuntu;
+VirtualBox, an OS virtualization software package; 
+Musescore music score writing software;
+and the VLC media player.
+
+ History 
+Haavard Nord and Eirik Chambe-Eng (the original developers of Qt and the CEO and President, respectively, of Trolltech) began development of "Qt" in 1991, three years before the company was incorporated as Quasar Technologies, then changed the name to Troll Tech and then to Trolltech.
+
+The toolkit was called Qt because the letter Q looked appealing in Haavard's Emacs typeface, and "t" was inspired by Xt, the X toolkit.
+
+The first two versions of Qt had only two flavors: Qt/X11 for Unix and Qt/Windows for Windows. The Windows platform was only available under a proprietary license, which meant free/open source applications written in Qt for X11 could not be ported to Windows without purchasing the proprietary edition.
+
+At the end of 2001, Trolltech released Qt 3.0, which added support for Mac OS X. The Mac OS X support was available only in the proprietary license until June 2003, when Trolltech released Qt 3.2 with Mac OS X support available under the GPL.
+
+In June 2005, Trolltech released Qt 4.0.
+
+Nokia acquired Trolltech ASA on 17 June 2008 and changed the name first to Qt Software, then to Qt Development Frameworks.
+Since then it focused on Qt development to turn it into the main development platform for its devices, including a port to the Symbian S60 platform. Version 1.0 of the Nokia Qt SDK was released on 23 June 2010. The source code was made available over Gitorious, a community oriented git source code repository, to gather an even broader community that is not only using Qt but also helping to improve it.
+
+In February 2011, Nokia announced its decision to drop Symbian technologies and base their future smartphones on Microsoft platform instead. One month later, Nokia announced the sale of Qt's commercial licensing and professional services to Digia, with the immediate goal of taking Qt support to Android, iOS and Windows 8 platforms, and to continue focusing on desktop and embedded development, although Nokia was to remain the main development force behind the framework at that time.
+
+In March 2011, Nokia sold the commercial licensing part of Qt to Digia creating Qt Commercial. In August 2012, Digia announced that it will acquire Qt from Nokia The Qt team started working in Digia in September 2012. Qt team at Digia, released Qt 5.0 within a month, and released newer versions every 6 months with new features and additional supported platforms.
+
+ Licensing 
+At all times, Qt was available under a commercial license that allows developing proprietary applications with no restrictions on licensing. In addition, Qt has been gradually made available under several increasingly free licenses.
+
+Until version 1.45, source code for Qt was released under the FreeQt license. This was viewed as not compliant with the open source principle by the Open Source Initiative and the free software definition by Free Software Foundation because, while the source was available, it did not allow the redistribution of modified versions.
+
+Controversy erupted around 1998 when it became clear that the K Desktop Environment (now known as the KDE Software Compilation) was going to become one of the leading desktop environments for Linux. As it was based on Qt, many people in the free software movement worried that an essential piece of one of their major operating systems would be proprietary.
+
+With the release of version 2.0 of the toolkit, the license was changed to the Q Public License (QPL), a free software license but one regarded by the Free Software Foundation as incompatible with the GPL. Compromises were sought between KDE and Trolltech whereby Qt would not be able to fall under a more restrictive license than the QPL, even if Trolltech was bought out or went bankrupt. This led to the creation of the www.kde.org/community/whatiskde/kdefreeqtfoundation.php KDE Free Qt foundation, which guarantees that Qt would fall under a BSD-style license should no free/open source version of Qt be released during 12 months.
+
+In 2000, Qt/X11 2.2 was released under the GPL v2, ending all controversy regarding GPL compatibility.
+
+In 2002, members of the KDE on Cygwin project began porting the GPL licensed Qt/X11 code base to Windows. This was in response to Trolltech's refusal to license Qt/Windows under the GPL on the grounds that Windows was not a free/open source software platform. The project achieved reasonable success although it never reached production quality.
+
+This was resolved when Trolltech released Qt/Windows 4 under the GPL in June 2005. Qt 4 now supports the same set of platforms in the free software/open source editions as in the proprietary edition, so it is now possible to create GPL-licensed free/open source applications using Qt on all supported platforms. The GPL v3 with special exception was later added as an added licensing option. The GPL exception allows the final application to be licensed under various GPL-incompatible free software/open source licenses such as the Mozilla Public License 1.1.
+
+On 14 January 2009, Qt version 4.5 added another option, the LGPL, which should make Qt even more attractive for non-GPL open source projects and for closed applications.
+
+In March 2011, Nokia sold the commercial licensing part of Qt to Digia creating Qt Commercial. In September 2014, Digia transferred the Qt business and copyrights to their wholly owned subsidiary, the Qt Company.
+
