@@ -1,0 +1,150 @@
+The proof of Gödel's completeness theorem given by Kurt Gödel in his doctoral dissertation of 1929 (and a rewritten version of the dissertation, published as an article in 1930) is not easy to read today; it uses concepts and formalism that are no longer used and terminology that is often obscure. The version given below attempts to represent all the steps in the proof and all the important ideas faithfully, while restating the proof in the modern language of mathematical logic. This outline should not be considered a rigorous proof of the theorem.
+
+ Definitions and assumptions 
+
+We work with first-order predicate calculus. Our languages allow constant, function and relation symbols. Structures consist of (non-empty) domains and interpretations of the relevant symbols as constant members, functions or relations over that domain.
+
+We fix some axiomatization of the predicate calculus: logical axioms and rules of inference. Any of the several well-known axiomatisations will do; we assume without proof all the basic well-known results about our formalism (such as the normal form theorem or the soundness theorem) that we need.
+
+We axiomatize predicate calculus without equality, i.e. there are no special axioms expressing the properties of equality as a special relation symbol. After the basic form of the theorem is proved, it will be easy to extend it to the case of predicate calculus with equality.
+
+Statement of the theorem and its proof
+
+In the following, we state two equivalent forms of the theorem, and show their equivalence.
+
+Later, we prove the theorem. This is done in the following steps:
+
+# Reducing the theorem to sentences (formulas with no free variables) in prenex form, i.e. with all quantifiers at the beginning. Furthermore, we reduce it to formulas whose first quantifier is . This is possible because for every sentence, there is an equivalent one in prenex form whose first quantifier is .
+# Reducing the theorem to sentences of the form . While we cannot do this by simply rearranging the quantifiers, we show that it is yet enough to prove the theorem for sentences of that form.
+# Finally we prove the theorem for sentences of that form.
+#* This is done by first noting that a sentence such as is either refutable or has some model in which it holds; this model is simply assigning truth values to the subpropositions from which B is built. The reason for that is the completeness of propositional logic, with the existential quantifiers playing no role.
+#* We extend this result to more and more complex and lengthy sentences, Dn (n=1,2...), built out from B, so that either any of them is refutable and therefore so is φ, or all of them are not refutable and therefore each holds in some model.
+#* We finally use the models in which the Dn hold (in case all are not refutable) in order to build a model in which φ holds.
+
+Theorem 1. Every formula valid in all structures is provable.
+
+This is the most basic form of the completeness theorem. We immediately restate it in a form more convenient for our purposes:
+
+Theorem 2. Every formula φ is either refutable or satisfiable in some structure.
+
+"φ is refutable" means by definition "¬φ is provable".
+
+Equivalence of both theorems
+
+To see the equivalence, note first that if Theorem 1 holds, and φ is not satisfiable in any structure, then ¬φ is valid in all structures and therefore provable, thus φ is refutable and Theorem 2 holds. If on the other hand Theorem 2 holds and φ is valid in all structures, then ¬φ is not satisfiable in any structure and therefore refutable; then ¬¬φ is provable and then so is φ, thus Theorem 1 holds.
+
+Proof of theorem 2: first step
+
+We approach the proof of Theorem 2 by successively restricting the class of all formulas φ for which we need to prove "φ is either refutable or satisfiable". At the beginning we need to prove this for all possible formulas φ in our language. However, suppose that for every formula φ there is some formula ψ taken from a more restricted class of formulas C, such that "ψ is either refutable or satisfiable" → "φ is either refutable or satisfiable". Then, once this claim (expressed in the previous sentence) is proved, it will suffice to prove "φ is either refutable or satisfiable" only for φ's belonging to the class C. Note also that if φ is provably equivalent to ψ (i.e., (φ≡ψ) is provable), then it is indeed the case that "ψ is either refutable or satisfiable" → "φ is either refutable or satisfiable" (the soundness theorem is needed to show this).
+
+There are standard techniques for rewriting an arbitrary formula into one that does not use function or constant symbols, at the cost of introducing additional quantifiers; we will therefore assume that all formulas are free of such symbols. Gödel's paper uses a version of first-order predicate calculus that has no function or constant symbols to begin with.
+
+Next we consider a generic formula φ (which no longer uses function or constant symbols) and apply the prenex form theorem to find a formula ψ in normal form such that φ≡ψ (ψ being in normal form means that all the quantifiers in ψ, if there are any, are found at the very beginning of ψ). It follows now that we need only prove Theorem 2 for formulas φ in normal form.
+
+Next, we eliminate all free variables from φ by quantifying them existentially: if, say, x1...xn are free in φ, we form . If ψ is satisfiable in a structure M, then certainly so is φ and if ψ is refutable, then is provable, and then so is ¬φ, thus φ is refutable. We see that we can restrict φ to be a sentence, that is, a formula with no free variables.
+
+Finally, we would like, for reasons of technical convenience, that the prefix of φ (that is, the string of quantifiers at the beginning of φ, which is in normal form) begin with a universal quantifier and end with an existential quantifier. To achieve this for a generic φ (subject to restrictions we have already proved), we take some one-place relation symbol F unused in φ, and two new variables y and z.. If φ = (P)Φ, where (P) stands for the prefix of φ and Φ for the matrix (the remaining, quantifier-free part of φ) we form . Since is clearly provable, it is easy to see that is provable.
+
+Reducing the theorem to formulas of degree 1
+
+Our generic formula φ now is a sentence, in normal form, and its prefix starts with a universal quantifier and ends with an existential quantifier. Let us call the class of all such formulas R. We are faced with proving that every formula in R is either refutable or satisfiable. Given our formula φ, we group strings of quantifiers of one kind together in blocks:
+
+>
+
+We define the degree of to be the number of universal quantifier blocks, separated by existential quantifier blocks as shown above, in the prefix of . The following lemma, which Gödel adapted from Skolem's proof of the Löwenheim-Skolem theorem, lets us sharply reduce the complexity of the generic formula we need to prove the theorem for:
+
+Lemma. Let k>=1. If every formula in R of degree k is either refutable or satisfiable, then so is every formula in R of degree k+1.
+
+.
+
+Proof. Let φ be a formula of degree k+1; then we can write it as
+
+>
+
+where (P) is the remainder of the prefix of (it is thus of degree k-1) and is the quantifier-free matrix of . x, y, u and v denote here tuples of variables rather than single variables; e.g. really stands for where are some distinct variables.
+
+Let now x' and y' be tuples of previously unused variables of the same length as x and y respectively, and let Q be a previously unused relation symbol that takes as many arguments as the sum of lengths of x and y; we consider the formula
+
+>
+
+Clearly, is provable.
+
+Now since the string of quantifiers does not contain variables from x or y, the following equivalence is easily provable with the help of whatever formalism we're using:
+
+>
+
+And since these two formulas are equivalent, if we replace the first with the second inside Φ, we obtain the formula Φ' such that Φ≡Φ':
+
+>
+
+Now Φ' has the form , where (S) and (S') are some quantifier strings, ρ and ρ' are quantifier-free, and, furthermore, no variable of (S) occurs in ρ' and no variable of (S') occurs in ρ. Under such conditions every formula of the form , where (T) is a string of quantifiers containing all quantifiers in (S) and (S') interleaved among themselves in any fashion, but maintaining the relative order inside (S) and (S'), will be equivalent to the original formula Φ'(this is yet another basic result in first-order predicate calculus that we rely on). To wit, we form Ψ as follows:
+>
+
+and we have .
+
+Now is a formula of degree k and therefore by assumption either refutable or satisfiable.
+If is satisfiable in a structure M, then, considering , we see that is satisfiable as well.
+If is refutable, then so is , which is equivalent to it; thus is provable.
+Now we can replace all occurrences of Q inside the provable formula by some other formula dependent on the same variables, and we will still get a provable formula.
+(This is yet another basic result of first-order predicate calculus. Depending on the particular formalism adopted for the calculus, it may be seen as a simple application of a "functional substitution" rule of inference, as in Gödel's paper, or it may be proved by considering the formal proof of , replacing in it all occurrences of Q by some other formula with the same free variables, and noting that all logical axioms in the formal proof remain logical axioms after the substitution, and all rules of inference still apply in the same way.)
+
+In this particular case, we replace Q(x',y') in with the formula . Here (x,y|x',y') means that instead of ψ we are writing a different formula, in which x and y are replaced with x' and y'. Note that Q(x,y) is simply replaced by .
+
+ then becomes
+
+>
+
+and this formula is provable; since the part under negation and after the sign is obviously provable, and the part under negation and before the sign is obviously φ, just with x and y replaced by x' and y', we see that is provable, and φ is refutable. We have proved that φ is either satisfiable or refutable, and this concludes the proof of the Lemma.
+
+Notice that we could not have used instead of Q(x',y') from the beginning, because would not have been a well-formed formula in that case. This is why we cannot naively use the argument appearing at the comment that precedes the proof.
+
+Proving the theorem for formulas of degree 1
+As shown by the Lemma above, we only need to prove our theorem for formulas φ in R of degree 1. φ cannot be of degree 0, since formulas in R have no free variables and don't use constant symbols. So the formula φ has the general form:
+
+>
+
+Now we define an ordering of the k-tuples of natural numbers as follows: should hold if either , or , and precedes in lexicographic order. Here denotes the sum of the terms of the tuple. Denote the nth tuple in this order by .
+
+Set the formula as . Then put as 
+>
+
+Lemma: For every n, φ.
+
+Proof: By induction on n; we have , where the latter implication holds by variable substitution, since the ordering of the tuples is such that . But the last formula is equivalent to φ.
+
+For the base case, is obviously a corollary of φ as well. So the Lemma is proven.
+
+Now if is refutable for some n, it follows that φ is refutable. On the other hand, suppose that is not refutable for any n. Then for each n there is some way of assigning truth values to the distinct subpropositions (ordered by their first appearance in ; "distinct" here means either distinct predicates, or distinct bound variables) in , such that will be true when each proposition is evaluated in this fashion. This follows from the completeness of the underlying propositional logic.
+
+We will now show that there is such an assignment of truth values to , so that all will be true: The appear in the same order in every ; we will inductively define a general assignment to them by a sort of "majority vote": Since there are infinitely many assignments (one for each ) affecting , either infinitely many make true, or infinitely many make it false and only finitely many make it true. In the former case, we choose to be true in general; in the latter we take it to be false in general. Then from the infinitely many n for which through are assigned the same truth value as in the general assignment, we pick a general assignment to in the same fashion.
+
+This general assignment must lead to every one of the and being true, since if one of the were false under the general assignment, would also be false for every n > k. But this contradicts the fact that for the finite collection of general assignments appearing in , there are infinitely many n where the assignment making true matches the general assignment.
+
+From this general assignment, which makes all of the true, we construct an interpretation of the language's predicates that makes φ true. The universe of the model will be the natural numbers. Each i-ary predicate should be true of the naturals precisely when the proposition is either true in the general assignment, or not assigned by it (because it never appears in any of the ).
+
+In this model, each of the formulas is true by construction. But this implies that φ itself is true in the model, since the range over all possible k-tuples of natural numbers. So φ is satisfiable, and we are done.
+
+Intuitive explanation
+We may write each Bi as Φ(x1...xk,y1...ym) for some x-s, which we may call "first arguments" and y-s that we may call "last arguments".
+
+Take B1 for example. Its "last arguments" are z2,z3...zm+1, and for every possible combination of k of these variables there is some j so that they appear as "first arguments" in Bj. Thus for large enough n1, Dn1 has the property that the "last arguments" of B1 appear, in every possible combinations of k of them, as "first arguments" in other Bj-s within Dn. For every Bi there is a Dni with the corresponding property.
+
+Therefore in a model that satisfies all the Dn-s, there are objects corresponding to z1, z2... and each combination of k of these appear as "first arguments" in some Bj, meaning that for every k of these objects zp1...zpk there are zq1...zqm, which makes Φ(zp1...zpk,zq1...zqm) satisfied. By taking a submodel with only these z1, z2... objects, we have a model satisfying φ.
+
+Extensions
+
+Extension to first-order predicate calculus with equality
+Gödel reduced a formula containing instances of the equality predicate to ones without it in an extended language. His method involves replacing a formula φ containing some instances of equality with the formula
+
+>
+
+Here denote the predicates appearing in φ (with their respective arities), and φ' is the formula φ with all occurrences of equality replaced with the new predicate Eq. If this new formula is refutable, the original φ was as well; the same is true of satisfiability, since we may take a quotient of satisfying model of the new formula by the equivalence relation representing Eq. This quotient is well-defined with respect to the other predicates, and therefore will satisfy the original formula φ.
+
+Extension to countable sets of formulas
+
+Gödel also considered the case where there are a countably infinite collection of formulas. Using the same reductions as above, he was able to consider only those cases where each formula is of degree 1 and contains no uses of equality. For a countable collection of formulas of degree 1, we may define as above; then define to be the closure of . The remainder of the proof then went through as before.
+
+Extension to arbitrary sets of formulas
+
+When there is an uncountably infinite collection of formulas, the Axiom of Choice (or at least some weak form of it) is needed. Using the full AC, one can well-order the formulas, and prove the uncountable case with the same argument as the countable one, except with transfinite induction. Other approaches can be used to prove that the completeness theorem in this case is equivalent to the Boolean prime ideal theorem, a weak form of AC.
+

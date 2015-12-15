@@ -1,0 +1,144 @@
+Diffie–Hellman key exchange (D–H) is a specific method of securely exchanging cryptographic keys over a public channel and was the first specific example of public-key cryptography as originally conceptualized by Ralph Merkle. D–H is one of the earliest practical examples of public key exchange implemented within the field of cryptography. The Diffie–Hellman key exchange method allows two parties that have no prior knowledge of each other to jointly establish a shared secret key over an insecure communication channel. This key can then be used to encrypt subsequent communications using a symmetric key cipher.
+
+The scheme was first published by Whitfield Diffie and Martin Hellman in 1976. By 1975, James H. Ellis, Clifford Cocks and Malcolm J. Williamson within GCHQ, the British signals intelligence agency, had also shown how public-key cryptography could be achieved; however, their work was kept secret until 1997.
+
+Although Diffie–Hellman key agreement itself is an anonymous (non-authenticated) key-agreement protocol, it provides the basis for a variety of authenticated protocols, and is used to provide perfect forward secrecy in Transport Layer Security's ephemeral modes (referred to as EDH or DHE depending on the cipher suite).
+
+The method was followed shortly afterwards by RSA, an implementation of public key cryptography using asymmetric algorithms.
+
+, from 1977, is now expired and describes the now public domain algorithm. It credits Hellman, Diffie, and Merkle as inventors.
+
+Name
+In 2002, Hellman suggested the algorithm be called Diffie–Hellman–Merkle key exchange in recognition of Ralph Merkle's contribution to the invention of public-key cryptography (Hellman, 2002), writing:
+The system...has since become known as Diffie–Hellman key exchange. While that system was first described in a paper by Diffie and me, it is a public key distribution system, a concept developed by Merkle, and hence should be called 'Diffie–Hellman–Merkle key exchange' if names are to be associated with it. I hope this small pulpit might help in that endeavor to recognize Merkle's equal contribution to the invention of public key cryptography.
+
+ Description 
+Diffie–Hellman establishes a shared secret that can be used for secret communications while exchanging data over a public network. The following diagram illustrates the general idea of the key exchange by using colors instead of a very large number. The crucial part of the process is that Alice and Bob exchange their secret colors in a mix only. Finally this generates an identical key that is computationally difficult (impossible for modern supercomputers to do in a reasonable amount of time) to reverse for another party that might have been listening in on them. Alice and Bob now use this common secret to encrypt and decrypt their sent and received data. The starting color (yellow) is arbitrary, but is agreed on in advance by Alice and Bob, and does not need to be secret.
+
+Cryptographic explanation
+
+
+The simplest and the original implementation of the protocol uses the multiplicative group of integers modulo p, where p is prime, and g is a primitive root modulo p. Here is an example of the protocol, with non-secret values in blue, and secret values in red.
+
+# Alice and Bob agree to use a prime number p 23 and base g 5 (which is a primitive root modulo 23).
+# Alice chooses a secret integer a 6, then sends Bob A ga mod p
+#* A 56 mod 23 8
+# Bob chooses a secret integer b 15, then sends Alice B gb mod p
+#* B 515 mod 23 19
+# Alice computes s = Ba mod p
+#* s 196 mod 23 2
+# Bob computes s = Ab mod p
+#* s 815 mod 23 2
+# Alice and Bob now share a secret (the number 2).
+
+Both Alice and Bob have arrived at the same value, because (ga)b (for Bob, 815 mod 23 (ga mod p)b mod p (ga)b mod p) and (gb)a are equal mod p. Note that only a, b, and (gab mod p = gba mod p) are kept secret. All the other values – p, g, ga mod p, and gb mod p – are sent in the clear. Once Alice and Bob compute the shared secret they can use it as an encryption key, known only to them, for sending messages across the same open communications channel.
+
+Of course, much larger values of a, b, and p would be needed to make this example secure, since there are only 23 possible results of n mod 23. However, if p is a prime of at least 300 digits, and a and b are at least 100 digits long, then even the fastest modern computers cannot find a given only g, p, gb mod p and ga mod p. The problem such a computer needs to solve is called the discrete logarithm problem. The computation of ga mod p is known as modular exponentiation and can be done efficiently even for large numbers.
+Note that g need not be large at all, and in practice is usually a small prime (like 2, 3, 5...) because primitive roots usually are quite numerous.
+
+ Generalization to finite cyclic groups 
+
+Here's a more general description of the protocol,
+
+# Alice and Bob agree on a finite cyclic group G and a generating element g in G. (This is usually done long before the rest of the protocol; g is assumed to be known by all attackers.) We will write the group G multiplicatively.
+# Alice picks a random natural number a and sends ga to Bob.
+# Bob picks a random natural number b and sends gb to Alice.
+# Alice computes (gb)a.
+# Bob computes (ga)b.
+
+Both Alice and Bob are now in possession of the group element gab, which can serve as the shared secret key.
+
+If m is a message, and an element of the group, then we can encrypt e = mgab. Then we can decipher m from e as follows: We compute (gab)−1, using |G|:
+
+Bob knows G, b, and ga. As g generates G it follows that g|G| 1 (the group identity). Bob calculates (ga)|G|−b g'a(|G|−b) g'a|G|−ab g'a|G|g−ab (g|G|)a'g−ab 1a'g−ab g−ab (gab)−1.
+
+When Alice sends Bob the encrypted message, e mgab, Bob computes e(gab)−1 mgab(gab)−1 m(1) m.
+
+When the group is too large for a multiplication table, then a multiplication algorithm is needed, and Exponentiation for finite cyclic groups should be used.
+
+Returning to the original question of Diffie–Hellman key exchange, how can a key be extracted, in general, from the shared group element gab? One could extract a set of AES keys from it. This would require a mapping from G to the set of n-bit binary strings, and the mapping would depend on G. For example, if G consisted of the powers of a fixed nonsingular matrix A defined over a finite field, and if gab = {gi,j}, then the element g11 would be an element of the field and would have a binary representation that could be divided up into AES keys.
+
+Secrecy chart
+The chart below depicts who knows what, again with non-secret values in blue, and secret values in red. Here Eve is an eavesdropper—she watches what is sent between Alice and Bob, but she does not alter the contents of their communications.
+
+* g public (prime) base, known to Alice, Bob, and Eve. g 5
+* p public (prime) number, known to Alice, Bob, and Eve. p 23
+
+* a Alice's private key, known only to Alice. a 6
+* b Bob's private key known only to Bob. b 15
+
+* A Alice's public key, known to Alice, Bob, and Eve. A ga mod p = 8
+* B Bob's public key, known to Alice, Bob, and Eve. B gb mod p = 19
+ Alice
+ knows 
+ doesn't know p 23 b ? base g 5 a 6 A 5a mod 23 A 56 mod 23 8 B 19 s Ba mod 23 s 196 mod 23 2 s 2 Bob
+ knows 
+ doesn't know p 23 a ? base g 5 b 15 B 5b mod 23 B 515 mod 23 19 A 8 s Ab mod 23 s 815 mod 23 2 s 2 Eve
+ knows 
+ doesn't know p 23 a ? base g 5 b ? s ? A 8 B 19 s 19a mod 23 = 8b mod 23
+
+* Now s the shared secret key and it is known to both Alice and Bob, but not to Eve. s 2
+
+Note: It should be difficult for Alice to solve for Bob's private key or for Bob to solve for Alice's private key. If it is not difficult for Alice to solve for Bob's private key (or vice versa), Eve may simply substitute her own private / public key pair, plug Bob's public key into her private key, produce a fake shared secret key, and solve for Bob's private key (and use that to solve for the shared secret key. Eve may attempt to choose a public / private key pair that will make it easy for her to solve for Bob's private key). Another demonstration of Diffie-Hellman (also using numbers too small for practical use) is given here 
+
+Operation with more than two parties
+Diffie–Hellman key agreement is not limited to negotiating a key shared by only two participants. Any number of users can take part in an agreement by performing iterations of the agreement protocol and exchanging intermediate data (which does not itself need to be kept secret). For example, Alice, Bob, and Carol could participate in a Diffie–Hellman agreement as follows, with all operations taken to be modulo :
+
+# The parties agree on the algorithm parameters and .
+# The parties generate their private keys, named , , and .
+# Alice computes and sends it to Bob.
+# Bob computes and sends it to Carol.
+# Carol computes and uses it as her secret.
+# Bob computes and sends it to Carol.
+# Carol computes and sends it to Alice.
+# Alice computes and uses it as her secret.
+# Carol computes and sends it to Alice.
+# Alice computes and sends it to Bob.
+# Bob computes and uses it as his secret.
+
+An eavesdropper has been able to see , , , , , and , but cannot use any combination of these to reproduce .
+
+To extend this mechanism to larger groups, two basic principles must be followed:
+* Starting with an “empty” key consisting only of , the secret is made by raising the current value to every participant’s private exponent once, in any order (the first such exponentiation yields the participant’s own public key).
+* Any intermediate value (having up to exponents applied, where is the number of participants in the group) may be revealed publicly, but the final value (having had all exponents applied) constitutes the shared secret and hence must never be revealed publicly. Thus, each user must obtain their copy of the secret by applying their own private key last (otherwise there would be no way for the last contributor to communicate the final key to its recipient, as that last contributor would have turned the key into the very secret the group wished to protect).
+
+These principles leave open various options for choosing in which order participants contribute to keys. The simplest and most obvious solution is to arrange the participants in a circle and have keys rotate around the circle, until eventually every key has been contributed to by all participants (ending with its owner) and each participant has contributed to keys (ending with their own). However, this requires that every participant perform modular exponentiations.
+
+By choosing a more optimal order, and relying on the fact that keys can be duplicated, it is possible to reduce the number of modular exponentiations performed by each participant to using a divide-and-conquer-style approach, given here for eight participants:
+
+# Participants A, B, C, and D each perform one exponentiation, yielding ; this value is sent to E, F, G, and H. In return, participants A, B, C, and D receive .
+# Participants A and B each perform one exponentiation, yielding , which they send to C and D, while C and D do the same, yielding , which they send to A and B.
+# Participant A performs an exponentiation, yielding , which it sends to B; similarly, B sends to A. C and D do similarly.
+# Participant A performs one final exponentiation, yielding the secret , while B does the same to get ; again, C and D do similarly.
+# Participants E through H simultaneously perform the same operations using as their starting point.
+
+Once this operation has been completed all participants will possess the secret , but each participant will have performed only four modular exponentiations, rather than the eight implied by a simple circular arrangement.
+
+Security
+The protocol is considered secure against eavesdroppers if G and g are chosen properly. The eavesdropper ("Eve") would have to solve the Diffie–Hellman problem to obtain g'ab. This is currently considered difficult. An efficient algorithm to solve the discrete logarithm problem would make it easy to compute a or b and solve the Diffie–Hellman problem, making this and many other public key cryptosystems insecure. Fields of small characteristic may be less secure.
+
+The order of G should have a large prime factor to prevent use of the Pohlig–Hellman algorithm to obtain a or b. For this reason, a Sophie Germain prime q is sometimes used to calculate , called a safe prime, since the order of G is then only divisible by 2 and q. g is then sometimes chosen to generate the order q subgroup of G, rather than G, so that the Legendre symbol of ga never reveals the low order bit of a.
+
+If Alice and Bob use random number generators whose outputs are not completely random and can be predicted to some extent, then Eve's task is much easier.
+
+The secret integers a and b are discarded at the end of the session.
+Therefore, Diffie–Hellman key exchange by itself trivially achieves perfect forward secrecy because no long-term private keying material exists to be disclosed.
+
+In the original description, the Diffie–Hellman exchange by itself does not provide authentication of the communicating parties and is thus vulnerable to a man-in-the-middle attack. Mallory may establish two distinct key exchanges, one with Alice and the other with Bob, effectively masquerading as Alice to Bob, and vice versa, allowing her to decrypt, then re-encrypt, the messages passed between them. Note that Mallory must continue to be in the middle, transferring messages every time Alice and Bob communicate. If she is ever absent, her previous presence is then revealed to Alice and Bob. They will know that all of their private conversations had been intercepted and decoded by someone in the channel.
+
+A method to authenticate the communicating parties to each other is generally needed to prevent this type of attack. Variants of Diffie–Hellman, such as STS protocol, may be used instead to avoid these types of attacks.
+
+Other uses
+
+Password-authenticated key agreement
+
+When Alice and Bob share a password, they may use a password-authenticated key agreement (PAKE) form of Diffie–Hellman to prevent man-in-the-middle attacks. One simple scheme is to compare the hash of s concatenated with the password calculated independently on both ends of channel. A feature of these schemes is that an attacker can only test one specific password on each iteration with the other party, and so the system provides good security with relatively weak passwords. This approach is described in ITU-T Recommendation X.1035, which is used by the G.hn home networking standard.
+
+Public key
+It is also possible to use Diffie–Hellman as part of a public key infrastructure. Alice's public key is simply . To send her a message, Bob chooses a random b and then sends Alice (un-encrypted) together with the message encrypted with symmetric key . Only Alice can decrypt the message because only she has a (the private key). A preshared public key also prevents man-in-the-middle attacks.
+
+In practice, Diffie–Hellman is not used in this way, with RSA being the dominant public key algorithm. This is largely for historical and commercial reasons, namely that RSA Security created a certificate authority for key signing that became Verisign. Diffie–Hellman cannot be used to sign certificates. However, the ElGamal and DSA signature algorithms are mathematically related to it, as well as MQV, STS and the IKE component of the IPsec protocol suite for securing Internet Protocol communications.
+
+ Cryptocurrency 
+The sender can produce only the public part of the key, whereas only the receiver can compute the private part. Because of that, the receiver is the only one who can release the funds after the transaction is committed. They need to perform a single-formula check on each transactions to establish if it belongs to them. This process involves their private key, therefore no third party can perform this check and discover the link between the one-time key generated by the sender and the receiver's unique public address.
+

@@ -1,0 +1,44 @@
+In computing, a nibble (often nybble or even nyble to match the vowels of byte) is a four-bit aggregation, or half an octet. As a nibble contains 4 bits, there are sixteen (24) possible values. A nibble can be represented by a single hexadecimal digit and called a "hex digit" or, less commonly, a "hexit".
+
+A full byte (octet) is represented by two hexadecimal digits; therefore, it is common to display a byte of information as two nibbles. The nibble is often called a "semioctet" or a "quartet" in a networking or telecommunication context. Sometimes the set of all 256 byte values is represented as a table 16×16, which gives easily readable hexadecimal codes for each value.
+
+History
+
+The term 'nibble' originates from its representing 'half a byte', with 'byte' a homophone of the English word 'bite'. The alternative spelling 'nybble' reflects the spelling of 'byte', as noted in editorials of Kilobaud and Byte in the early 1980s.
+
+Another early recorded use of the term 'nybble' was in 1977 within the consumer-banking technology group at Citibank. It created a pre-ISO 8583 standard for transactional messages between cash machines and Citibank's data centres that used the basic informational unit 'NABBLE'.
+
+The nibble is used to describe the amount of memory used to store a digit of a number stored in packed decimal format (BCD) within an IBM mainframe. This technique is used to make computations faster and debugging easier. An 8-bit byte is split in half and each nibble is used to store one decimal digit. The last (rightmost) nibble of the variable is reserved for the sign. Thus a variable which can store up to nine digits would be "packed" into 5 bytes. Ease of debugging resulted from the numbers being readable in a hex dump where two hex numbers are used to represent the value of a byte, as 16×16 = 28. For example, a five-byte BCD value of      represents a decimal value of .
+
+Historically, there are cases where nybble was used for a group of bits fewer than 8 but not necessarily 4. In the Apple II microcomputer line, much of the disk drive control was implemented in software. Writing data to a disk was done by converting 256-byte pages into sets of 5-bit (later, 6-bit) nibbles and loading disk data required the reverse. Note that the term byte once had this ambiguity and meant a set of bits but not necessarily 8. Today, the terms 'byte' and 'nibble' almost always refer to 8-bit and 4-bit collections respectively and are very rarely used to express any other sizes.
+
+The term 'semi-nibble' is used to refer to a 2-bit collection or half a nibble but rarely so.
+
+Table of nibbles
+The sixteen nibbles and their equivalents in other numeral systems:
+ 0hex 0dec 0oct 0000 1hex 1dec 1oct 0001 2hex 2dec 2oct 0010 3hex 3dec 3oct 0011 4hex 4dec 4oct 0100 5hex 5dec 5oct 0101 6hex 6dec 6oct 0110 7hex 7dec 7oct 0111 8hex 8dec 10oct 1000 9hex 9dec 11oct 1001 Ahex 10dec 12oct 1010 Bhex 11dec 13oct 1011 Chex 12dec 14oct 1100 Dhex 13dec 15oct 1101 Ehex 14dec 16oct 1110 Fhex 15dec 17oct 1111 
+
+Low and high nibbles
+The terms "low nibble" and "high nibble" are used to denote the nibbles containing, respectively, the less significant bits and the more significant bits within a byte. In graphical representations of bits within a byte, the leftmost bit could represent the most significant bit (MSB), corresponding to ordinary decimal notation in which the digit at the left of a number is the most significant. In such illustrations the four bits on the left end of the byte form the high nibble, and the remaining four bits form the low nibble.
+
+Examples
+(Binary to Hexadecimal) 0100 0010 42 0010 1010 1001 2A9 0010 0000 1001 209 1110 0100 1001 E49 0011 1001 0110 396 0001 0000 0001 101 0011 0101 0100 354 0001 0110 0100 164 
+
+Extracting a nibble from a byte
+In the C programming language:
+
+#define HI_NIBBLE(b) (((b) >> 4) & 0x0F)
+#define LO_NIBBLE(b) ((b) & 0x0F)
+
+where b must be a variable or constant of an integral data type, and only the least-significant byte of b is used.
+
+For example, HI_NIBBLE(0xAB)0xA and LO_NIBBLE(0xAB)0xB.
+
+In Common Lisp:
+
+(defun hi-nibble (b)
+ (ldb (byte 4 4) b))
+(defun lo-nibble (b)
+ (ldb (byte 4 0) b))
+
+

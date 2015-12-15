@@ -1,0 +1,392 @@
+Classical mechanics is the branch of physics used to describe the motion of macroscopic objects. It is the most familiar of the theories of physics. The concepts it covers, such as mass, acceleration, and force, are commonly used and known. The subject is based upon a three-dimensional Euclidean space with fixed axes, called a frame of reference. The point of concurrency of the three axes is known as the origin of the particular space.
+
+Classical mechanics utilises many equations—as well as other mathematical concepts—which relate various physical quantities to one another. These include differential equations, manifolds, Lie groups, and ergodic theory. This page gives a summary of the most important of these.
+
+This article lists equations from Newtonian mechanics, see analytical mechanics for the more general formulation of classical mechanics (which includes Lagrangian and Hamiltonian mechanics).
+
+Classical mechanics
+
+Mass and inertia
+ Quantity (common name/s) (Common) symbol/s Defining equation SI units Dimension
+ Linear, surface, volumetric mass density λ or μ (especially in acoustics, see below) for Linear, σ for surface, ρ for volume. 
+
+
+ kg m−n, n = 1, 2, 3 ML−n Moment of mass m (No common symbol) Point mass: 
+
+
+Discrete masses about an axis : 
+
+
+Continuum of mass about an axis : 
+
+ kg m
+ ML Centre of mass rcom
+(Symbols vary)
+ ith moment of mass 
+
+Discrete masses:
+
+
+Mass continuum: 
+
+ m
+ L 2-Body reduced mass
+ m12, μ Pair of masses = m1 and m2
+ 
+ kg
+ M Moment of inertia (MOI)
+ I
+ Discrete Masses:
+
+
+Mass continuum: 
+
+ kg m2
+ ML2
+
+Derived kinematic quantities
+
+ Quantity (common name/s) (Common) symbol/s Defining equation SI units Dimension Velocity v m s−1 LT−1 Acceleration a m s−2 LT−2 Jerk j m s−3 LT−3 Angular velocity ω rad s−1 T−1 Angular Acceleration α rad s−2 T−2
+
+Derived dynamic quantities
+
+ Quantity (common name/s) (Common) symbol/s Defining equation SI units Dimension Momentum p kg m s−1 MLT−1 Force F 
+ N = kg m s−2 MLT−2 Impulse J, Δp, I kg m s−1 MLT−1 Angular momentum about a position point r0,
+ L, J, S 
+
+Most of the time we can set r0 = 0 if particles are orbiting about axes intersecting at a common point.
+ kg m2 s−1 ML2T−1 Moment of a force about a position point r0,
+Torque
+ τ, M N m = kg m2 s−2 ML2T−2 Angular impulse ΔL (no common symbol)
+ kg m2 s−1 ML2T−1
+
+General energy definitions
+
+
+ Quantity (common name/s) (Common) symbol/s Defining equation SI units Dimension Mechanical work due
+to a Resultant Force
+ W J N m kg m2 s−2 ML2T−2 Work done ON mechanical
+system, Work done BY
+ WON, WBY J N m kg m2 s−2 ML2T−2 Potential energy φ, Φ, U, V, Ep J N m kg m2 s−2 ML2T−2 Mechanical power
+ P W = J s−1 ML2T−3
+
+Every conservative force has a potential energy. By following two principles one can consistently assign a non-relative value to U:
+
+* Wherever the force is zero, its potential energy is defined to be zero as well.
+* Whenever the force does work, potential energy is lost.
+
+Generalized mechanics
+
+ Quantity (common name/s) (Common) symbol/s Defining equation SI units DimensionGeneralized coordinates
+ q, Q
+
+ varies with choice
+ varies with choiceGeneralized velocities
+ 
+ 
+ varies with choice
+ varies with choiceGeneralized momenta
+ p, P
+
+ varies with choice
+ varies with choice Lagrangian
+ L
+ 
+
+where and p = p(t) are vectors of the generalized coords and momenta, as functions of time
+ J
+ ML2T−2 Hamiltonian
+ H
+ 
+ J
+ ML2T−2 Action, Hamilton's principal function
+ S, 
+ 
+ J s
+ ML2T−1
+
+Kinematics
+
+In the following rotational definitions, the angle can be any angle about the specified axis of rotation. It is customary to use θ, but this does not have to be the polar angle used in polar coordinate systems. The unit axial vector
+
+>
+
+defines the axis of rotation, unit vector in direction of r, unit vector tangential to the angle.
+ Translation RotationVelocityAverage:
+>
+Instantaneous:
+>Angular velocity
+>
+
+Rotating rigid body:
+
+>AccelerationAverage:
+>
+
+Instantaneous:
+
+>
+Angular acceleration
+
+>
+
+Rotating rigid body:
+
+>
+JerkAverage:
+>
+
+Instantaneous:
+
+>Angular jerk
+
+>
+
+Rotating rigid body:
+
+>
+
+Dynamics
+ Translation RotationMomentumMomentum is the "amount of translation"
+
+>
+
+For a rotating rigid body:
+
+>Angular momentum
+
+Angular momentum is the "amount of rotation":
+
+>
+
+and the cross-product is a pseudovector i.e. if r and p are reversed in direction (negative), L is not.
+
+In general I is an order-2 tensor, see above for its components. The dot · indicates tensor contraction.Force and Newton's 2nd lawResultant force acts on a system at the center of mass, equal to the rate of change of momentum:
+
+\
+& = m\mathbf{a} + \mathbf{v}\frac \\
+\end{align} \,\!
+
+For a number of particles, the equation of motion for one particle i is:
+
+>
+
+where pi momentum of particle i, Fij force on particle i by particle j, and FE = resultant external force (due to any agent not part of system). Particle i does not exert a force on itself.Torque
+
+Torque τ is also called moment of a force, because it is the rotational analogue to force:
+
+>
+
+For rigid bodies, Newton's 2nd law for rotation takes the same form as for translation:
+
+ 
+\boldsymbol{\tau} & \frac \frac \\
+& = \frac\cdot\boldsymbol{\omega} + \bold{I}\cdot\boldsymbol{\alpha} \\
+\end{align} \,\!
+
+Likewise, for a number of particles, the equation of motion for one particle i is:
+
+>YankYank is rate of change of force:
+
+\
+& = m\mathbf{j} + \mathbf{2a}\frac + \mathbf{v}\frac \\
+\end{align} \,\!
+
+For constant mass, it becomes;
+>Rotatum
+
+Rotatum Ρ is also called moment of a Yank, because it is the rotational analogue to yank:
+
+>Impulse
+Impulse is the change in momentum:
+
+>
+
+For constant force F:
+
+>Angular impulse is the change in angular momentum:
+
+>
+
+For constant torque τ:
+
+>
+
+ Precession 
+
+The precession angular speed of a spinning top is given by:
+
+>
+
+where w is the weight of the spinning flywheel.
+
+ Energy 
+
+The mechanical work done by an external agent on a system is equal to the change in kinetic energy of the system:
+
+)
+
+The work done W by an external agent which exerts a force F (at r) and torque τ on an object along a curved path C is:
+
+>
+
+where θ is the angle of rotation about an axis defined by a unit vector n.
+
+
+
+>
+
+
+
+For a stretched spring fixed at one end obeying Hooke's law:
+
+>
+
+where r2 and r1 are collinear coordinates of the free end of the spring, in the direction of the extension/compression, and k is the spring constant.
+
+Euler's equations for rigid body dynamics
+
+
+
+Euler also worked out analogous laws of motion to those of Newton, see Euler's laws of motion. These extend the scope of Newton's laws to rigid bodies, but are essentially the same as above. A new equation Euler formulated is:
+
+>
+
+where I is the moment of inertia tensor.
+
+General planar motion
+
+
+
+The previous equations for planar motion can be used here: corollaries of momentum, angular momentum etc. can immediately follow by applying the above definitions. For any object moving in any path in a plane,
+
+>
+
+the following general results apply to the particle.
+ Kinematics Dynamics Position
+ Velocity
+
+> Momentum
+>
+
+Angular momenta
+ Acceleration
+
+> The centripetal force is
+
+>
+
+where again m is the mass moment, and the coriolis force is
+
+>
+
+The Coriolis acceleration and force can also be written:
+
+>
+
+ Central force motion 
+
+For a massive body moving in a central potential due to another object, which depends only on the radial separation between the centres of masses of the two objects, the equation of motion is:
+
+>
+
+ Equations of motion (constant acceleration) 
+These equations can be used only when acceleration is constant. If acceleration is not constant then the general calculus equations above must be used, found by integrating the definitions of position, velocity and acceleration (see above).
+Linear motionAngular motion
+
+
+
+Galilean frame transforms
+
+For classical (Galileo-Newtonian) mechanics, the transformation law from one inertial or accelerating (including rotation) frame (reference frame traveling at constant velocity - including zero) to another is the Galilean transform.
+
+Unprimed quantities refer to position, velocity and acceleration in one frame F; primed quantities refer to position, velocity and acceleration in another frame F' moving at translational velocity V or angular velocity Ω relative to F. Conversely F moves at velocity (—V or —Ω) relative to F'. The situation is similar for relative accelerations.
+ Motion of entities Inertial frames Accelerating framesTranslation
+
+V = Constant relative velocity between two inertial frames F and F'.
+A = (Variable) relative acceleration between two accelerating frames F and F'.Relative position
+Relative velocity
+Equivalent accelerationsRelative accelerations
+Apparent/fictitious forcesRotation
+
+Ω = Constant relative angular velocity between two frames F and F'.
+Λ = (Variable) relative angular acceleration between two accelerating frames F and F'.
+Relative angular position
+Relative velocity
+Equivalent accelerations Relative accelerations
+Apparent/fictitious torques Transformation of any vector T to a rotating frame
+
+
+Mechanical oscillators
+
+SHM, DHM, SHO, and DHO refer to simple harmonic motion, damped harmonic motion, simple harmonic oscillator and damped harmonic oscillator respectively.
++ Equations of motion Physical situation Nomenclature Translational equations Angular equations SHM 
+* x = Transverse displacement
+* θ = Angular displacement
+* A = Transverse amplitude
+* Θ = Angular amplitude
+ 
+
+Solution:
+ 
+
+Solution:
+ Unforced DHM 
+* b = damping constant
+* κ = torsion constant
+ 
+
+Solution (see below for ω):
+
+
+Resonant frequency:
+
+
+Damping rate:
+
+
+Expected lifetime of excitation:
+ 
+
+Solution:
+
+
+Resonant frequency:
+
+
+Damping rate:
+
+
+Expected lifetime of excitation:
++ Angular frequencies Physical situation Nomenclature Equations Linear undamped unforced SHO 
+* k = spring constant
+* m = mass of oscillating bob
+ Linear unforced DHO 
+* k = spring constant
+* b = Damping coefficient
+ Low amplitude angular SHO 
+* I = Moment of inertia about oscillating axis
+* κ = torsion constant
+ Low amplitude simple pendulum 
+* L = Length of pendulum
+* g = Gravitational acceleration
+* Θ = Angular amplitude
+ Approximate value
+
+
+Exact value can be shown to be:
++ Energy in mechanical oscillations Physical situation Nomenclature Equations SHM energy 
+* T = kinetic energy
+* U = potential energy
+* E = total energy
+ Potential energy
+
+Maximum value at x = A:
+
+
+Kinetic energy
+
+
+Total energy
+ DHM energy 
+

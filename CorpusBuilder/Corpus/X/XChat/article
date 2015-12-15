@@ -1,0 +1,21 @@
+XChat is a popular Internet Relay Chat (IRC) client. It has a choice of a tabbed document interface or tree interface, support for multiple servers and is highly configurable. Both command line and graphical versions are available.
+
+XChat is available for Unix-like systems and Microsoft Windows; derivatives with native support for Mac OS X's Aqua interface are also available (see below). The official XChat software has been largely unmaintained since 2012, with development moving largely to forks such as HexChat.
+
+Features
+XChat is a full-featured IRC client with a GUI surrounding the basic chat window. It includes all basic functionality found in most other IRC clients, including nick completion, connecting to multiple servers, secure connections, CTCP, DCC file transfers and chats, and a plugin system for various programming languages (including at least C or C++, Perl, Python, Tcl, Ruby, Lua, CLISP, D, and DMDScript). Plugins allow extending the features and customization of the functionality of XChat.
+
+The default view for the client window is referred to as "tree view", but can be configured for a tabbed interface instead. Tabs change color as text arrives, other users enter or leave channels, or address the user's nickname. The interface can display clickable operator ("op") commands and others, and allows customization of fonts, event sounds, timestamps, and logging. XChat implements all standard IRC commands (e.g. /NICK or /JOIN), as well as DCC chatting (/CHAT), which allows chat to continue if the IRC server is disconnected.
+
+XChat runs on Unix-like operating systems and modern versions of Windows Many GNU/Linux distributions include packages for XChat in their repositories.
+
+ Licensing 
+
+
+The main body of XChat code is licensed under the GNU General Public License. However, , the official build for Windows has become shareware, and must be purchased after a 30-day trial period. Previous builds for Windows were removed from the official site. The authors state that the shareware fee is required due to the excessive amount of time it takes to make it compile under Windows.
+
+However, since the unix version of XChat's code is open source under the GPL, several free non-official builds for Windows have been maintained.
+
+Reception
+XChat has been described as popular, buildable for a variety of platforms. IRC Hacks: 100 Industrial-Strength Tips & Tools goes into depth explaining its setup, configuration, and advanced features under Unix and Mac OS X.
+
