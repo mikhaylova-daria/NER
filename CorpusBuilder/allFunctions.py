@@ -45,6 +45,15 @@ def findEndOfWord(s,word,position):
 
     return w-position+1
 
+def isLetter(symbol):
+    return symbol == '-'or (symbol >= '0' and symbol <='9') or (symbol >= 'a' and symbol <='z') or (symbol >='A' and symbol<='Z')
+
+def checkStarting(position, text):
+    if position != 0 and isLetter(text[position -1]) == True:
+        return False
+    else:
+        return True
+
 def getBoundaries(allRef, ent, lemmaText, sourceText, sourceEntities, types, countOfTypes):
     entities = ent
     ref = allRef
