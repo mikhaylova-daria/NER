@@ -37,6 +37,8 @@ def findEndOfWord(s,word,position):
     i = 0
     while i<=k:
         w += 1
+        if w == len(s):
+            break
         if s[w]in[' ','\n', u'\xa0']:
             i += 1
     w -= 1
@@ -197,11 +199,12 @@ def getWikiEnt(pathEntities, pathWikiEntities):
     dataTypes = open(pathEntities, 'r')
 
     dataTypesText = dataTypes.read().split('\n')
-
+    dataTypesText = [x.strip('\r') for x in dataTypesText]
     types = []
     for typeStr in dataTypesText:
-        type1 = open(pathWikiEntities + "\\Wiki" + typeStr + ".txt", 'r')
-        types.append(set(type1.read().decode('utf-8').split('\n')))
+        if len(typeStr) > 0:
+            type1 = open(pathWikiEntities + "/Wiki" + typeStr+'.txt', 'r')
+            types.append(set(type1.read().decode('utf-8').split('\n')))
 
     return types, dataTypesText
 
