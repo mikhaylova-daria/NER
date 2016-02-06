@@ -17,7 +17,8 @@ def doStr(entity):
     s = ''
     for x in entity:
         s += x
-    return x
+    return s
+    #return x
 
 for i in range(0, len(types)):
     for w in types[i]:
