@@ -37,8 +37,6 @@ def findEndOfWord(s,word,position):
     i = 0
     while i<=k:
         w += 1
-        if w == len(s):
-            break
         if s[w]in[' ','\n', u'\xa0']:
             i += 1
     w -= 1
@@ -46,6 +44,15 @@ def findEndOfWord(s,word,position):
         w -= 1
 
     return w-position+1
+
+def isLetter(symbol):
+    return symbol == '-'or (symbol >= '0' and symbol <='9') or (symbol >= 'a' and symbol <='z') or (symbol >='A' and symbol<='Z')
+
+def checkStarting(position, text):
+    if position != 0 and isLetter(text[position -1]) == True:
+        return False
+    else:
+        return True
 
 def getBoundaries(allRef, ent, lemmaText, sourceText, sourceEntities, types, countOfTypes):
     entities = ent
@@ -199,12 +206,11 @@ def getWikiEnt(pathEntities, pathWikiEntities):
     dataTypes = open(pathEntities, 'r')
 
     dataTypesText = dataTypes.read().split('\n')
-    dataTypesText = [x.strip('\r') for x in dataTypesText]
+
     types = []
     for typeStr in dataTypesText:
-        if len(typeStr) > 0:
-            type1 = open(pathWikiEntities + "/Wiki" + typeStr+'.txt', 'r')
-            types.append(set(type1.read().decode('utf-8').split('\n')))
+        type1 = open(pathWikiEntities + "\\Wiki" + typeStr + ".txt", 'r')
+        types.append(set(type1.read().decode('utf-8').split('\n')))
 
     return types, dataTypesText
 

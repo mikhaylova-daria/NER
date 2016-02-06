@@ -5,8 +5,8 @@ import argparse
 from os import listdir
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--pathCorpus', default = os.getcwd() + '\\TCorpus')
-parser.add_argument('--pathHTMLs', default = os.getcwd() + '\\VisualizationCorpus')
+parser.add_argument('--pathCorpus', default = os.getcwd() + '\\DashaCorpus')
+parser.add_argument('--pathHTMLs', default = os.getcwd() + '\\VisualizationNERCorpus')
 paths = parser.parse_args(sys.argv[1:])
 if os.path.exists(paths.pathHTMLs) == False:
     os.mkdir(paths.pathHTMLs)
