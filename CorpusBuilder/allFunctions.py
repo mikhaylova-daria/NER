@@ -37,6 +37,8 @@ def findEndOfWord(s,word,position):
     i = 0
     while i<=k:
         w += 1
+        if w == len(s):
+            break
         if s[w]in[' ','\n', u'\xa0']:
             i += 1
     w -= 1
@@ -214,8 +216,8 @@ def getWikiEnt(pathEntities, pathWikiEntities):
 
     return types, dataTypesText
 
-def getNecess
-    aryEnt(pathLinks, dataTypesText, types):
+def getNecessaryEnt(pathLinks, dataTypesText, types):
+
     f = open(pathLinks, 'r')
 
     wikiPair = f.read().decode('utf-8').split('\n')
