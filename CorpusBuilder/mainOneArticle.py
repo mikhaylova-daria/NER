@@ -19,24 +19,25 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--pathEntities', default = os.getcwd() + '\\Entities.txt')
-parser.add_argument('--pathWikiEntities', default = os.getcwd() + '\\NewWikiEntities')
-parser.add_argument('--pathArticle', default=os.getcwd() + '\\article')
-parser.add_argument('--pathLinks', default=os.getcwd() + '\\Russia.txt')
-parser.add_argument('--pathResult', default=os.getcwd() + '\\res.json')
+parser.add_argument('--pathEntities', default=os.getcwd().decode("utf-8") + '/Entities.txt')
+parser.add_argument('--pathWikiEntities', default=os.getcwd().decode("utf-8") + '/NewWikiEntities')
+parser.add_argument('--pathArticle', default=os.getcwd().decode("utf-8") + '/article')
+parser.add_argument('--pathLinks', default=os.getcwd().decode("utf-8") + '/Russia.txt')
+parser.add_argument('--pathResult', default=os.getcwd().decode("utf-8") + '/res.json')
 paths = parser.parse_args(sys.argv[1:])
 
-dataTypes = open(paths.pathEntities, 'r')
+#dataTypes = open(paths.pathEntities, 'r')
+dataTypes = open("/home/daria/Рабочий стол/NER/CorpusBuilder/Entities.txt", 'r')
 
 dataTypesText = dataTypes.read().split('\n')
 
 types = []
 for typeStr in dataTypesText:
-    type1 = open(paths.pathWikiEntities + "\\Wiki" + typeStr + ".txt", 'r')
+    type1 = open("/home/daria/Рабочий стол/NER/CorpusBuilder/NewWikiEntities" + "/Wiki" + typeStr + ".txt", 'r')
     types.append(set(type1.read().decode('utf-8').split('\n')))
 
 
-f = open(paths.pathLinks, 'r')
+f = open("/home/daria/Рабочий стол/NER/CorpusBuilder/links.txt", 'r')
 
 wikiPair = f.read().decode('utf-8').split('\n')
 
@@ -51,9 +52,9 @@ for ent in wikiPair:
     x = ent[:ent.index('\t')]
     y = ent[ent.index('\t')+1:]
     for i in range(0, len(types)):
-        if x.count('http://en.wikipedia.org/wiki/') == 0:
+        if x.count('/wiki/') == 0:
             continue
-        if (x[len('http://en.wikipedia.org/wiki/') :] in types[i]) and (y not in allent):
+        if (x[len('/wiki/') :] in types[i]) and (y not in allent):
             answer[i].append(y)
             allent.add(y)
 

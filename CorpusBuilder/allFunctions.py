@@ -214,7 +214,8 @@ def getWikiEnt(pathEntities, pathWikiEntities):
 
     return types, dataTypesText
 
-def getNecessaryEnt(pathLinks, dataTypesText, types):
+def getNecess
+    aryEnt(pathLinks, dataTypesText, types):
     f = open(pathLinks, 'r')
 
     wikiPair = f.read().decode('utf-8').split('\n')

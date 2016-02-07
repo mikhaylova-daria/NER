@@ -9,8 +9,8 @@ import ourutils
 
 
 def process_article((title, text, number)):
-    if re.match(r'\d', title) is not None or re.search(r' list', title) is not None or re.search(r'disambiguation', title) is not None:
-        #print title
+    if re.match(r'\d', title) is not None or re.search(r' list', title) is not None or re.search(r'disambiguation', title)\
+            is not None or re.search(r'List', title) is not None:
         return "", []
     text = ourwikicorpus.filter_wiki(text)
     return title.encode('utf8'), ourutils.simple_preprocess(text)
@@ -29,7 +29,7 @@ def convert_wiki(infile, processes=multiprocessing.cpu_count()):
         for group in ourutils.chunkize(texts, chunksize=10 * processes):
             for title, tokens in pool.imap(process_article, group):
                 #print title
-                if len(tokens) >= 50 and not any(title.startswith(ignore + ':') for ignore in ignore_namespaces):
+                if len(tokens) >= 500 and not any(title.startswith(ignore + ':') for ignore in ignore_namespaces):
                     yield title.replace('\t', ' '), tokens
         pool.terminate()
 
@@ -44,25 +44,26 @@ except OSError, e:
 
 numberArticles = int(sys.argv[2])
 filledFolder = set()
+allNumbers = 0
 for title, tokens in convert_wiki(sys.argv[1]):
-
+    allNumbers += 1
     dirName = 'different'
     listdir = os.listdir("pioNER_Wiki_Articles/")
 
     if re.match('\w+', title) is not None:
-        dirName = title[0]
+         dirName = title[0]
 
     if listdir.count(dirName) == 0:
         os.mkdir("pioNER_Wiki_Articles/" + dirName)
 
     listdirSize = len(os.listdir("pioNER_Wiki_Articles/" + dirName))
 
-    if listdirSize < numberArticles:
+    if allNumbers < numberArticles:
          fileArticle = open("pioNER_Wiki_Articles/" + dirName + "/" + title.replace('/', '_'), "w+", "utf8")
          fileArticle.write(' '.join(tokens))
          fileArticle.close()
     else:
          filledFolder.add(dirName)
-         if len(filledFolder) == 27:
+         if len(filledFolder) >= 27:
              print "ok"
              exit(0)

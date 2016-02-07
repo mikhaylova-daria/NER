@@ -8,7 +8,7 @@ def read_article(path_to_article):
         article = my_file.read()
     return article.decode('utf-8')
 
-#article = read_article(sys.argv[1])
+article = read_article(sys.argv[1])
 #article = read_article('.\\AML\\1\\article')
 
 from pprint import pprint
@@ -88,6 +88,7 @@ def make_html(article, entities, path_to_html):
     result = ((doc.getvalue()))
     #print(result)
     Html_file = open(path_to_html, 'w+')
+    print "!"
     Html_file.write(result)
     Html_file.close()
 
