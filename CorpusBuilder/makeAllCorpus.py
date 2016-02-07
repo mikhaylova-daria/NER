@@ -19,11 +19,14 @@ for letter in allfiles:
         pathLinks = paths.pathCorpus +'\\'+letter+'\\'+name_article + "\\links"
         path = paths.pathCorpus +'\\'+letter+'\\'+name_article + "\\article"
         pathout = paths.pathCorpus +'\\'+letter+'\\'+name_article + "\\res.json"
-        allEnt = allFunctions.getNecessaryEnt(pathLinks, types, wikEntities)
-        entities = allFunctions.getAllEnt(allEnt)
-        lemmaText, lemmaEntities, links, links1, sourceText, sourceEntities = allFunctions.getLemmatizerInfo(entities, path)
-        mapPairs = allFunctions.getAll(links, links1)
-        allEntities = allFunctions.getBoundaries(mapPairs, lemmaEntities, lemmaText, sourceText, sourceEntities, types,
-                                                 [len(allEnt[0]),len(allEnt[1]),len(allEnt[2])])
-        allEntities = allFunctions.deleteBadEntities(allEntities)
-        allFunctions.writeToJSON(pathout, allEntities)
+        try:
+            allEnt = allFunctions.getNecessaryEnt(pathLinks, types, wikEntities)
+            entities = allFunctions.getAllEnt(allEnt)
+            lemmaText, lemmaEntities, links, links1, sourceText, sourceEntities = allFunctions.getLemmatizerInfo(entities, path)
+            mapPairs = allFunctions.getAll(links, links1)
+            allEntities = allFunctions.getBoundaries(mapPairs, lemmaEntities, lemmaText, sourceText, sourceEntities, types,
+                                                     [len(allEnt[0]),len(allEnt[1]),len(allEnt[2])])
+            allEntities = allFunctions.deleteBadEntities(allEntities)
+            allFunctions.writeToJSON(pathout, allEntities)
+        except Exception:
+            continue

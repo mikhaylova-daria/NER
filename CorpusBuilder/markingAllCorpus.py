@@ -6,7 +6,7 @@ from os import listdir
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--pathCorpus', default = os.getcwd() + '\\DashaCorpus')
-parser.add_argument('--pathHTMLs', default = os.getcwd() + '\\VisualizationNERCorpus')
+parser.add_argument('--pathHTMLs', default = os.getcwd() + '\\0602NERCorpus')
 paths = parser.parse_args(sys.argv[1:])
 if os.path.exists(paths.pathHTMLs) == False:
     os.mkdir(paths.pathHTMLs)
@@ -19,7 +19,10 @@ for q1 in allfiles:
     for q3 in q2:
         path = paths.pathCorpus +'\\'+q1+'\\'+q3 + "\\article"
         pathout = paths.pathCorpus +'\\'+q1+'\\'+q3 + "\\res.json"
-        json_of_article = marking.read_json(pathout)
-        article = marking.read_article(path)
-        entities = marking.get_entities(json_of_article)
-        marking.make_html(article, entities, paths.pathHTMLs+"\\"+q1+"\\"+q3+".html")
+        try:
+            json_of_article = marking.read_json(pathout)
+            article = marking.read_article(path)
+            entities = marking.get_entities(json_of_article)
+            marking.make_html(article, entities, paths.pathHTMLs+"\\"+q1+"\\"+q3+".html")
+        except Exception:
+            continue
