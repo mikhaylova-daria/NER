@@ -5,18 +5,20 @@ from os import listdir
 import marking
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--pathCorpus', default = os.getcwd() + '\\Corpus')
+parser.add_argument('--pathCorpus', default = os.getcwd() + '/Corpus')
 paths = parser.parse_args(sys.argv[1:])
 
-count = 0
-errors = open(os.getcwd() + '\\errors.txt', "w")
+
 allfiles = listdir(paths.pathCorpus)
-for letter in allfiles:
-    articles = listdir(paths.pathCorpus+'\\'+letter)
+
+def processing(letter):
+    count = 0
+    errors = open(os.getcwd() + '/' + letter + '_errors.txt', "w")
+    articles = listdir(paths.pathCorpus+'/'+letter)
     print letter
     for name_article in articles:
-        patharticle = paths.pathCorpus + '\\'+letter+'\\'+name_article+"\\article"
-        pathentites = paths.pathCorpus +'\\'+letter+'\\'+name_article + "\\res.json"
+        patharticle = paths.pathCorpus + '/'+letter+'/'+name_article+"/article"
+        pathentites = paths.pathCorpus +'/'+letter+'/'+name_article + "/res.json"
         try:
             json_of_article = marking.read_json(pathentites)
             article = marking.read_article(patharticle)
@@ -34,6 +36,11 @@ for letter in allfiles:
                 count += 1
         except Exception:
             continue
+    errors.write("\n\n\n" + str(count))
+    errors.close()
 
-errors.write("\n\n\n" + str(count))
-errors.close()
+
+import multiprocessing
+pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
+pool.map(processing, allfiles)
+pool.terminate()

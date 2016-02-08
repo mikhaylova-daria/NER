@@ -1,28 +1,40 @@
-import marking
 import os
 import sys
 import argparse
+import allFunctions
 from os import listdir
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--pathCorpus', default = os.getcwd() + '\\DashaCorpus')
-parser.add_argument('--pathHTMLs', default = os.getcwd() + '\\0602NERCorpus')
+parser.add_argument('--pathTypes', default = os.getcwd() + '/Entities.txt')
+parser.add_argument('--pathWikiEntities', default = os.getcwd() + '/NewWikiEntities')
+parser.add_argument('--pathCorpus', default = '/home/daria/Corpus')
 paths = parser.parse_args(sys.argv[1:])
-if os.path.exists(paths.pathHTMLs) == False:
-    os.mkdir(paths.pathHTMLs)
+
+wikEntities, types = allFunctions.getWikiEnt(paths.pathTypes, paths.pathWikiEntities)
 allfiles = listdir(paths.pathCorpus)
-for q1 in allfiles:
-    q2 = listdir(paths.pathCorpus+'\\'+q1)
-    print q1
-    if os.path.exists(paths.pathHTMLs+"\\"+q1) == False:
-        os.mkdir(paths.pathHTMLs+"\\"+q1)
-    for q3 in q2:
-        path = paths.pathCorpus +'\\'+q1+'\\'+q3 + "\\article"
-        pathout = paths.pathCorpus +'\\'+q1+'\\'+q3 + "\\res.json"
+
+
+def processing(letter):
+    articles = listdir(paths.pathCorpus+'/'+letter)
+    print letter
+    for name_article in articles:
+        pathLinks = paths.pathCorpus +'/'+letter+'/'+name_article + "/links"
+        path = paths.pathCorpus +'/'+letter+'/'+name_article + "/article"
+        pathout = paths.pathCorpus +'/'+letter+'/'+name_article + "/res.json"
         try:
-            json_of_article = marking.read_json(pathout)
-            article = marking.read_article(path)
-            entities = marking.get_entities(json_of_article)
-            marking.make_html(article, entities, paths.pathHTMLs+"\\"+q1+"\\"+q3+".html")
+            allEnt = allFunctions.getNecessaryEnt(pathLinks, types, wikEntities)
+            entities = allFunctions.getAllEnt(allEnt)
+            lemmaText, lemmaEntities, links, links1, sourceText, sourceEntities = allFunctions.getLemmatizerInfo(entities, path)
+            mapPairs = allFunctions.getAll(links, links1)
+            allEntities = allFunctions.getBoundaries(mapPairs, lemmaEntities, lemmaText, sourceText, sourceEntities, types,
+                                                     [len(allEnt[0]),len(allEnt[1]),len(allEnt[2])])
+            allEntities = allFunctions.deleteBadEntities(allEntities)
+            allFunctions.writeToJSON(pathout, allEntities)
         except Exception:
             continue
+
+import multiprocessing
+
+pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
+pool.map(processing, allfiles)
+pool.terminate()
