@@ -8,7 +8,7 @@ def read_article(path_to_article):
         article = my_file.read()
     return article.decode('utf-8')
 
-article = read_article(sys.argv[1])
+#article = read_article(sys.argv[1])
 #article = read_article('.\\AML\\1\\article')
 
 from pprint import pprint
@@ -18,7 +18,7 @@ def read_json(path_to_json):
         json_of_article = json.load(json_file)
     return json_of_article
 
-json_of_article = read_json(sys.argv[2])
+#json_of_article = read_json(sys.argv[2])
 #json_of_article = read_json('2.out')
 
 from collections import OrderedDict
@@ -35,7 +35,7 @@ def get_entities(json_of_article):
 
 entity_color = {'Person\r':'violetred\r', 'PopulatedPlace\r':'blue', 'Organisation\r':'red'}
 
-entities = get_entities(json_of_article)
+#entities = get_entities(json_of_article)
 #print(entities)
 
 from yattag import Doc, indent
@@ -94,5 +94,5 @@ def make_html(article, entities, path_to_html):
 
 
 #make_html(article, entities, sys.argv[3])
-make_html(article, entities, 'h.html')
+#make_html(article, entities, 'h.html')
 #print (len(article))
