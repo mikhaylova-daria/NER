@@ -208,10 +208,10 @@ def getWikiEnt(pathEntities, pathWikiEntities):
     dataTypes = open(pathEntities, 'r')
 
     dataTypesText = dataTypes.read().split('\n')
-
+    print dataTypesText
     types = []
-    for typeStr in dataTypesText:
-        type1 = open(pathWikiEntities + "\\Wiki" + typeStr + ".txt", 'r')
+    for typeStr in dataTypesText[:-1]:
+        type1 = open(pathWikiEntities + "/Wiki" + typeStr.strip() + ".txt", 'r')
         types.append(set(type1.read().decode('utf-8').split('\n')))
 
     return types, dataTypesText

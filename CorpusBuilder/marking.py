@@ -18,7 +18,7 @@ def read_json(path_to_json):
         json_of_article = json.load(json_file)
     return json_of_article
 
-#json_of_article = read_json(sys.argv[2])
+json_of_article = read_json(sys.argv[2])
 #json_of_article = read_json('2.out')
 
 from collections import OrderedDict
@@ -29,13 +29,13 @@ def get_entities(json_of_article):
             continue
         s = (j['Type'])
         for pair in j['Boundaries']:
-            entities[ pair[0]] = list([pair[1], entity_color[s] ])
+            entities[pair[0]] = list([pair[1], entity_color[s] ])
     entities = OrderedDict(sorted(entities.items(), key=lambda t:t[0]))
     return entities
 
-entity_color = {'Person':'violetred', 'PopulatedPlace':'blue', 'Organisation':'red'}
+entity_color = {'Person\r':'violetred\r', 'PopulatedPlace\r':'blue', 'Organisation\r':'red'}
 
-#entities = get_entities(json_of_article)
+entities = get_entities(json_of_article)
 #print(entities)
 
 from yattag import Doc, indent
@@ -94,5 +94,5 @@ def make_html(article, entities, path_to_html):
 
 
 #make_html(article, entities, sys.argv[3])
-#make_html(article, entities, 'h.html')
+make_html(article, entities, 'h.html')
 #print (len(article))
