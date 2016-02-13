@@ -2,261 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cac10f11-79eb-4acb-912c-ec98b8d39989" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/A/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/ASCII/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Abacus/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Abraham Lincoln/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Academy Award for Best Production Design/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Academy Awards/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Achilles/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Acid/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Actrius/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Ada/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Afroasiatic languages/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Agricultural science/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Agriculture/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Alabama/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Alain Connes/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Alaska/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Albedo/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Alchemy/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Aldous Huxley/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Algae/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Algeria/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Alien/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Alkane/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Allan Dwan/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Altruism/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/America the Beautiful/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/American Football Conference/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Amphibian/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/An American in Paris/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Analysis of variance/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Anarchism/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Andorra/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Andre Agassi/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Animal Farm/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Animalia (book)/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Animation/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Answer/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Anthropology/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Apollo/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Appellate court/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Appellate procedure in the United States/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Aristotle/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Arithmetic mean/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Arraignment/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Asphalt/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Assistive technology/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Astronomer/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Austroasiatic languages/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Autism/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/A/Ayn Rand/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/BLM/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Ballroom dance/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Baltic Sea/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bar/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Baruch Spinoza/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Basis/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bay leaf/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bead weaving/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bead/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Beadwork/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/BearShare/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Beavis and Butt-head/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Beer/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Being/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Belgian hip hop/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Belgium/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Benjamin Lee Whorf/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Berlin/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Beryllium/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bible/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Biennial plant/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bill Clinton/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bird/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bit/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Black Forest/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Black Sea/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Black letter law/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Blood on the Tracks/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Blue law/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bluegrass/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Blues/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Board game/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bonn/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Book of Alma/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Book of Amos/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Boron nitride/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Brackish water/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Branchiopoda/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Brass/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Brassicales/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Brazil/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bridge/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/British Columbia/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Britney Spears/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bromeliales/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bryozoa/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Bulgaria/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Burgess Shale/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Burn card/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/B/Byte/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/CIM-10 Bomarc/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Calculus/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Callitrichidae/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Canada–United States relations/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Capital/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Carl Linnaeus/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Carnivora/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Casa Batlló/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Casa Milà/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Casino/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Catatonia/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Cebidae/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Cell (biology)/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Central Europe/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Central processing unit/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Charlie Chaplin/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Charlize Theron/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Cheirogaleidae/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Chemistry/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Chess/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Chondrichthyes/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Chordate/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Christ/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Christianity/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Cipher/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Citizen Kane/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Classics/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Coast/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Cobble Hill Tunnel/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Code/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Cold War (1947–53)/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Colombia/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Combinatorics/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Common buzzard/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Communication/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Communications in Burundi/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Community acquis/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Comparison of American and British English/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Computing/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Conservation (cultural heritage)/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Contract bridge/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Convex uniform honeycomb/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Copenhagen/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Country music/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Country/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Crandall University/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Crony capitalism/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Cue sports/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Cuisine of the United States/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/C/Cytoplasm/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/D. W. Griffith/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dale Earnhardt/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dalton Trumbo/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dance/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dasyproctidae/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/David Cronenberg/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/David D. Friedman/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/David Hume/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/David Lynch/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Delaware/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Delian League/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of American Samoa/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Angola/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Antigua and Barbuda/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Armenia/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Bosnia and Herzegovina/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Botswana/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Burkina Faso/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Burundi/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Cambodia/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Cameroon/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Canada/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Cape Verde/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Chad/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Comoros/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Costa Rica/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Croatia/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Cyprus/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of Ivory Coast/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of the British Virgin Islands/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of the Cayman Islands/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of the Central African Republic/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of the Cocos (Keeling) Islands/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Demographics of the Cook Islands/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Derivative/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Destry Rides Again/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Diatomic molecule/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dictionary/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Diffie–Hellman key exchange/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dodo (Alice's Adventures in Wonderland)/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dots and Boxes/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dracula/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dravidian languages/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Drew Barrymore/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dual wield/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dune/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dungeons &amp; Dragons/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Duopoly/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Durrani Empire/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/D/Dutch hip hop/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/'Abd al-Rahman I/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/'Ndrangheta/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/'s-Hertogenbosch/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/-gry/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/...Baby One More Time (album)/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/`Abdu'l-Bahá/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Áed mac Cináeda/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Álfheimr/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Ásatrú in the United States/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Ægir/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Ælfheah of Canterbury/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Ælle of Sussex/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Æsir/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Æthelbald of Wessex/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Æthelberht of Kent/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Æthelberht of Wessex/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Æthelflæd/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Æthelred of Wessex/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Æthelred the Unready/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Æthelwulf of Wessex/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Çatalhöyük/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Çevik Bir/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Éamon de Valera/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Édouard Manet/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Édouard Roche/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Édouard de Pomiane/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Éire/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Élie Ducommun/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Émile Baudot/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Émile Durkheim/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Émile Picard/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Émile Zola/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Éraic/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Évariste Galois/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Île de Ré/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Örnsköldsvik Municipality/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Ötzi/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Øresund/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/Corpus/different/Útgarðar/res.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CorpusBuilder/generateRandomTrainSet.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FeaturesMaker/fitModel.crfsuite" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FeaturesMaker/train" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeaturesMaker/article" afterPath="$PROJECT_DIR$/FeaturesMaker/article" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CorpusBuilder/draft.py" afterPath="$PROJECT_DIR$/CorpusBuilder/draft.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeaturesMaker/features" afterPath="$PROJECT_DIR$/FeaturesMaker/features" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeaturesMaker/fitModel.crfsuite" afterPath="$PROJECT_DIR$/FeaturesMaker/fitModel.crfsuite" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeaturesMaker/fitModelSRFsuit.py" afterPath="$PROJECT_DIR$/FeaturesMaker/fitModelSRFsuit.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeaturesMaker/generateCSV.py" afterPath="$PROJECT_DIR$/FeaturesMaker/generateCSV.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CorpusBuilder/generateRandomizeTrainSet.py" afterPath="$PROJECT_DIR$/CorpusBuilder/generateRandomizeTrainSet.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeaturesMaker/links" afterPath="$PROJECT_DIR$/FeaturesMaker/links" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeaturesMaker/loadModelSRF.py" afterPath="$PROJECT_DIR$/FeaturesMaker/loadModelSRF.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CorpusBuilder/marking.py" afterPath="$PROJECT_DIR$/CorpusBuilder/marking.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CorpusBuilder/markingAllCorpus.py" afterPath="$PROJECT_DIR$/CorpusBuilder/markingAllCorpus.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeaturesMaker/res.json" afterPath="$PROJECT_DIR$/FeaturesMaker/res.json" />
     </list>
     <ignored path="NER.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -280,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="generateCSV.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="generateCSV.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FeaturesMaker/generateCSV.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.181598" vertical-offset="524" max-vertical-offset="2130">
-              <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+            <state vertical-scroll-proportion="-10.638889" vertical-offset="1042" max-vertical-offset="2130">
+              <caret line="95" column="27" selection-start-line="95" selection-start-column="27" selection-end-line="95" selection-end-column="27" />
               <folding>
                 <element signature="e#240#249#0" expanded="true" />
               </folding>
@@ -292,21 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="format.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda/lib/python2.7/site-packages/pandas/core/format.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="24136" max-vertical-offset="38400">
-              <caret line="1630" column="0" selection-start-line="1630" selection-start-column="0" selection-end-line="1630" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="fitModelSRFsuit.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FeaturesMaker/fitModelSRFsuit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="930">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="707" max-vertical-offset="1440">
+              <caret line="69" column="15" selection-start-line="69" selection-start-column="15" selection-end-line="69" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -325,18 +63,18 @@
       <file leaf-file-name="features" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FeaturesMaker/features">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="18765">
-              <caret line="1152" column="56" selection-start-line="1152" selection-start-column="56" selection-end-line="1152" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="14371" max-vertical-offset="18765">
+              <caret line="986" column="9" selection-start-line="986" selection-start-column="9" selection-end-line="986" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loadModelSRF.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loadModelSRF.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FeaturesMaker/loadModelSRF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
-              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.13363029" vertical-offset="675" max-vertical-offset="1245">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="64" selection-end-column="19" />
               <folding>
                 <element signature="e#22#49#0" expanded="true" />
               </folding>
@@ -418,8 +156,8 @@
         <option value="$PROJECT_DIR$/FeaturesMaker/article" />
         <option value="$PROJECT_DIR$/FeaturesMaker/features" />
         <option value="$PROJECT_DIR$/FeaturesMaker/generateCSV.py" />
-        <option value="$PROJECT_DIR$/FeaturesMaker/fitModelSRFsuit.py" />
         <option value="$PROJECT_DIR$/FeaturesMaker/loadModelSRF.py" />
+        <option value="$PROJECT_DIR$/FeaturesMaker/fitModelSRFsuit.py" />
       </list>
     </option>
   </component>
@@ -950,9 +688,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18808778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18808778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25851393" sideWeight="0.84326017" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25851393" sideWeight="0.84326017" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1294,26 +1032,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda/lib/python2.7/site-packages/pandas/core/format.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="24136" max-vertical-offset="38400">
-          <caret line="1630" column="0" selection-start-line="1630" selection-start-column="0" selection-end-line="1630" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FeaturesMaker/article">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda/lib/python2.7/site-packages/pandas/core/index.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="25501" max-vertical-offset="91455">
-          <caret line="1736" column="0" selection-start-line="1736" selection-start-column="0" selection-end-line="1736" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1326,20 +1048,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FeaturesMaker/loadModelSRF.py">
+    <entry file="file://$USER_HOME$/anaconda/lib/python2.7/site-packages/pandas/core/index.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding>
-            <element signature="e#22#49#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="25501" max-vertical-offset="91455">
+          <caret line="1736" column="0" selection-start-line="1736" selection-start-column="0" selection-end-line="1736" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FeaturesMaker/fitModelSRFsuit.py">
+    <entry file="file://$USER_HOME$/anaconda/lib/python2.7/site-packages/pandas/core/format.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="930">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.66592425" vertical-offset="24136" max-vertical-offset="38400">
+          <caret line="1630" column="0" selection-start-line="1630" selection-start-column="0" selection-end-line="1630" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FeaturesMaker/features">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="14371" max-vertical-offset="18765">
+          <caret line="986" column="9" selection-start-line="986" selection-start-column="9" selection-end-line="986" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1352,20 +1080,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FeaturesMaker/features">
+    <entry file="file://$PROJECT_DIR$/FeaturesMaker/generateCSV.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="18765">
-          <caret line="1152" column="56" selection-start-line="1152" selection-start-column="56" selection-end-line="1152" selection-end-column="56" />
+        <state vertical-scroll-proportion="-10.638889" vertical-offset="1042" max-vertical-offset="2130">
+          <caret line="95" column="27" selection-start-line="95" selection-start-column="27" selection-end-line="95" selection-end-column="27" />
+          <folding>
+            <element signature="e#240#249#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FeaturesMaker/fitModelSRFsuit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="707" max-vertical-offset="1440">
+          <caret line="69" column="15" selection-start-line="69" selection-start-column="15" selection-end-line="69" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FeaturesMaker/generateCSV.py">
+    <entry file="file://$PROJECT_DIR$/FeaturesMaker/loadModelSRF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.181598" vertical-offset="524" max-vertical-offset="2130">
-          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.13363029" vertical-offset="675" max-vertical-offset="1245">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="64" selection-end-column="19" />
           <folding>
-            <element signature="e#240#249#0" expanded="true" />
+            <element signature="e#22#49#0" expanded="true" />
           </folding>
         </state>
       </provider>

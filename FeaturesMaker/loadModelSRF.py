@@ -8,16 +8,29 @@ import sklearn
 import pycrfsuite
 import nltk.stem.porter
 
-def word2features(s):
+def word2features(prev, s, next):
 
     features = ['bias']
     del s[1]['TypeNE']
     for key in s[1].index:
         features.append(str(key) + '=' + str(s[1].ix[key]))
-    return [features]
+    if prev is None:
+        for key in s[1].index:
+            features.append(str(key) + '-1=' + '')
+    else:
+        del prev['TypeNE']
+        for key in s[1].index:
+            features.append(str(key) + '=' + str(prev.ix[key]))
+    if next is None:
+        for key in prev.index:
+            features.append(str(key) + '-1=' + '')
+    else:
+        del next['TypeNE']
+        for key in next.index:
+            features.append(str(key) + '+1=' + str(next.ix[key]))
+    return features
 
-def word2labels(s):
-    return [s[1]['TypeNE']]
+
 
 tagger = pycrfsuite.Tagger()
 tagger.open('fitModel.crfsuite')
@@ -27,16 +40,39 @@ import pandas
 import numpy as np
 df = pandas.read_csv('features')
 test_sents = df[["Word","TypeNE"]]
+X_test = []
+y_test = []
 
-X_test = [word2features(s) for s in df.iterrows()]
-y_test = [word2labels(s) for s in df.iterrows()]
+x_sent=[]
+y_sent=[]
+prev = pandas.DataFrame()
+next = pandas.DataFrame()
+for i, s in enumerate(df.iterrows()):
+    if s[1]['Pos_in_sent'] == 0:
+        prev = None
+    else:
+        prev = df.loc[i-1]
+    if i < df.shape[0] - 1 and df['Pos_in_sent'][i+1] == 0 or i == df.shape[0]-1:
+        next = None
+    else:
+        next = df.loc[i+1]
+    y_sent.append(s[1]['TypeNE'])
+    x_sent.append(word2features(prev, s, next))
+    if i < df.shape[0] - 1 and df['Pos_in_sent'][i+1] == 0 or i == df.shape[0]-1:
+        X_test.append(x_sent)
+        y_test.append(y_sent)
+        x_sent = []
+        y_sent = []
 
 
-for i, x in enumerate(X_test):
-    example_sent = x
-    result = tagger.tag(x)[0]
+
+pos = 0
+for i, example_sent in enumerate(X_test):
+    results = tagger.tag(example_sent)
     #if result != y_test[i][0]:
-    if result != 'No':
-        print df['Word'][i]
-        print "Predicted:", ''.join(result)
-        print "Correct:  ", ''.join(str(y_test[i][0]))
+    for j, result in enumerate(results):
+        if result != y_test[i][j]:
+            print df['Word'][pos], pos
+            print "Predicted:", ''.join(result)
+            print "Correct:  ", ''.join(str(y_test[i][j]))
+        pos += 1
