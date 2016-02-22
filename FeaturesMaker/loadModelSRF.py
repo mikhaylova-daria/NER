@@ -1,12 +1,9 @@
 __author__ = 'daria'
 
-from itertools import chain
-import nltk
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.preprocessing import LabelBinarizer
-import sklearn
+#from sklearn.metrics import classification_report, confusion_matrix
+#from sklearn.preprocessing import LabelBinarizer
 import pycrfsuite
-import nltk.stem.porter
+
 
 def word2features(prev, s, next):
 
@@ -37,7 +34,7 @@ tagger.open('fitModel.crfsuite')
 
 input_file = open('features', 'r')
 import pandas
-import numpy as np
+
 df = pandas.read_csv('features')
 test_sents = df[["Word","TypeNE"]]
 X_test = []

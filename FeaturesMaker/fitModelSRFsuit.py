@@ -1,9 +1,8 @@
 __author__ = 'daria'
 
-from itertools import chain
 import nltk
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.preprocessing import LabelBinarizer
+#from sklearn.metrics import classification_report, confusion_matrix
+#from sklearn.preprocessing import LabelBinarizer
 import sklearn
 import pycrfsuite
 import nltk.stem.porter
@@ -41,7 +40,7 @@ def word2features(prev, s, next):
 input_file = open('features', 'r')
 
 import pandas
-import numpy as np
+
 df = pandas.read_csv('features')
 del df['Offset']
 train_sents = df

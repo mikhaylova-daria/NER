@@ -10,19 +10,19 @@ id Word   Offset    typeNE   pos_in_sent feature2 feature3 ...
 
 '''
 import os
-import sys
 
 import pandas
-import numpy as np
 import nltk
-
-from itertools import chain
-import nltk
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.preprocessing import LabelBinarizer
-import sklearn
-import pycrfsuite
+#from sklearn.metrics import classification_report, confusion_matrix
+#from sklearn.preprocessing import LabelBinarizer
 import nltk.stem.porter
+
+import re
+def get_shape(x):
+    x = re.sub(r'([a-z]+)','x',x)
+    x = re.sub(r'([A-Z]+)','X',x)
+    x = re.sub(r'([0-9]+)','0',x)
+    return x
 
 stemmer=nltk.stem.porter.PorterStemmer()
 
@@ -42,10 +42,10 @@ last_three = []
 isupper = []
 istitle = []
 isdigit = []
-
+shape = []
+postager = []
 l = 0
 sentences = nltk.tokenize.sent_tokenize(text)
-
 
 for sentence in sentences:
     sentence_list = nltk.tokenize.word_tokenize(sentence)
@@ -57,6 +57,7 @@ for sentence in sentences:
         pos = text.find(word, l)
         offset.append(pos)
         l = max(len(word) + pos, l)
+        (w, tag) = nltk.pos_tag([word])[0]
 
         pos_in_sent.append(pos_i)
 
@@ -66,8 +67,8 @@ for sentence in sentences:
         isupper.append(word.isupper()),
         istitle.append(word.istitle()),
         isdigit.append(word.isdigit()),
-
-
+        shape.append(get_shape(word).encode('utf-8')),
+        postager.append(tag)
 
 dfForArticle.insert(0, 'Word', words)
 dfForArticle.insert(1, 'Offset', offset)
@@ -78,6 +79,8 @@ dfForArticle.insert(5, 'LastThree', last_three)
 dfForArticle.insert(6, 'IsUpper', isupper)
 dfForArticle.insert(7, 'IsTitle', istitle)
 dfForArticle.insert(8, 'IsDigit', isdigit)
+dfForArticle.insert(9, 'Shape', shape)
+dfForArticle.insert(10, 'PosTag', postager)
 
 import json
 def read_json(path_to_json):
