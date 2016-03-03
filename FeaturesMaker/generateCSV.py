@@ -11,8 +11,8 @@ id Word   Offset    typeNE   pos_in_sent feature2 feature3 ...
 '''
 import os
 
-import pandas
 import nltk
+import pandas
 #from sklearn.metrics import classification_report, confusion_matrix
 #from sklearn.preprocessing import LabelBinarizer
 import nltk.stem.porter
@@ -46,9 +46,9 @@ shape = []
 postager = []
 l = 0
 sentences = nltk.tokenize.sent_tokenize(text)
-
 for sentence in sentences:
     sentence_list = nltk.tokenize.word_tokenize(sentence)
+    pos_tag_list =  nltk.pos_tag(sentence_list)
     for pos_i, word in enumerate(sentence_list):
         #unknown Anton's kostul'
         if word == '\ufeff':
@@ -57,7 +57,6 @@ for sentence in sentences:
         pos = text.find(word, l)
         offset.append(pos)
         l = max(len(word) + pos, l)
-        (w, tag) = nltk.pos_tag([word])[0]
 
         pos_in_sent.append(pos_i)
 
@@ -68,7 +67,7 @@ for sentence in sentences:
         istitle.append(word.istitle()),
         isdigit.append(word.isdigit()),
         shape.append(get_shape(word).encode('utf-8')),
-        postager.append(tag)
+        postager.append(pos_tag_list[pos_i][1])
 
 dfForArticle.insert(0, 'Word', words)
 dfForArticle.insert(1, 'Offset', offset)
