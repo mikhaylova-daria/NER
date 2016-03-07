@@ -44,13 +44,14 @@ def testFolder(folder):
     recall_list = []
     F_list = []
     dfTestFolderReport = pandas.DataFrame()
-    for article in os.listdir(folder):
+    for article in os.listdir(unicode(folder)):
         dfTestReport = pandas.DataFrame()
         wordReport = []
         posReport = []
         predictReport = []
         correctReport = []
-        df = pandas.read_csv(folder + os.sep + article + os.sep + 'features')
+        f=open(unicode(folder + os.sep + article + os.sep + 'features'))
+        df = pandas.read_csv(f)
 
         X_test = []
         y_test = []
@@ -132,7 +133,7 @@ def testFolder(folder):
     dfTestFolderReport.insert(1, "Precision", precision_list)
     dfTestFolderReport.insert(2, "Recall", recall_list)
     dfTestFolderReport.insert(3, "F", F_list)
-    dfTestFolderReport.to_csv(os.getcwd() + os.sep + "Report" + os.sep + "TestFolderReport" + "_" + letter, index_label=id)
+    dfTestFolderReport.to_csv(os.getcwd() + os.sep + "Report" + os.sep + "TestFolderReport" + "_" + letter, index_label=id,encoding='utf-8')
     pr_f = 0
     rc_f = 0
     F_f = 0
