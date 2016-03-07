@@ -2,9 +2,11 @@ __author__ = 'daria'
 
 #from sklearn.metrics import classification_report, confusion_matrix
 #from sklearn.preprocessing import LabelBinarizer
-import pycrfsuite
-import pandas
 import os
+
+import pandas
+import pycrfsuite
+
 
 def word2features(prev, s, next):
 
@@ -31,6 +33,7 @@ def word2features(prev, s, next):
 
 def testFolder(folder):
     print "FOLDER", folder
+    letter = folder
     folder = path + os.sep + folder
     tp_f = 0
     tn_f = 0
@@ -123,11 +126,13 @@ def testFolder(folder):
         tn_f += tn
         fn_f += fn
         fp_f += fp
+        print article
+
     dfTestFolderReport.insert(0, "Article", articles_list)
     dfTestFolderReport.insert(1, "Precision", precision_list)
     dfTestFolderReport.insert(2, "Recall", recall_list)
     dfTestFolderReport.insert(3, "F", F_list)
-    dfTestFolderReport.to_csv(os.getcwd() + os.sep + "Report" + os.sep + "TestFolderReport" + "_" + folder, index_label=id)
+    dfTestFolderReport.to_csv(os.getcwd() + os.sep + "Report" + os.sep + "TestFolderReport" + "_" + letter, index_label=id)
     pr_f = 0
     rc_f = 0
     F_f = 0
@@ -143,7 +148,7 @@ def testFolder(folder):
 
 tagger = pycrfsuite.Tagger()
 tagger.open('fitModel.crfsuite')
-path = "/home/daria/RandomCorpusTest"
+path = "C:\Users\Anton\Documents\Diploma\RandomCorpusTest"
 
 report = dict()
 for i in range(65, 91):
@@ -152,5 +157,7 @@ print report
 
 
 import multiprocessing
-pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
-pool.map(testFolder, os.listdir(path))
+if __name__ == '__main__':
+    multiprocessing.freeze_support()
+    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
+    pool.map(testFolder, os.listdir(path))
