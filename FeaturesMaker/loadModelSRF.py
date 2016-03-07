@@ -126,13 +126,12 @@ def testFolder(folder):
         tn_f += tn
         fn_f += fn
         fp_f += fp
-        print article
 
     dfTestFolderReport.insert(0, "Article", articles_list)
     dfTestFolderReport.insert(1, "Precision", precision_list)
     dfTestFolderReport.insert(2, "Recall", recall_list)
     dfTestFolderReport.insert(3, "F", F_list)
-    dfTestFolderReport.to_csv(os.getcwd() + os.sep + "Report" + os.sep + "TestFolderReport" + "_" + letter, index_label=id)
+    dfTestFolderReport.to_csv("/home/daria/Diploma/Report/2" + os.sep + "TestFolderReport" + "_" + letter, index_label=id)
     pr_f = 0
     rc_f = 0
     F_f = 0
@@ -142,18 +141,19 @@ def testFolder(folder):
     if pr_f + rc_f != 0:
         F_f = 2*pr_f*rc_f*1./(pr_f + rc_f)
     metrics = [pr_f, rc_f, F_f]
-    report[folder] = metrics
-    print report
+    print letter, metrics
+    #report[letter] = metrics
     return
 
 tagger = pycrfsuite.Tagger()
 tagger.open('fitModel.crfsuite')
-path = "C:\Users\Anton\Documents\Diploma\RandomCorpusTest"
+
+path = "/home/daria/Diploma/RandomCorpusTest"
 
 report = dict()
 for i in range(65, 91):
     report.setdefault(chr(i))
-print report
+
 
 
 import multiprocessing
@@ -161,3 +161,5 @@ if __name__ == '__main__':
     multiprocessing.freeze_support()
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
     pool.map(testFolder, os.listdir(path))
+    print report
+print report
