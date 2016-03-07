@@ -3,15 +3,11 @@ __author__ = 'daria'
 import nltk
 #from sklearn.metrics import classification_report, confusion_matrix
 #from sklearn.preprocessing import LabelBinarizer
-import sklearn
 import pycrfsuite
 import nltk.stem.porter
+import pandas
 
 stemmer=nltk.stem.porter.PorterStemmer()
-
-
-print(sklearn.__version__)
-
 
 def word2features(prev, s, next):
 
@@ -27,7 +23,7 @@ def word2features(prev, s, next):
         for key in s[1].index:
             features.append(str(key) + '=' + str(prev.ix[key]))
     if next is None:
-        for key in prev.index:
+        for key in s[1].index:
             features.append(str(key) + '-1=' + '')
     else:
         del next['TypeNE']
@@ -36,49 +32,59 @@ def word2features(prev, s, next):
     return features
 
 
-
-input_file = open('features', 'r')
-
-import pandas
-
-df = pandas.read_csv('features')
-del df['Offset']
-train_sents = df
-
 #test_sents = list(nltk.corpus.conll2002.iob_sents('esp.testb'))
-
-X_train = []
-y_train = []
-
-x_sent=[]
-y_sent=[]
-prev = pandas.DataFrame()
-next = pandas.DataFrame()
-for i, s in enumerate(df.iterrows()):
-    if s[1]['Pos_in_sent'] == 0:
-        prev = None
-    else:
-        prev = df.loc[i-1]
-    if i < df.shape[0] - 1 and df['Pos_in_sent'][i+1] == 0 or i == df.shape[0]-1:
-        next = None
-    else:
-        next = df.loc[i+1]
-    y_sent.append(s[1]['TypeNE'])
-    x_sent.append(word2features(prev, s, next))
-    if i < df.shape[0] - 1 and df['Pos_in_sent'][i+1] == 0 or i == df.shape[0]-1:
-        X_train.append(x_sent)
-        y_train.append(y_sent)
-        x_sent = []
-        y_sent = []
-
-
-
+import os
+import argparse
+import sys
+parser = argparse.ArgumentParser()
+parser.add_argument('--pathCorpus', default=os.getcwd() + os.sep + 'Corpus')
+paths = parser.parse_args(sys.argv[1:])
 
 trainer = pycrfsuite.Trainer(verbose=False)
+folders = os.listdir(unicode(paths.pathCorpus))
 
-for xseq, yseq in zip(X_train, y_train):
-    trainer.append(xseq, yseq)
+from time import time
 
+for folder in folders:
+    articles = os.listdir(unicode(paths.pathCorpus+os.sep+folder))
+    for article in articles:
+        t0=time()
+        f=open(unicode(paths.pathCorpus+os.sep+folder+os.sep+article+os.sep+'features'))
+        df = pandas.read_csv(f)
+        del df['Offset']
+        train_sents = df
+
+        X_train = []
+        y_train = []
+
+        x_sent=[]
+        y_sent=[]
+        prev = pandas.DataFrame()
+        next = pandas.DataFrame()
+        for i, s in enumerate(df.iterrows()):
+            if s[1]['Pos_in_sent'] == 0:
+                prev = None
+            else:
+                prev = df.loc[i-1]
+            if i < df.shape[0] - 1 and df['Pos_in_sent'][i+1] == 0 or i == df.shape[0]-1:
+                next = None
+            else:
+                next = df.loc[i+1]
+            y_sent.append(s[1]['TypeNE'])
+            x_sent.append(word2features(prev, s, next))
+            if i < df.shape[0] - 1 and df['Pos_in_sent'][i+1] == 0 or i == df.shape[0]-1:
+                X_train.append(x_sent)
+                y_train.append(y_sent)
+                x_sent = []
+                y_sent = []
+
+        for xseq, yseq in zip(X_train, y_train):
+            trainer.append(xseq, yseq)
+
+        t1=time()
+        print article + " Time= %f" %(t1-t0)
+        break
+    break
 
 trainer.set_params({
     'c1': 1.0,   # coefficient for L1 penalty
