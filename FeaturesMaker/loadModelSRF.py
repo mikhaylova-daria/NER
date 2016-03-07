@@ -64,11 +64,34 @@ for i, s in enumerate(df.iterrows()):
 
 
 pos = 0
+total = 0
+error = 0
+tp = 0
+tn = 0
+fp = 0
+fn = 0
 for i, example_sent in enumerate(X_test):
     results = tagger.tag(example_sent)
     for j, result in enumerate(results):
-        if result != 'No':
+        if result != y_test[i][j]:
+            if result == "No":
+                fn += 1
+            else:
+                fp += 1
+            error += 1
             print df['Word'][pos], pos
             print "Predicted:", ''.join(result)
             print "Correct:  ", ''.join(str(y_test[i][j]))
+        else:
+            if result == "No":
+                tn += 1
+            else:
+                tp += 1
         pos += 1
+        total += 1
+
+precision = tp*1./(tp+fp)
+recall = tp*1./(tp+fn)
+F = 2*precision*recall*1./(precision + recall)
+print F, precision, recall
+print (total - error + 0.0) / total
