@@ -47,8 +47,8 @@ from time import time
 
 for folder in folders:
     articles = os.listdir(unicode(paths.pathCorpus+os.sep+folder))
+    t0=time()
     for article in articles:
-        t0=time()
         f=open(unicode(paths.pathCorpus+os.sep+folder+os.sep+article+os.sep+'features'))
         df = pandas.read_csv(f)
         del df['Offset']
@@ -81,10 +81,8 @@ for folder in folders:
         for xseq, yseq in zip(X_train, y_train):
             trainer.append(xseq, yseq)
 
-        t1=time()
-        print article + " Time= %f" %(t1-t0)
-        break
-    break
+    t1=time()
+    print folder  + " Time= %f" %(t1-t0)
 
 trainer.set_params({
     'c1': 1.0,   # coefficient for L1 penalty
