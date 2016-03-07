@@ -69,9 +69,8 @@ for i, s in enumerate(df.iterrows()):
 pos = 0
 for i, example_sent in enumerate(X_test):
     results = tagger.tag(example_sent)
-    #if result != y_test[i][0]:
     for j, result in enumerate(results):
-        if result != y_test[i][j]:
+        if result != 'No':
             print df['Word'][pos], pos
             print "Predicted:", ''.join(result)
             print "Correct:  ", ''.join(str(y_test[i][j]))
