@@ -27,7 +27,7 @@ def word2features(prev, s, next):
         for key in s[1].index:
             features.append(str(key) + '=' + str(prev.ix[key]))
     if next is None:
-        for key in prev.index:
+        for key in s[1].index:
             features.append(str(key) + '-1=' + '')
     else:
         del next['TypeNE']
