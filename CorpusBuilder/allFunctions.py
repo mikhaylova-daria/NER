@@ -1,5 +1,8 @@
 import json
-from nltk import PorterStemmer
+
+from nltk.stem.snowball import EnglishStemmer
+
+
 def deleteBadEntities(Entities):
     allEntities = Entities
     for j in allEntities:
@@ -63,7 +66,7 @@ def getBoundaries(allRef, ent, lemmaText, sourceText, sourceEntities, types, cou
     typ = types[0]
     j = 0
     allEntities = []
-    for ite in range(len(entities)):
+    for ite in xrange(len(entities)):
         word = entities[ite]
         if len(word) == 0:
             continue
@@ -94,7 +97,7 @@ def isOk(s):
     return True
 
 
-def getLemmatizerInfo(entities, pathArticle):
+def getLemmatizerInfo(pathArticle):
 
     data = open(pathArticle, "r")
     text1 = data.read().decode('utf-8')
@@ -136,7 +139,7 @@ def getLemmatizerInfo(entities, pathArticle):
 
     out = ''
 
-    st = PorterStemmer()
+    st = EnglishStemmer()
 
     l = 0
     links = []
@@ -148,14 +151,17 @@ def getLemmatizerInfo(entities, pathArticle):
         out += q.lower()
         links.append([l, q])
         l += len(q)
-
+    return out, links, links1, sourceText
+'''
     q = [',', '.', '!', '?', ':', ';']
     tmp = []
-    sourceEntities = [entities[i] for i in range(len(entities)) if len(entities[i])>0]
+    sourceEntities = [x for x in entities if len(x)>0]
 
-    for i in range(len(entities)):
+    for i in xrange(len(entities)):
         if len(entities[i]) == 0:
             continue
+        if i % 100 == 0:
+            print i
         entities[i] = entities[i].lower()
         entities[i] = entities[i].replace(' - ', ' \u2013 ', entities[i].count(' - '))
         entities[i] = entities[i].replace(' -', ' \u2013', entities[i].count(' -'))
@@ -174,13 +180,13 @@ def getLemmatizerInfo(entities, pathArticle):
             else:
                 s += w + ' '
         tmp.append(s[:-1])
-    return out, tmp, links, links1, sourceText, sourceEntities
+'''
 
 def getAll(links,links1):
     all = dict([])
     j = 0
     k = 0
-    for i in range(len(links)):
+    for i in xrange(len(links)):
         if links[i][1][0] == '(':
             k = 1
             continue
@@ -224,7 +230,7 @@ def getNecessaryEnt(pathLinks, dataTypesText, types):
 
     answer = []
     for typeStr in dataTypesText:
-        answer.append([])
+        answer.append(set([]))
 
     allent = set([])
     for ent in wikiPair:
@@ -236,8 +242,36 @@ def getNecessaryEnt(pathLinks, dataTypesText, types):
             if x.count('/wiki/') == 0:
                 continue
             if (x[len('/wiki/'):] in types[i]) and (y not in allent):
-                answer[i].append(y)
+                answer[i].add(y)
                 allent.add(y)
+    return answer
+
+import re
+def getAllEntitiesFromDBPedia(dataTypesText, types):
+
+    answer = []
+    for typeStr in dataTypesText:
+        if len(typeStr) == 0:
+            continue
+        answer.append(set([]))
+
+    allent = set([])
+
+    for i in xrange(len(dataTypesText)):
+        if len(dataTypesText[i]) == 0:
+            continue
+        for y in types[i]:
+            if len(y) == 0:
+                continue
+            x = y.replace("_", " ", y.count("_"))
+            x = re.sub(r'([,.!?:;])', "", x)
+            if x.count("(") > 0:
+                continue
+            if x in allent:
+                continue
+            answer[i].add(x)
+            allent.add(x)
+
     return answer
 
 def getAllEnt(ent):
@@ -246,3 +280,121 @@ def getAllEnt(ent):
         for word in ent[i]:
             allEnt.append(word)
     return allEnt
+
+import numpy as np
+
+def getAllStemEntities(entities):
+    st = EnglishStemmer()
+    q = [',', '.', '!', '?', ':', ';']
+    tmp = []
+    sourceEntities = [x for x in entities if len(x)>0]
+    np.random.shuffle(entities)
+
+    for i in xrange(len(entities)):
+        if len(entities[i]) == 0:
+            continue
+        if i % 1000 == 0:
+            print i
+        entities[i] = entities[i].lower()
+        entities[i] = entities[i].replace(' - ', ' \u2013 ', entities[i].count(' - '))
+        entities[i] = entities[i].replace(' -', ' \u2013', entities[i].count(' -'))
+        entities[i] = entities[i].replace('- ', '\u2013 ', entities[i].count('- '))
+        entities[i] = entities[i].replace('-', ' - ', entities[i].count('-'))
+        entities[i] = entities[i].replace(')', ' )', entities[i].count(')'))
+        entities[i] = entities[i].replace('(', '( ', entities[i].count('('))
+        entities[i] = entities[i].replace('\u0027', ' \u0027', entities.count('\u0027'))
+        for w in q:
+            entities[i]=entities[i].replace(w, ' '+w, entities[i].count(w))
+        word = entities[i].split(' ')
+        s = ''
+        for w in word:
+            s  += st.stem(unicode(w)) + ' '
+        tmp.append(s[:-1])
+        if len(tmp) > 50:
+            break
+
+    return tmp, entities[:len(tmp)]
+
+
+
+def getLemmatizerInfoArt(entities, pathArticle):
+
+    data = open(pathArticle, "r")
+    text1 = data.read().decode('utf-8')
+
+    sourceText = text1
+
+    links1 = []
+    l = 0
+    for q in text1.split():
+        if q == '\ufeff':
+            continue
+        links1.append([text1.find(q,l), q])
+        l = len(q) + 1 + text1.find(q,l)
+
+    text1 = text1.replace(' - ', ' \u2013 ', text1.count(' - '))
+    text1 = text1.replace(' -', ' \u2013', text1.count(' -'))
+    text1 = text1.replace('- ', '\u2013 ', text1.count('- '))
+    text1 = text1.replace('-', ' - ', text1.count('-'))
+    text1 = text1.replace('(', '( ', text1.count('('))
+    text1 = text1.replace(')', ' )', text1.count(')'))
+    text1 = text1.replace(' \u0027', ' \u301E', text1.count(' \u0027'))
+    text1 = text1.replace('\u0027', ' \u0027', text1.count('\u0027'))
+    text1 = text1.split()
+    if text1[0] == u'\ufeff':
+        text1=text1[1:]
+    text = []
+    for word in text1:
+        text2 = []
+        if len(word) == 0:
+            continue
+        while word[len(word)-1] in [',','.','!','?',':',';']:
+            text2.append(word[len(word)-1])
+            word = word[:-1]
+            if len(word) == 0:
+                break
+        text.append(word)
+        for i in range(len(text2)-1, -1,-1):
+            text.append(text2[i])
+
+    out = ''
+
+    st = EnglishStemmer()
+
+    l = 0
+    links = []
+    for word in text:
+        if isOk(word):
+            q = st.stem(word) + ' '
+        else:
+            q = word + ' '
+        out += q.lower()
+        links.append([l, q])
+        l += len(q)
+
+    q = [',', '.', '!', '?', ':', ';']
+    tmp = []
+    sourceEntities = [entities[i] for i in range(len(entities)) if len(entities[i])>0]
+
+    for i in range(len(entities)):
+        if len(entities[i]) == 0:
+            continue
+        entities[i] = entities[i].lower()
+        entities[i] = entities[i].replace(' - ', ' \u2013 ', entities[i].count(' - '))
+        entities[i] = entities[i].replace(' -', ' \u2013', entities[i].count(' -'))
+        entities[i] = entities[i].replace('- ', '\u2013 ', entities[i].count('- '))
+        entities[i] = entities[i].replace('-', ' - ', entities[i].count('-'))
+        entities[i] = entities[i].replace(')', ' )', entities[i].count(')'))
+        entities[i] = entities[i].replace('(', '( ', entities[i].count('('))
+        entities[i] = entities[i].replace('\u0027', ' \u0027', entities.count('\u0027'))
+        for w in q:
+            entities[i]=entities[i].replace(w, ' '+w, entities[i].count(w))
+        word = entities[i].split(' ')
+        s = ''
+        for w in word:
+            if isOk(w):
+                s  += st.stem(w) + ' '
+            else:
+                s += w + ' '
+        tmp.append(s[:-1])
+    return out, tmp, links, links1, sourceText, sourceEntities
