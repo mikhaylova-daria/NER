@@ -24,7 +24,7 @@ def processing(letter):
         try:
             allEnt = allFunctions.getNecessaryEnt(pathLinks, types, wikEntities)
             entities = allFunctions.getAllEnt(allEnt)
-            lemmaText, lemmaEntities, links, links1, sourceText, sourceEntities = allFunctions.getLemmatizerInfo(entities, path)
+            lemmaText, lemmaEntities, links, links1, sourceText, sourceEntities = allFunctions.getLemmatizerInfoArt(entities, path)
             mapPairs = allFunctions.getAll(links, links1)
             allEntities = allFunctions.getBoundaries(mapPairs, lemmaEntities, lemmaText, sourceText, sourceEntities, types,
                                                      [len(allEnt[0]),len(allEnt[1]),len(allEnt[2])])

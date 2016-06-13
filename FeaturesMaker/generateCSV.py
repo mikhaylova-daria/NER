@@ -57,7 +57,7 @@ paths = parser.parse_args(sys.argv[1:])
 
 allfolders = os.listdir(paths.pathCorpus)
 times = []
-
+len_sent = open('len_sent', 'w')
 for folder in allfolders:
     print folder
     articles = os.listdir(unicode(paths.pathCorpus+os.sep+folder))
@@ -83,6 +83,8 @@ for folder in allfolders:
         sentences = nltk.tokenize.sent_tokenize(text)
         for sentence in sentences:
             sentence_list = nltk.tokenize.word_tokenize(sentence)
+	    if len(sentence_list)>30:
+		len_sent.write(folder.encode('utf-8')+': '+sentence.encode('utf-8'))
             #pos_tag_list =  nltk.pos_tag(sentence_list)
             for pos_i, word in enumerate(sentence_list):
                 #unknown Anton's kostul'
@@ -92,8 +94,10 @@ for folder in allfolders:
                 pos = text.find(word, l)
                 offset.append(pos)
                 l = max(len(word) + pos, l)
-
-                pos_in_sent.append(pos_i)
+		if pos_i<3:
+			pos_in_sent.append(pos_i)
+		else:
+                	pos_in_sent.append(-1)
 
                 stem.append(stemmer.stem(word).encode('utf-8')),
                 last_two.append(word[-3:].encode('utf-8')),

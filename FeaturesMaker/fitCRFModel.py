@@ -12,7 +12,8 @@ parser.add_argument('--pathCorpus', default=os.getcwd() + os.sep + 'Corpus')
 paths = parser.parse_args(sys.argv[1:])
 
 timeReport = str(datetime.datetime.now())
-pathReport = paths.pathCorpus+"/../Report/"+ timeReport
+#pathReport = paths.pathCorpus+"/../Report/"+ timeReport
+pathReport = ".."+os.sep+".."+os.sep+"Report" + os.sep + timeReport
 os.mkdir(pathReport)
 
 folders = os.listdir(unicode(paths.pathCorpus))
@@ -27,7 +28,7 @@ def instances():
         print folder
         articles = os.listdir(unicode(paths.pathCorpus+os.sep+folder))
         for article in articles:
-            f=open(unicode(paths.pathCorpus+os.sep+folder+os.sep+article+os.sep+'features'))
+            f=open(unicode(paths.pathCorpus+os.sep+folder+os.sep+article+os.sep+'features1'))
             xseq = []
             yseq = []
 
